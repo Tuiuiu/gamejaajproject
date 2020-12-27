@@ -4,7 +4,6 @@ var timer
 var count = 0
 var enemy = preload("res://Scenes/Enemies/Goblin/Goblin.tscn")
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
     timer = $Timer
     timer.start()
