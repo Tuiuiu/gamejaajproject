@@ -1,11 +1,12 @@
 [gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://Scenes/Enemies/Enemy.gd" type="Script" id=1]
-[ext_resource path="res://Scenes/Enemies/Goblin Assets/Idle.png" type="Texture" id=2]
-[ext_resource path="res://Scenes/Enemies/Goblin Assets/Attack.png" type="Texture" id=3]
-[ext_resource path="res://Scenes/Enemies/Goblin Assets/Take Hit.png" type="Texture" id=4]
-[ext_resource path="res://Scenes/Enemies/Goblin Assets/Death.png" type="Texture" id=5]
-[ext_resource path="res://Scenes/Enemies/Goblin Assets/Run.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Enemies/Goblin/Idle.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Enemies/Goblin/Attack.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Enemies/Goblin/Take Hit.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Enemies/Goblin/Death.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Enemies/Goblin/Run.png" type="Texture" id=6]
+
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 16, 16 )

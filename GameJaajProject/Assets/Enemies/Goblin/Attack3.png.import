@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Death.png-e8945ff80daef5da92ea6752aeb97b05.stex"
+path="res://.import/Attack3.png-64b7a119b9c68a039b42229f107c9068.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/Enemies/Goblin Assets/Death.png"
-dest_files=[ "res://.import/Death.png-e8945ff80daef5da92ea6752aeb97b05.stex" ]
+source_file="res://Assets/Enemies/Goblin/Attack3.png"
+dest_files=[ "res://.import/Attack3.png-64b7a119b9c68a039b42229f107c9068.stex" ]
 
 [params]
 

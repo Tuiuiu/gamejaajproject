@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Attack2.png-dca7bba36309bb1d25fab8820ca681fe.stex"
+path="res://.import/Take Hit.png-670ab11e3e8cd75337dfbddb22db9807.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/Player/Player Assets/Attack2.png"
-dest_files=[ "res://.import/Attack2.png-dca7bba36309bb1d25fab8820ca681fe.stex" ]
+source_file="res://Assets/Enemies/Goblin/Take Hit.png"
+dest_files=[ "res://.import/Take Hit.png-670ab11e3e8cd75337dfbddb22db9807.stex" ]
 
 [params]
 

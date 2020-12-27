@@ -1,14 +1,15 @@
 [gd_scene load_steps=45 format=2]
 
 [ext_resource path="res://Scenes/Player/Player.gd" type="Script" id=2]
-[ext_resource path="res://Scenes/Player/Player Assets/Jump.png" type="Texture" id=3]
-[ext_resource path="res://Scenes/Player/Player Assets/Hit.png" type="Texture" id=4]
-[ext_resource path="res://Scenes/Player/Player Assets/Idle.png" type="Texture" id=5]
-[ext_resource path="res://Scenes/Player/Player Assets/Attack1.png" type="Texture" id=6]
-[ext_resource path="res://Scenes/Player/Player Assets/Death.png" type="Texture" id=7]
-[ext_resource path="res://Scenes/Player/Player Assets/Run.png" type="Texture" id=8]
-[ext_resource path="res://Scenes/Player/Player Assets/Fall.png" type="Texture" id=9]
-[ext_resource path="res://Scenes/Player/Player Assets/Attack2.png" type="Texture" id=10]
+[ext_resource path="res://Assets/Player/Jump.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Player/Hit.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Player/Idle.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Player/Attack1.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Player/Death.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Player/Run.png" type="Texture" id=8]
+[ext_resource path="res://Assets/Player/Fall.png" type="Texture" id=9]
+[ext_resource path="res://Assets/Player/Attack2.png" type="Texture" id=10]
+
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 32, 32 )

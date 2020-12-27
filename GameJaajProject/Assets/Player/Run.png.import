@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Attack3.png-e9ff716ca111e6cf69de8c9c17946f4f.stex"
+path="res://.import/Run.png-b6ec8c7c249d51f856902e11dac8a673.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/Enemies/Goblin Assets/Attack3.png"
-dest_files=[ "res://.import/Attack3.png-e9ff716ca111e6cf69de8c9c17946f4f.stex" ]
+source_file="res://Assets/Player/Run.png"
+dest_files=[ "res://.import/Run.png-b6ec8c7c249d51f856902e11dac8a673.stex" ]
 
 [params]
 
