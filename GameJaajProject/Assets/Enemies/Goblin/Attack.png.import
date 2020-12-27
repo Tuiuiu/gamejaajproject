@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Idle.png-12b3e09ef2fcc7fc2425ce8e7a039d4d.stex"
+path="res://.import/Attack.png-01de9892f42527379d300bb6f4ae91ae.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/Enemies/Goblin Assets/Idle.png"
-dest_files=[ "res://.import/Idle.png-12b3e09ef2fcc7fc2425ce8e7a039d4d.stex" ]
+source_file="res://Assets/Enemies/Goblin/Attack.png"
+dest_files=[ "res://.import/Attack.png-01de9892f42527379d300bb6f4ae91ae.stex" ]
 
 [params]
 
