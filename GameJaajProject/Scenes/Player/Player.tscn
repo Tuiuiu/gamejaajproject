@@ -59,32 +59,32 @@ atlas = ExtResource( 3 )
 region = Rect2( 231, 0, 231, 190 )
 
 [sub_resource type="AtlasTexture" id=13]
-atlas = ExtResource( 6 )
+atlas = ExtResource( 9 )
 region = Rect2( 0, 0, 231, 190 )
 
 [sub_resource type="AtlasTexture" id=14]
-atlas = ExtResource( 6 )
+atlas = ExtResource( 9 )
 region = Rect2( 231, 0, 231, 190 )
 
 [sub_resource type="AtlasTexture" id=15]
 atlas = ExtResource( 6 )
-region = Rect2( 462, 0, 231, 190 )
+region = Rect2( 0, 0, 231, 190 )
 
 [sub_resource type="AtlasTexture" id=16]
 atlas = ExtResource( 6 )
-region = Rect2( 693, 0, 231, 190 )
+region = Rect2( 231, 0, 231, 190 )
 
 [sub_resource type="AtlasTexture" id=17]
 atlas = ExtResource( 6 )
-region = Rect2( 924, 0, 231, 190 )
+region = Rect2( 462, 0, 231, 190 )
 
 [sub_resource type="AtlasTexture" id=18]
-atlas = ExtResource( 9 )
-region = Rect2( 0, 0, 231, 190 )
+atlas = ExtResource( 6 )
+region = Rect2( 693, 0, 231, 190 )
 
 [sub_resource type="AtlasTexture" id=19]
-atlas = ExtResource( 9 )
-region = Rect2( 231, 0, 231, 190 )
+atlas = ExtResource( 6 )
+region = Rect2( 924, 0, 231, 190 )
 
 [sub_resource type="AtlasTexture" id=20]
 atlas = ExtResource( 4 )
@@ -99,43 +99,43 @@ atlas = ExtResource( 4 )
 region = Rect2( 693, 0, 231, 190 )
 
 [sub_resource type="AtlasTexture" id=23]
-atlas = ExtResource( 8 )
+atlas = ExtResource( 7 )
 region = Rect2( 0, 0, 231, 190 )
 
 [sub_resource type="AtlasTexture" id=24]
-atlas = ExtResource( 8 )
+atlas = ExtResource( 7 )
 region = Rect2( 231, 0, 231, 190 )
 
 [sub_resource type="AtlasTexture" id=25]
-atlas = ExtResource( 8 )
+atlas = ExtResource( 7 )
 region = Rect2( 462, 0, 231, 190 )
 
 [sub_resource type="AtlasTexture" id=26]
-atlas = ExtResource( 8 )
+atlas = ExtResource( 7 )
 region = Rect2( 693, 0, 231, 190 )
 
 [sub_resource type="AtlasTexture" id=27]
-atlas = ExtResource( 8 )
+atlas = ExtResource( 7 )
 region = Rect2( 924, 0, 231, 190 )
 
 [sub_resource type="AtlasTexture" id=28]
-atlas = ExtResource( 7 )
+atlas = ExtResource( 8 )
 region = Rect2( 0, 0, 231, 190 )
 
 [sub_resource type="AtlasTexture" id=29]
-atlas = ExtResource( 7 )
+atlas = ExtResource( 8 )
 region = Rect2( 231, 0, 231, 190 )
 
 [sub_resource type="AtlasTexture" id=30]
-atlas = ExtResource( 7 )
+atlas = ExtResource( 8 )
 region = Rect2( 462, 0, 231, 190 )
 
 [sub_resource type="AtlasTexture" id=31]
-atlas = ExtResource( 7 )
+atlas = ExtResource( 8 )
 region = Rect2( 693, 0, 231, 190 )
 
 [sub_resource type="AtlasTexture" id=32]
-atlas = ExtResource( 7 )
+atlas = ExtResource( 8 )
 region = Rect2( 924, 0, 231, 190 )
 
 [sub_resource type="SpriteFrames" id=33]
@@ -155,14 +155,14 @@ animations = [ {
 "name": "Jump",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ) ],
-"loop": true,
-"name": "Attack 1",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 18 ), SubResource( 19 ) ],
+"frames": [ SubResource( 13 ), SubResource( 14 ) ],
 "loop": true,
 "name": "Fall",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ) ],
+"loop": true,
+"name": "Attack 1",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 20 ), SubResource( 21 ), SubResource( 22 ) ],
@@ -172,17 +172,18 @@ animations = [ {
 }, {
 "frames": [ SubResource( 23 ), SubResource( 24 ), SubResource( 25 ), SubResource( 26 ), SubResource( 27 ) ],
 "loop": true,
-"name": "Run",
-"speed": 7.0
+"name": "Death",
+"speed": 5.0
 }, {
 "frames": [ SubResource( 28 ), SubResource( 29 ), SubResource( 30 ), SubResource( 31 ), SubResource( 32 ) ],
 "loop": true,
-"name": "Death",
-"speed": 5.0
+"name": "Run",
+"speed": 7.0
 } ]
 
-[sub_resource type="Animation" id=35]
+[sub_resource type="Animation" id=34]
 resource_name = "DamageEffect"
+length = 1.2
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:modulate")
 tracks/0/interp = 1
@@ -190,16 +191,16 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1, 1.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 0.498039 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.498039 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.498039 ), Color( 1, 1, 1, 1 ) ]
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.498039 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.498039 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.498039 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=36]
+[sub_resource type="Animation" id=35]
 resource_name = "Default"
 
-[sub_resource type="RectangleShape2D" id=34]
+[sub_resource type="RectangleShape2D" id=36]
 extents = Vector2( 32, 32 )
 
 [node name="Player" type="KinematicBody2D" groups=[
@@ -218,14 +219,15 @@ frame = 2
 playing = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/DamageEffect = SubResource( 35 )
-anims/Default = SubResource( 36 )
+autoplay = "Default"
+anims/DamageEffect = SubResource( 34 )
+anims/Default = SubResource( 35 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 34 )
+shape = SubResource( 36 )
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource( 34 )
+shape = SubResource( 36 )
 [connection signal="tree_entered" from="CollisionShape2D" to="." method="_on_CollisionShape2D_tree_entered"]

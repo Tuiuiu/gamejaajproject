@@ -56,6 +56,5 @@ script = ExtResource( 4 )
 [node name="Timer" type="Timer" parent="Enemies"]
 wait_time = 2.0
 
-
 [node name="Spells" parent="." instance=ExtResource( 3 )]
 [connection signal="timeout" from="Enemies/Timer" to="Enemies" method="_on_Timer_timeout"]
