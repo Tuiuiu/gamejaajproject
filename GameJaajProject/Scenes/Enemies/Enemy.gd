@@ -14,16 +14,15 @@ func _ready():
     $AnimatedSprite.flip_h = true
 
 func _physics_process(delta):    
-    if (get_global_position().x <= -100):
-        die()
     if (active):
         move_and_slide(velocity, Vector2(0, -1))
-    
-func die():
+
+func _on_VisibilityNotifier2D_screen_exited():
+    print("saiu")
     queue_free()
     
 func _process(delta):
-    pass      
+    pass 
 
 func change_state(new_state):
     if (state != new_state):
@@ -37,3 +36,5 @@ func change_state(new_state):
             "death":
                 $AnimatedSprite.play("Death")
         state = new_state
+
+

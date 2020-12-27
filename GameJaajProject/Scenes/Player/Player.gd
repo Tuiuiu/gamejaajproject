@@ -4,6 +4,7 @@ var GRAVITY = 50.0
 var JUMP_FORCE = 650.0
 var velocity = Vector2()
 var jump_count = 0
+var hp = 100
 
 func _ready():
     pass
@@ -24,6 +25,7 @@ func _physics_process(delta):
     move_and_slide(velocity, Vector2(0, -1))
 
 func _process(delta):
+    
     if velocity.x == 0 && velocity.y == 0:
         $AnimatedSprite.animation = "Run"
     elif velocity.y < 0:
