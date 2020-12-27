@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scenes/Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
 [ext_resource path="res://Scenes/Enemies/Enemy.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/World/EnemiesSpawner.gd" type="Script" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 148.576, 8 )
@@ -16,7 +17,9 @@ extents = Vector2( 148.576, 8 )
 [node name="LevelInteractables" type="Node2D" parent="."]
 
 [node name="PlayerFloor" type="StaticBody2D" parent="LevelInteractables"]
-position = Vector2( 333.755, 353.554 )
+position = Vector2( 358.728, 473.475 )
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelInteractables/PlayerFloor"]
 position = Vector2( 86.6206, -0.707092 )
@@ -28,10 +31,30 @@ position = Vector2( 87.4698, -0.353516 )
 scale = Vector2( 4.57724, 0.25 )
 texture = ExtResource( 2 )
 
+[node name="TestFloor" type="StaticBody2D" parent="LevelInteractables"]
+position = Vector2( 207.699, 505.772 )
+rotation = -0.108134
+scale = Vector2( 3.97136, 1.01204 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelInteractables/TestFloor"]
+position = Vector2( 86.6206, -0.707092 )
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="LevelInteractables/TestFloor"]
+modulate = Color( 1, 0, 0, 1 )
+position = Vector2( 87.4698, -0.353516 )
+scale = Vector2( 4.57724, 0.25 )
+texture = ExtResource( 2 )
+
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 374.824, 297.435 )
+position = Vector2( 449.744, 406.842 )
+collision_mask = 2147483651
 
 [node name="Enemies" type="Node2D" parent="."]
+position = Vector2( 1038.79, 379.523 )
+script = ExtResource( 4 )
 
 [node name="Enemy" parent="Enemies" instance=ExtResource( 3 )]
-position = Vector2( 565.685, 302.642 )
+
+[node name="Timer" type="Timer" parent="Enemies"]
+[connection signal="timeout" from="Enemies/Timer" to="Enemies" method="_on_Timer_timeout"]

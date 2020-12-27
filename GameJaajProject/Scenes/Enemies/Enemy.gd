@@ -1,14 +1,19 @@
 extends KinematicBody2D
 
-var MOVESPEED = 40
+var MOVESPEED = 120.0
 var active = true
 var velocity = Vector2()
 # Called when the node enters the scene tree for the first time.
 func _ready():
     velocity.x += -MOVESPEED
-    velocity.y = 0
+    velocity.y = 60.0
     active = true
 
-func _process_input(delta):
+func _physics_process(delta):    
+    if (get_global_position().x <= -100):
+        die()
     if (active):
         move_and_slide(velocity, Vector2(0, -1))
+
+func die():
+    queue_free()
