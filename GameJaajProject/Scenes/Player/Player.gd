@@ -6,10 +6,11 @@ var velocity = Vector2()
 var jump_count = 0
 var state
 var castSpells
-var availableSpells
+var availableSpells = []
 onready var hp = 100
 
 func _ready():
+    availableSpells.append(load("res://Scenes/Spells/Red_fireball.tscn"))
     castSpells = $Spells
     change_state("run")
 
@@ -25,6 +26,16 @@ func _physics_process(delta):
         if jump_count < 2:
             jump_count += 1
             velocity.y = -JUMP_FORCE + 70
+    if (Input.is_action_just_pressed("FAttack")):
+        var tgt = get_target() 
+        if (tgt == null):
+            #NENHUM ALVO A VISTA
+            pass
+        else:
+            var clone = availableSpells[0].instance()
+            #clone.set_target(tgt)
+            print (tgt)
+            castSpells.add_child(clone)
         
     move_and_slide(velocity, Vector2(0, -1))
 
@@ -75,3 +86,9 @@ func die():
     change_state("death")
     yield($AnimatedSprite, "animation_finished")
     queue_free()
+
+func get_target():
+    if $RayCast2D.is_colliding():
+        return $RayCast2D.get_collider()
+    else:
+        return null

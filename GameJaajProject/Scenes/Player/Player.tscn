@@ -215,7 +215,7 @@ script = ExtResource( 2 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 33 )
 animation = "Run"
-frame = 2
+frame = 4
 playing = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -230,4 +230,9 @@ shape = SubResource( 36 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource( 36 )
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2( 3.70996, 23.8433 )
+enabled = true
+cast_to = Vector2( 450, -48 )
 [connection signal="tree_entered" from="CollisionShape2D" to="." method="_on_CollisionShape2D_tree_entered"]
