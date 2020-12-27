@@ -5,9 +5,12 @@ var JUMP_FORCE = 650.0
 var velocity = Vector2()
 var jump_count = 0
 var state
+var castSpells
+var availableSpells
 onready var hp = 100
 
 func _ready():
+    castSpells = $Spells
     change_state("run")
 
 func _physics_process(delta):
