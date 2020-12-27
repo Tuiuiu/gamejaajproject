@@ -14,6 +14,11 @@ func _physics_process(delta):
         die()
     if (active):
         move_and_slide(velocity, Vector2(0, -1))
-
+    
 func die():
     queue_free()
+    
+func _process(delta):
+    if velocity.x != 0:
+        $AnimatedSprite.animation = "Run"
+        $AnimatedSprite.flip_h = true
