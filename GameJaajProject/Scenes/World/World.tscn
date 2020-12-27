@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scenes/Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
-[ext_resource path="res://Scenes/Enemies/Enemy.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/World/EnemiesSpawner.gd" type="Script" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -47,14 +46,11 @@ scale = Vector2( 4.57724, 0.25 )
 texture = ExtResource( 2 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 449.744, 406.842 )
-collision_mask = 2147483651
+position = Vector2( 460.209, 429.903 )
 
 [node name="Enemies" type="Node2D" parent="."]
 position = Vector2( 1038.79, 379.523 )
 script = ExtResource( 4 )
-
-[node name="Enemy" parent="Enemies" instance=ExtResource( 3 )]
 
 [node name="Timer" type="Timer" parent="Enemies"]
 [connection signal="timeout" from="Enemies/Timer" to="Enemies" method="_on_Timer_timeout"]

@@ -1,13 +1,17 @@
 extends KinematicBody2D
 
-var MOVESPEED = 120.0
+var MOVESPEED = 30.0
 var active = true
 var velocity = Vector2()
+var state = "running"
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
     velocity.x += -MOVESPEED
     velocity.y = 60.0
     active = true
+    change_state("running")
+    $AnimatedSprite.flip_h = true
 
 func _physics_process(delta):    
     if (get_global_position().x <= -100):
@@ -19,6 +23,17 @@ func die():
     queue_free()
     
 func _process(delta):
-    if velocity.x != 0:
-        $AnimatedSprite.animation = "Run"
-        $AnimatedSprite.flip_h = true
+    pass      
+
+func change_state(new_state):
+    if (state != new_state):
+        match new_state:
+            "running":
+                $AnimatedSprite.play("Run")
+            "damage":
+                $AnimatedSprite.play("Hit")
+            "attack":
+                $AnimatedSprite.play("Attack")
+            "death":
+                $AnimatedSprite.play("Death")
+        state = new_state
