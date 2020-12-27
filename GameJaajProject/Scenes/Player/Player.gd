@@ -1,21 +1,18 @@
 extends KinematicBody2D
 
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
 var GRAVITY = 50.0
 var JUMP_FORCE = 650.0
 var velocity = Vector2()
 var jump_count = 0
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
-    pass # Replace with function body.
+    pass
 
 func _physics_process(delta):
     if (!is_on_floor()):
         velocity.y += GRAVITY# * delta
+    if (is_on_floor()):
+        velocity.y = 0
     if (Input.is_action_just_pressed("ui_up") && is_on_floor()):
         velocity.y = -JUMP_FORCE
         jump_count = 1
@@ -26,6 +23,10 @@ func _physics_process(delta):
         
     move_and_slide(velocity, Vector2(0, -1))
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#    pass
+func _process(delta):
+    if velocity.x == 0 && velocity.y == 0:
+        $AnimatedSprite.animation = "Run"
+    elif velocity.y < 0:
+        $AnimatedSprite.animation = "Jump"
+    elif velocity.y > 0:
+        $AnimatedSprite.animation = "Fall"
