@@ -4,20 +4,18 @@
 [ext_resource path="res://Scenes/Enemies/Goblin/Goblin.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 32.907, 30.3351 )
+extents = Vector2( 22.5888, 30.3351 )
 
 [node name="Goblin" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 
-[node name="AnimatedSprite" parent="." index="1"]
-frame = 0
-
-[node name="Area2D" type="Area2D" parent="." index="2"]
+[node name="HitStart" type="Area2D" parent="." index="2"]
 position = Vector2( -31.748, 0 )
 collision_layer = 2
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0"]
-position = Vector2( -28.9701, 0.396843 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitStart" index="0"]
+position = Vector2( -42.0662, 0.793694 )
 shape = SubResource( 1 )
-[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
+[connection signal="body_entered" from="HitStart" to="." method="_on_HitStart_body_entered"]
+[connection signal="body_exited" from="HitStart" to="." method="_on_HitStart_body_exited"]

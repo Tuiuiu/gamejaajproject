@@ -58,8 +58,17 @@ func change_state(new_state):
                 $AnimatedSprite.play("idle")
         state = new_state
 
-func _on_Area2D_body_entered(body):
-    if (body.is_in_group("Enemies")):
+func hit(damage):
+    hp = hp - damage
+    if (hp > 0):
         change_state("hit")
+        $AnimationPlayer.play("DamageEffect")
         yield($AnimatedSprite, "animation_finished")
         change_state("run")
+    elif (hp <= 0):
+        die()
+        
+func die():
+    change_state("death")
+    yield($AnimatedSprite, "animation_finished")
+    queue_free()

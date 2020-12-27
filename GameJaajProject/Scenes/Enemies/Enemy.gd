@@ -35,4 +35,3 @@ func change_state(new_state):
                 $AnimatedSprite.play("Death")
         state = new_state
 
-
