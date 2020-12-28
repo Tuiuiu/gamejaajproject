@@ -38,7 +38,8 @@ func _physics_process(delta):
             pass
         else:
             var clone = availableSpells[0].instance()
-            #clone.set_target(tgt)
+            clone.set_target(tgt)
+            clone.set_position(position)
             print (tgt)
             castSpells.add_child(clone)
         

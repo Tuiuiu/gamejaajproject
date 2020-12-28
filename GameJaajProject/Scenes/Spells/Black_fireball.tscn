@@ -1,4 +1,4 @@
-[gd_scene load_steps=93 format=2]
+[gd_scene load_steps=95 format=2]
 
 [ext_resource path="res://Assets/Spells/Black/Cast/23.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Spells/Black/Cast/4.png" type="Texture" id=2]
@@ -30,6 +30,7 @@
 [ext_resource path="res://Assets/Spells/Black/Cast/28.png" type="Texture" id=28]
 [ext_resource path="res://Assets/Spells/Black/Cast/7.png" type="Texture" id=29]
 [ext_resource path="res://Assets/Spells/Black/Explosion/18_midnight_spritesheet.png" type="Texture" id=30]
+[ext_resource path="res://Scenes/Spells/Fireball.gd" type="Script" id=31]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 30 )
@@ -288,12 +289,19 @@ animations = [ {
 "speed": 30.0
 } ]
 
+[sub_resource type="RectangleShape2D" id=63]
+extents = Vector2( 8, 8 )
+
 [node name="BlackFireball" type="Area2D"]
+script = ExtResource( 31 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 9.73898, 9.73898 )
 scale = Vector2( 1.19478, 1.19478 )
 frames = SubResource( 62 )
 animation = "Cast"
-frame = 19
 playing = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 10.0307, 10.0331 )
+shape = SubResource( 63 )
