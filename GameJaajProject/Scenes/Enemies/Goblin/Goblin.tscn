@@ -9,9 +9,6 @@ extents = Vector2( 22.5888, 30.3351 )
 [node name="Goblin" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 
-[node name="AnimatedSprite" parent="." index="1"]
-frame = 3
-
 [node name="HitStart" type="Area2D" parent="." index="2"]
 position = Vector2( -31.748, 0 )
 collision_layer = 2

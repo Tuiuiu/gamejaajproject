@@ -415,5 +415,5 @@ position = Vector2( 20.2271, 20.2271 )
 scale = Vector2( 3.52839, 3.52839 )
 frames = SubResource( 92 )
 animation = "Cast"
-frame = 1
+frame = 20
 playing = true

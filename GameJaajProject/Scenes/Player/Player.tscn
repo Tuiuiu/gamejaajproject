@@ -32,6 +32,7 @@ atlas = ExtResource( 5 )
 region = Rect2( 924, 0, 231, 190 )
 
 [sub_resource type="AtlasTexture" id=6]
+<<<<<<< HEAD
 atlas = ExtResource( 9 )
 region = Rect2( 0, 0, 231, 190 )
 
@@ -81,10 +82,62 @@ region = Rect2( 462, 0, 231, 190 )
 
 [sub_resource type="AtlasTexture" id=18]
 atlas = ExtResource( 10 )
+=======
+atlas = ExtResource( 7 )
+region = Rect2( 0, 0, 231, 190 )
+
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 7 )
+region = Rect2( 231, 0, 231, 190 )
+
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 7 )
+region = Rect2( 462, 0, 231, 190 )
+
+[sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 7 )
+region = Rect2( 693, 0, 231, 190 )
+
+[sub_resource type="AtlasTexture" id=10]
+atlas = ExtResource( 7 )
+region = Rect2( 924, 0, 231, 190 )
+
+[sub_resource type="AtlasTexture" id=11]
+atlas = ExtResource( 8 )
+region = Rect2( 0, 0, 231, 190 )
+
+[sub_resource type="AtlasTexture" id=12]
+atlas = ExtResource( 8 )
+region = Rect2( 231, 0, 231, 190 )
+
+[sub_resource type="AtlasTexture" id=13]
+atlas = ExtResource( 8 )
+region = Rect2( 462, 0, 231, 190 )
+
+[sub_resource type="AtlasTexture" id=14]
+atlas = ExtResource( 8 )
+region = Rect2( 693, 0, 231, 190 )
+
+[sub_resource type="AtlasTexture" id=15]
+atlas = ExtResource( 8 )
+region = Rect2( 924, 0, 231, 190 )
+
+[sub_resource type="AtlasTexture" id=16]
+atlas = ExtResource( 4 )
+region = Rect2( 231, 0, 231, 190 )
+
+[sub_resource type="AtlasTexture" id=17]
+atlas = ExtResource( 4 )
+region = Rect2( 462, 0, 231, 190 )
+
+[sub_resource type="AtlasTexture" id=18]
+atlas = ExtResource( 4 )
+>>>>>>> db916f7fb345ce4553d58760d44d6deab343ae88
 region = Rect2( 693, 0, 231, 190 )
 
 [sub_resource type="AtlasTexture" id=19]
 atlas = ExtResource( 10 )
+<<<<<<< HEAD
 region = Rect2( 924, 0, 231, 190 )
 
 [sub_resource type="AtlasTexture" id=20]
@@ -138,6 +191,61 @@ region = Rect2( 462, 0, 231, 190 )
 [sub_resource type="AtlasTexture" id=32]
 atlas = ExtResource( 4 )
 region = Rect2( 693, 0, 231, 190 )
+=======
+region = Rect2( 0, 0, 231, 190 )
+
+[sub_resource type="AtlasTexture" id=20]
+atlas = ExtResource( 10 )
+region = Rect2( 231, 0, 231, 190 )
+
+[sub_resource type="AtlasTexture" id=21]
+atlas = ExtResource( 10 )
+region = Rect2( 462, 0, 231, 190 )
+
+[sub_resource type="AtlasTexture" id=22]
+atlas = ExtResource( 10 )
+region = Rect2( 693, 0, 231, 190 )
+
+[sub_resource type="AtlasTexture" id=23]
+atlas = ExtResource( 10 )
+region = Rect2( 924, 0, 231, 190 )
+
+[sub_resource type="AtlasTexture" id=24]
+atlas = ExtResource( 3 )
+region = Rect2( 0, 0, 231, 190 )
+
+[sub_resource type="AtlasTexture" id=25]
+atlas = ExtResource( 3 )
+region = Rect2( 231, 0, 231, 190 )
+
+[sub_resource type="AtlasTexture" id=26]
+atlas = ExtResource( 9 )
+region = Rect2( 0, 0, 231, 190 )
+
+[sub_resource type="AtlasTexture" id=27]
+atlas = ExtResource( 9 )
+region = Rect2( 231, 0, 231, 190 )
+
+[sub_resource type="AtlasTexture" id=28]
+atlas = ExtResource( 6 )
+region = Rect2( 0, 0, 231, 190 )
+
+[sub_resource type="AtlasTexture" id=29]
+atlas = ExtResource( 6 )
+region = Rect2( 231, 0, 231, 190 )
+
+[sub_resource type="AtlasTexture" id=30]
+atlas = ExtResource( 6 )
+region = Rect2( 462, 0, 231, 190 )
+
+[sub_resource type="AtlasTexture" id=31]
+atlas = ExtResource( 6 )
+region = Rect2( 693, 0, 231, 190 )
+
+[sub_resource type="AtlasTexture" id=32]
+atlas = ExtResource( 6 )
+region = Rect2( 924, 0, 231, 190 )
+>>>>>>> db916f7fb345ce4553d58760d44d6deab343ae88
 
 [sub_resource type="SpriteFrames" id=33]
 animations = [ {
@@ -148,38 +256,66 @@ animations = [ {
 }, {
 "frames": [ SubResource( 6 ), SubResource( 7 ) ],
 "loop": true,
+<<<<<<< HEAD
 "name": "Fall",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 8 ), SubResource( 9 ) ],
-"loop": true,
-"name": "Jump",
+=======
+"name": "Death",
 "speed": 5.0
 }, {
+"frames": [ SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ) ],
+>>>>>>> db916f7fb345ce4553d58760d44d6deab343ae88
+"loop": true,
+"name": "Run",
+"speed": 7.0
+}, {
+<<<<<<< HEAD
 "frames": [ SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ) ],
 "loop": true,
 "name": "Attack 1",
 "speed": 5.0
+=======
+"frames": [ SubResource( 16 ), SubResource( 17 ), SubResource( 18 ) ],
+"loop": true,
+"name": "Hit",
+"speed": 3.0
+>>>>>>> db916f7fb345ce4553d58760d44d6deab343ae88
 }, {
-"frames": [ SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ) ],
+"frames": [ SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ) ],
 "loop": true,
 "name": "Attack 2",
 "speed": 5.0
 }, {
+<<<<<<< HEAD
 "frames": [ SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 24 ) ],
 "loop": true,
 "name": "Run",
 "speed": 7.0
 }, {
 "frames": [ SubResource( 25 ), SubResource( 26 ), SubResource( 27 ), SubResource( 28 ), SubResource( 29 ) ],
+=======
+"frames": [ SubResource( 24 ), SubResource( 25 ) ],
 "loop": true,
-"name": "Death",
+"name": "Jump",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 26 ), SubResource( 27 ) ],
+>>>>>>> db916f7fb345ce4553d58760d44d6deab343ae88
+"loop": true,
+"name": "Fall",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 30 ), SubResource( 31 ), SubResource( 32 ) ],
 "loop": true,
+<<<<<<< HEAD
 "name": "Hit",
 "speed": 3.0
+=======
+"name": "Attack 1",
+"speed": 5.0
+>>>>>>> db916f7fb345ce4553d58760d44d6deab343ae88
 } ]
 
 [sub_resource type="Animation" id=34]
@@ -204,6 +340,9 @@ resource_name = "Default"
 [sub_resource type="RectangleShape2D" id=36]
 extents = Vector2( 32, 32 )
 
+[sub_resource type="RectangleShape2D" id=37]
+extents = Vector2( 32, 32 )
+
 [node name="Player" type="KinematicBody2D" groups=[
 "Player",
 ]]
@@ -216,7 +355,7 @@ script = ExtResource( 2 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 33 )
 animation = "Run"
-frame = 4
+frame = 2
 playing = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -229,8 +368,8 @@ shape = SubResource( 36 )
 
 [node name="Area2D" type="Area2D" parent="."]
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource( 36 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource( 37 )
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 position = Vector2( 3.70996, 23.8433 )
