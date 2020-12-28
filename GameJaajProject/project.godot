@@ -19,6 +19,10 @@ config/name="Game Jaaj Project"
 run/main_scene="res://Scenes/World/World.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+LevelHandler="*res://Scenes/World/LevelHandler.gd"
+
 [display]
 
 window/size/width=1280
