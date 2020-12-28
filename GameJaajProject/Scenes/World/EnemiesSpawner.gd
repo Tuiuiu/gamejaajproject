@@ -11,7 +11,6 @@ signal level_over
 
 func _ready():
     timer = $Timer
-    #timer.start()
     
 func _process(delta):
     if (countLeft == 0):
@@ -22,9 +21,6 @@ func _process(delta):
 func spawn_enemy(enemyIndex):
     var clone = enemies[enemyIndex].instance()
     add_child(clone)
-    
-#func _on_Timer_timeout():
-    #spawn_enemy(0)
 
 func start(level):
     countLeft = 1

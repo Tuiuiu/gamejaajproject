@@ -28,8 +28,8 @@ func set_target(tgt):
 
 func on_body_entered(body):
     if (body.is_in_group("Enemies")):
-        print("ACERTOU MIZERAVI")
         exploded = true
         $AnimatedSprite.play("Explosion")
+        $AnimationPlayer.play("ExplosionSize")
         yield($AnimatedSprite, "animation_finished")
         queue_free()
