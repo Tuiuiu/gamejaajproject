@@ -13,7 +13,7 @@ func _ready():
     availableSpells.append(load("res://Scenes/Spells/Red_fireball.tscn"))
     castSpells = $Spells
     change_state("run")
-
+        
 func _physics_process(delta):
     if (!is_on_floor()):
         velocity.y += GRAVITY
@@ -50,6 +50,7 @@ func _process(delta):
         change_state("fall")
         yield($AnimatedSprite, "animation_finished")
         change_state("run")
+
 
 func change_state(new_state):
     if (state != new_state):
