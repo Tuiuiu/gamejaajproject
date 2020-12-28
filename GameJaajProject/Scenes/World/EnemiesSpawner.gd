@@ -1,10 +1,11 @@
 extends Node2D
 
-onready var countMax = 3
+#onready var countMax = 3
 onready var waitTime = 2.0
 var timer
 var countLeft
-onready var enemy = preload("res://Scenes/Enemies/Goblin/Goblin.tscn")
+var enemiesList = [2.0, 0, 2.0, 0, 2.0, 0]
+var enemies = [preload("res://Scenes/Enemies/Goblin/Goblin.tscn")]
 
 signal level_over
 
@@ -18,23 +19,27 @@ func _process(delta):
             countLeft = -1
             emit_signal("level_over")
 
-func spawn_enemy():
-    if (countLeft > 0):
-        var clone = enemy.instance()
-        countLeft -= 1
-        add_child(clone)
-        if (countLeft == 0):
-            timer.stop()
-        
-func _on_Timer_timeout():
-    spawn_enemy()
+func spawn_enemy(enemyIndex):
+    var clone = enemies[enemyIndex].instance()
+    add_child(clone)
+    
+#func _on_Timer_timeout():
+    #spawn_enemy(0)
 
 func start(level):
-    countLeft = countMax
-    timer.wait_time = waitTime
-    timer.start()
+    countLeft = 1
+    spawn_level()
 
 func reset():
     for enemy in self.get_children():
         if (enemy.name != "Timer"):
             enemy.queue_free()
+
+func spawn_level():
+    for i in range(enemiesList.size()/2):
+        var index = 2*i
+        timer.wait_time = enemiesList[index]
+        timer.start()
+        yield($Timer, "timeout")
+        spawn_enemy(enemiesList[index+1])
+    countLeft = 0
