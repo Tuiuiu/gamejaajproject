@@ -19,13 +19,18 @@ func _physics_process(delta):
         velocity.y += GRAVITY
     if (is_on_floor()):
         velocity.y = 0
-    if (Input.is_action_just_pressed("ui_up") && is_on_floor()):
-        velocity.y = -JUMP_FORCE
-        jump_count = 1
-    if (Input.is_action_just_pressed("ui_up") && !is_on_floor()):
-        if jump_count < 2:
-            jump_count += 1
-            velocity.y = -JUMP_FORCE + 70
+        if (state == "fall"):
+            change_state("run")
+    if (Input.is_action_just_pressed("ui_up")):
+        if (is_on_floor()):
+            velocity.y = -JUMP_FORCE
+            jump_count = 1
+            change_state("jump")
+        elif (!is_on_floor()):
+            if jump_count < 2:
+                jump_count += 1
+                velocity.y = -JUMP_FORCE + 70
+                change_state("jump")
     if (Input.is_action_just_pressed("FAttack")):
         var tgt = get_target() 
         if (tgt == null):
@@ -33,7 +38,8 @@ func _physics_process(delta):
             pass
         else:
             var clone = availableSpells[0].instance()
-            #clone.set_target(tgt)
+            clone.set_target(tgt)
+            clone.set_position(position)
             print (tgt)
             castSpells.add_child(clone)
         
@@ -42,14 +48,8 @@ func _physics_process(delta):
 func _process(delta):
     if hp <= 0:
         hide()
-    if velocity.y < 0:
-        change_state("jump")
-        yield($AnimatedSprite, "animation_finished")
-        change_state("run")
-    elif velocity.y > 0:
+    elif (velocity.y > 0 && state == "jump"):
         change_state("fall")
-        yield($AnimatedSprite, "animation_finished")
-        change_state("run")
 
 
 func change_state(new_state):

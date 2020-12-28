@@ -1,0 +1,92 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Scenes/Menu/TitleScreen.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/Menu/SettingsButton.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/Menu/PlayButton.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Menu/QuitButton.tscn" type="PackedScene" id=4]
+[ext_resource path="res://icon.png" type="Texture" id=5]
+
+[sub_resource type="DynamicFontData" id=1]
+font_path = "res://Assets/Fonts/Montserrat-ExtraBold.ttf"
+
+[sub_resource type="DynamicFont" id=2]
+size = 24
+font_data = SubResource( 1 )
+
+[node name="TitleScreen" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Menu" type="VBoxContainer" parent="."]
+margin_left = 120.0
+margin_top = 80.0
+margin_right = 1160.0
+margin_bottom = 640.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="Menu"]
+margin_right = 1040.0
+margin_bottom = 64.0
+texture = ExtResource( 5 )
+stretch_mode = 4
+
+[node name="Center" type="HBoxContainer" parent="Menu"]
+margin_top = 68.0
+margin_right = 1040.0
+margin_bottom = 312.0
+size_flags_vertical = 3
+
+[node name="Buttons" type="VBoxContainer" parent="Menu/Center"]
+margin_right = 518.0
+margin_bottom = 244.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 20
+alignment = 1
+
+[node name="PlayButton" parent="Menu/Center/Buttons" instance=ExtResource( 3 )]
+margin_top = 12.0
+margin_right = 518.0
+margin_bottom = 72.0
+
+[node name="SettingsButton" parent="Menu/Center/Buttons" instance=ExtResource( 2 )]
+margin_top = 92.0
+margin_right = 518.0
+margin_bottom = 152.0
+
+[node name="QuitButton" parent="Menu/Center/Buttons" instance=ExtResource( 4 )]
+margin_top = 172.0
+margin_right = 518.0
+margin_bottom = 232.0
+
+[node name="CenterContainer" type="CenterContainer" parent="Menu/Center"]
+margin_left = 522.0
+margin_right = 1040.0
+margin_bottom = 244.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="TextureRect" type="TextureRect" parent="Menu/Center/CenterContainer"]
+margin_left = 227.0
+margin_top = 90.0
+margin_right = 291.0
+margin_bottom = 154.0
+texture = ExtResource( 5 )
+
+[node name="Footer" type="Label" parent="Menu"]
+margin_top = 316.0
+margin_right = 1040.0
+margin_bottom = 560.0
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 2 )
+text = "Version 1.0.0
+IMEnsos Studios"
+[connection signal="pressed" from="Menu/Center/Buttons/PlayButton" to="." method="_on_PlayButton_pressed"]
+[connection signal="pressed" from="Menu/Center/Buttons/PlayButton" to="." method="start_game"]
+[connection signal="pressed" from="Menu/Center/Buttons/QuitButton" to="." method="quit_game"]
