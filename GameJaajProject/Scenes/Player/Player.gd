@@ -11,7 +11,7 @@ onready var hp = 100
 
 func _ready():
     availableSpells.append(load("res://Scenes/Spells/Red_fireball.tscn"))
-    castSpells = $Spells
+    castSpells = get_parent().get_node("Spells")
     change_state("run")
         
 func _physics_process(delta):
@@ -84,6 +84,7 @@ func hit(damage):
         die()
         
 func die():
+    print("morreu")
     change_state("death")
     yield($AnimatedSprite, "animation_finished")
     queue_free()
