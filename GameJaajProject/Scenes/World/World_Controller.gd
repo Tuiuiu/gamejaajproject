@@ -3,7 +3,7 @@ extends Node2D
 var spawner
 var activeSpells
 var player
-var GAME_MAX_TIME = 10.0
+var GAME_MAX_TIME = 100.0
 onready var runTimer = get_node("RunTimer")
 onready var levelHandler = get_node("/root/LevelHandler")
 
@@ -19,9 +19,11 @@ func _ready():
     start_level()
     
 func reset():
+    pause_game()
     spawner.reset()
     for spell in activeSpells.get_children():
         spell.queue_free()
+    resume_game()
 
 func start_level():
     spawner.start()

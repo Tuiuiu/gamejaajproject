@@ -1,15 +1,14 @@
 extends Node
 
 var sequences = {
-    1: [KEY_F, KEY_I, KEY_R, KEY_E, KEY_B, KEY_A, KEY_L, KEY_L],
-    2: [KEY_Z, KEY_Z, KEY_Z],
-    3: [KEY_V, KEY_B],
-    4: [KEY_V, KEY_A],
-    5: [KEY_A, KEY_C]
+    1: [KEY_R, KEY_F, KEY_B],
+    2: [KEY_B, KEY_F, KEY_B],
+    3: [KEY_G, KEY_F, KEY_B]
 }
 var possible_sequences = []
 var best_match = null
 var current_pos = 0
+onready var player = get_parent()
 onready var _timer : Timer = $"Timer"
 
 func _enter_tree():
@@ -39,7 +38,7 @@ func _validate_sequences(action):
                 best_match = id
                 
     if new_possible_sequences.empty():
-        print(best_match)
+        player.try_to_cast(best_match)
         reset()
     else:
         _timer.start(_timer.wait_time)

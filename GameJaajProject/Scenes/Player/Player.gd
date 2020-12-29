@@ -29,6 +29,8 @@ func hit(damage):
 
 func _ready():
     availableSpells.append(load("res://Scenes/Spells/Red_fireball.tscn"))
+    availableSpells.append(load("res://Scenes/Spells/Black_fireball.tscn"))
+    availableSpells.append(load("res://Scenes/Spells/Green_fireball.tscn"))
     castSpells = get_parent().get_node("Spells")
     change_state("run")
         
@@ -49,17 +51,6 @@ func _physics_process(delta):
                 jump_count += 1
                 velocity.y = -JUMP_FORCE + 70
                 change_state("jump")
-    if (Input.is_action_just_pressed("FAttack")):
-        var tgt = get_target() 
-        if (tgt == null):
-            #NENHUM ALVO A VISTA
-            pass
-        else:
-            var clone = availableSpells[0].instance()
-            clone.set_target(tgt)
-            clone.set_position(position)
-            print (tgt)
-            castSpells.add_child(clone)
         
     move_and_slide(velocity, Vector2(0, -1))
 
@@ -102,3 +93,26 @@ func get_target():
         return $RayCast2D.get_collider()
     else:
         return null
+
+func try_to_cast(index):
+    match index:
+        1: # Red Fireball
+            fireball_cast(0)
+        2: # Black Fireball
+            fireball_cast(1)  
+        3: # Green Fireball
+            fireball_cast(2)
+
+func fireball_cast(type):
+    var tgt = get_target()
+    if (tgt == null):
+        #NENHUM ALVO A VISTA
+        pass
+    else:
+        var clone = availableSpells[type].instance()
+        var src = $RayCast2D.position
+        var dst = $RayCast2D.cast_to
+        var dir = (dst - src).normalized()
+        clone.set_direction(dir)
+        clone.set_position(position)
+        castSpells.add_child(clone) 
