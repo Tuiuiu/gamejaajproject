@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Scenes/Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://Assets/UI/HPBAR/label_bg.png" type="Texture" id=10]
 [ext_resource path="res://Scenes/World/HealthBar.gd" type="Script" id=11]
 [ext_resource path="res://Assets/Background/cartoon-stone-texture_1110-576.jpg" type="Texture" id=12]
+[ext_resource path="res://Scenes/World/CameraController.gd" type="Script" id=13]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Background"
@@ -130,6 +131,12 @@ position = Vector2( 85.953, -2.24487 )
 scale = Vector2( 4.57724, 0.25 )
 texture = ExtResource( 2 )
 
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 460.209, 429.903 )
+offset = Vector2( 200, -30 )
+current = true
+script = ExtResource( 13 )
+
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 460.209, 429.903 )
 
@@ -195,7 +202,7 @@ anchor_left = 0.282
 anchor_top = 0.382
 anchor_right = 0.5
 anchor_bottom = 0.423
-margin_left = -0.299995
+margin_left = -0.299999
 margin_top = -7.776
 margin_right = 72.0
 margin_bottom = 16.928
