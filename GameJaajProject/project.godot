@@ -22,6 +22,7 @@ config/icon="res://icon.png"
 [autoload]
 
 LevelHandler="*res://Scenes/World/LevelHandler.gd"
+Global="*res://Global.gd"
 
 [display]
 
