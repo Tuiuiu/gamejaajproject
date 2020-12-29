@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://Scenes/Enemies/Enemy.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Enemies/Goblin/Idle.png" type="Texture" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Assets/Enemies/Goblin/Take Hit.png" type="Texture" id=4]
 [ext_resource path="res://Assets/Enemies/Goblin/Death.png" type="Texture" id=5]
 [ext_resource path="res://Assets/Enemies/Goblin/Run.png" type="Texture" id=6]
+[ext_resource path="res://icon.png" type="Texture" id=7]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 16, 16 )
@@ -157,11 +158,13 @@ shape = SubResource( 1 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 28 )
 animation = "Run"
-frame = 4
+frame = 5
 playing = true
 
 [node name="AbilityIcon" type="Sprite" parent="."]
-position = Vector2( 0, -33.5075 )
+position = Vector2( 0, -32.4481 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 7 )
 
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
 [connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
