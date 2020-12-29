@@ -7,7 +7,7 @@ var paused = false
 
 func _ready():
     var player = world.get_node("Player")
-    get_node("HealthBar").initialize(player.hp, player.MAX_HP)
+    get_node("CanvasLayer/HealthBar").initialize(player.hp, player.MAX_HP)
     
 func _process(delta):
     if (Input.is_action_just_pressed("ui_cancel")):

@@ -155,15 +155,17 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HealthBar" type="HBoxContainer" parent="UI"]
-margin_right = 40.0
-margin_bottom = 40.0
+[node name="CanvasLayer" type="CanvasLayer" parent="UI"]
+
+[node name="HealthBar" type="HBoxContainer" parent="UI/CanvasLayer"]
+margin_right = 488.0
+margin_bottom = 56.0
 script = ExtResource( 11 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Count" type="NinePatchRect" parent="UI/HealthBar"]
+[node name="Count" type="NinePatchRect" parent="UI/CanvasLayer/HealthBar"]
 margin_right = 150.0
 margin_bottom = 56.0
 rect_min_size = Vector2( 150, 0 )
@@ -172,7 +174,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="UI/HealthBar/Count"]
+[node name="Label" type="Label" parent="UI/CanvasLayer/HealthBar/Count"]
 anchor_left = -0.02
 anchor_top = -0.036
 anchor_bottom = -0.036
@@ -187,7 +189,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Counter" type="Label" parent="UI/HealthBar/Count"]
+[node name="Counter" type="Label" parent="UI/CanvasLayer/HealthBar/Count"]
 modulate = Color( 0.960784, 0.227451, 0.0352941, 1 )
 anchor_left = 0.282
 anchor_top = 0.382
@@ -197,7 +199,6 @@ margin_left = -0.299995
 margin_top = -7.776
 margin_right = 72.0
 margin_bottom = 16.928
-
 custom_fonts/font = SubResource( 4 )
 text = "100/100"
 align = 2
@@ -206,7 +207,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TextureProgress" type="TextureProgress" parent="UI/HealthBar"]
+[node name="TextureProgress" type="TextureProgress" parent="UI/CanvasLayer/HealthBar"]
 margin_left = 154.0
 margin_right = 488.0
 margin_bottom = 56.0
@@ -215,11 +216,11 @@ value = 1.0
 texture_over = ExtResource( 9 )
 texture_progress = ExtResource( 8 )
 
-[node name="Tween" type="Tween" parent="UI/HealthBar"]
+[node name="Tween" type="Tween" parent="UI/CanvasLayer/HealthBar"]
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="UI/HealthBar"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="UI/CanvasLayer/HealthBar"]
 autoplay = "shake"
 anims/shake = SubResource( 5 )
 [connection signal="health_changed" from="Player" to="UI" method="_on_Player_health_changed"]
 [connection signal="timeout" from="RunTimer" to="." method="_on_RunTimer_timeout"]
-[connection signal="health_updated" from="UI" to="UI/HealthBar" method="_on_UI_health_updated"]
+[connection signal="health_updated" from="UI" to="UI/CanvasLayer/HealthBar" method="_on_UI_health_updated"]

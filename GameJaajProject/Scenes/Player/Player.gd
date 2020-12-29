@@ -17,6 +17,7 @@ func hit(damage):
     emit_signal("health_changed", hp)
     if (hp > 0):
         change_state("hit")
+        $Camera2D.shake(0.2, 15, 8)
         $AnimationPlayer.play("DamageEffect")
         yield($AnimatedSprite, "animation_finished")
         change_state("run")
