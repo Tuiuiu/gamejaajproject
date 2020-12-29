@@ -3,7 +3,7 @@ extends Node2D
 var spawner
 var activeSpells
 var player
-var GAME_MAX_TIME = 10.0
+var GAME_MAX_TIME = 100.0
 onready var runTimer = get_node("RunTimer")
 onready var levelHandler = get_node("/root/LevelHandler")
 

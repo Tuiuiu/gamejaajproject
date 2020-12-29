@@ -11,6 +11,8 @@ onready var hp = 100
 
 func _ready():
     availableSpells.append(load("res://Scenes/Spells/Red_fireball.tscn"))
+    availableSpells.append(load("res://Scenes/Spells/Black_fireball.tscn"))
+    availableSpells.append(load("res://Scenes/Spells/Green_fireball.tscn"))
     castSpells = get_parent().get_node("Spells")
     change_state("run")
         
@@ -31,17 +33,6 @@ func _physics_process(delta):
                 jump_count += 1
                 velocity.y = -JUMP_FORCE + 70
                 change_state("jump")
-    if (Input.is_action_just_pressed("FAttack")):
-        var tgt = get_target() 
-        if (tgt == null):
-            #NENHUM ALVO A VISTA
-            pass
-        else:
-            var clone = availableSpells[0].instance()
-            clone.set_target(tgt)
-            clone.set_position(position)
-            print (tgt)
-            castSpells.add_child(clone)
         
     move_and_slide(velocity, Vector2(0, -1))
 
@@ -94,3 +85,48 @@ func get_target():
         return $RayCast2D.get_collider()
     else:
         return null
+
+func try_to_cast(index):
+    match index:
+        1:
+            red_fireball_cast()
+        2:
+            black_fireball_cast()  
+        3:
+            green_fireball_cast()
+    
+func red_fireball_cast():
+    var tgt = get_target() 
+    if (tgt == null):
+        #NENHUM ALVO A VISTA
+        pass
+    else:
+        var clone = availableSpells[0].instance()
+        clone.set_target(tgt)
+        clone.set_position(position)
+        print (tgt)
+        castSpells.add_child(clone)  
+
+func black_fireball_cast():
+    var tgt = get_target() 
+    if (tgt == null):
+        #NENHUM ALVO A VISTA
+        pass
+    else:
+        var clone = availableSpells[1].instance()
+        clone.set_target(tgt)
+        clone.set_position(position)
+        print (tgt)
+        castSpells.add_child(clone)  
+
+func green_fireball_cast():
+    var tgt = get_target() 
+    if (tgt == null):
+        #NENHUM ALVO A VISTA
+        pass
+    else:
+        var clone = availableSpells[2].instance()
+        clone.set_target(tgt)
+        clone.set_position(position)
+        print (tgt)
+        castSpells.add_child(clone)  

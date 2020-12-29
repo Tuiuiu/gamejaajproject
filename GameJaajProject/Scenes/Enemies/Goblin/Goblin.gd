@@ -21,5 +21,5 @@ func _on_HitStart_body_exited(body):
             body.hit(damage)
 
 func hit(type):
-    if (type == "fireball"):
+    if (type == "redfireball" or type == "blackfireball" or type == "greenfireball"):
         change_state("death")
