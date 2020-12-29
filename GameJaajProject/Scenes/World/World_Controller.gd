@@ -19,9 +19,11 @@ func _ready():
     start_level()
     
 func reset():
+    pause_game()
     spawner.reset()
     for spell in activeSpells.get_children():
         spell.queue_free()
+    resume_game()
 
 func start_level():
     spawner.start()
