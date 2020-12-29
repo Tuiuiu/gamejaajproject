@@ -5,6 +5,7 @@ var speed = 150.0
 var velocity = Vector2()
 var direction = Vector2()
 var exploded = false
+var type = null
 
 func _ready():
     self.connect("body_entered", self, "on_body_entered")
@@ -29,6 +30,7 @@ func set_target(tgt):
 func on_body_entered(body):
     if (body.is_in_group("Enemies")):
         exploded = true
+        body.hit(type)
         $AnimatedSprite.play("Explosion")
         $AnimationPlayer.play("ExplosionSize")
         yield($AnimatedSprite, "animation_finished")

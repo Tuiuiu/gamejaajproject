@@ -9,13 +9,17 @@ func _physics_process(delta):
     ._physics_process(delta)
 
 func _on_HitStart_body_entered(body):
-    if (body.is_in_group("Player")):
-        change_state("attack")
-        yield($AnimatedSprite, "animation_finished")
-        change_state("run")
+    if (!dead):
+        if (body.is_in_group("Player")):
+            change_state("attack")
+            yield($AnimatedSprite, "animation_finished")
+            change_state("run")
 
 func _on_HitStart_body_exited(body):
-    if (body.is_in_group("Player")):
-        body.hit(damage)
+    if (!dead):
+        if (body.is_in_group("Player")):
+            body.hit(damage)
 
-
+func hit(type):
+    if (type == "fireball"):
+        change_state("death")

@@ -31,7 +31,7 @@
 [ext_resource path="res://Assets/Spells/Red/Cast/30.png" type="Texture" id=29]
 [ext_resource path="res://Assets/Spells/Red/Cast/28.png" type="Texture" id=30]
 [ext_resource path="res://Assets/Spells/Red/Explosion/16_sunburn_spritesheet.png" type="Texture" id=31]
-[ext_resource path="res://Scenes/Spells/Fireball.gd" type="Script" id=32]
+[ext_resource path="res://Scenes/Spells/Red_fireball.gd" type="Script" id=32]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 31 )
@@ -317,7 +317,7 @@ position = Vector2( 13.5, 13.5 )
 scale = Vector2( 2.6875, 2.6875 )
 frames = SubResource( 62 )
 animation = "Cast"
-frame = 16
+frame = 20
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

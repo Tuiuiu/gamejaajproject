@@ -4,6 +4,7 @@ var MOVESPEED = 30.0
 var active = true
 var velocity = Vector2()
 var state
+var dead = false
 
 func _ready():
     velocity.x += -MOVESPEED
@@ -32,6 +33,15 @@ func change_state(new_state):
             "attack":
                 $AnimatedSprite.play("Attack")
             "death":
-                $AnimatedSprite.play("Death")
+                die()
         state = new_state
+
+func hit(type):
+    print("enemy")
+
+func die():
+    dead = true
+    $AnimatedSprite.play("Death")
+    yield($AnimatedSprite, "animation_finished")
+
 
