@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Scenes/Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
@@ -11,12 +11,14 @@
 [ext_resource path="res://Assets/UI/HPBAR/border.png" type="Texture" id=9]
 [ext_resource path="res://Assets/UI/HPBAR/label_bg.png" type="Texture" id=10]
 [ext_resource path="res://Scenes/World/HealthBar.gd" type="Script" id=11]
-[ext_resource path="res://Assets/Background/cartoon-stone-texture_1110-576.jpg" type="Texture" id=12]
-[ext_resource path="res://Scenes/Menu/Pause/PauseScreen.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Assets/Background/stoneBG.png" type="Texture" id=12]
+[ext_resource path="res://Scenes/World/CameraController.gd" type="Script" id=13]
+[ext_resource path="res://Scenes/World/ForegroundSpawner.gd" type="Script" id=14]
+[ext_resource path="res://Scenes/Menu/Pause/PauseScreen.tscn" type="PackedScene" id=15]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Background"
-length = 16.0
+length = 2.0
 loop = true
 step = 0.05
 tracks/0/type = "value"
@@ -26,22 +28,22 @@ tracks/0/loop_wrap = false
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 15.8 ),
+"times": PoolRealArray( 0, 2 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 1390, 280 ), Vector2( 735, 527 ) ]
+"values": [ Vector2( 782, 231 ), Vector2( 698, 291 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath(".:position")
 tracks/1/interp = 1
-tracks/1/loop_wrap = true
+tracks/1/loop_wrap = false
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 16 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
 "update": 1,
-"values": [ Vector2( 2042, 204.288 ) ]
+"values": [  ]
 }
 
 [sub_resource type="RectangleShape2D" id=2]
@@ -88,8 +90,8 @@ script = ExtResource( 3 )
 [node name="Background" type="Node2D" parent="."]
 
 [node name="Sprite" type="Sprite" parent="Background"]
-position = Vector2( 738.295, 525.758 )
-scale = Vector2( 4.42342, 3.21963 )
+position = Vector2( 757.183, 248.727 )
+scale = Vector2( 0.7, 0.5 )
 texture = ExtResource( 12 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Background/Sprite"]
@@ -98,6 +100,11 @@ anims/Background = SubResource( 1 )
 script = ExtResource( 7 )
 
 [node name="Foreground" type="Node2D" parent="."]
+position = Vector2( 1162.48, 497.803 )
+script = ExtResource( 14 )
+
+[node name="Timer" type="Timer" parent="Foreground"]
+one_shot = true
 
 [node name="LevelInteractables" type="Node2D" parent="."]
 
@@ -130,6 +137,12 @@ modulate = Color( 1, 0, 0, 1 )
 position = Vector2( 85.953, -2.24487 )
 scale = Vector2( 4.57724, 0.25 )
 texture = ExtResource( 2 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 460.209, 429.903 )
+offset = Vector2( 200, -30 )
+current = true
+script = ExtResource( 13 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 460.209, 429.903 )
@@ -196,7 +209,7 @@ anchor_left = 0.282
 anchor_top = 0.382
 anchor_right = 0.5
 anchor_bottom = 0.423
-margin_left = -0.299995
+margin_left = -0.299999
 margin_top = -7.776
 margin_right = 72.0
 margin_bottom = 16.928
@@ -223,7 +236,8 @@ texture_progress = ExtResource( 8 )
 autoplay = "shake"
 anims/shake = SubResource( 5 )
 
-[node name="PauseScreen" parent="UI/CanvasLayer" instance=ExtResource( 13 )]
+[node name="PauseScreen" parent="UI/CanvasLayer" instance=ExtResource( 15 )]
+[connection signal="timeout" from="Foreground/Timer" to="Foreground" method="_on_Timer_timeout"]
 [connection signal="health_changed" from="Player" to="UI" method="_on_Player_health_changed"]
 [connection signal="timeout" from="RunTimer" to="." method="_on_RunTimer_timeout"]
 [connection signal="health_updated" from="UI" to="UI/CanvasLayer/HealthBar" method="_on_UI_health_updated"]

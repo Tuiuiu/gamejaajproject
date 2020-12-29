@@ -43,7 +43,6 @@ func _process(delta):
 
 # Kick off a new screenshake effect.
 func shake(duration, frequency, amplitude):
-    print("TCHUTCHUCA TREME TREME")
     # Initialize variables.
     _duration = duration
     _timer = duration

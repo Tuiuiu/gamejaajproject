@@ -10,6 +10,7 @@ var state
 var castSpells
 var availableSpells = []
 var MAX_HP = 100
+onready var camera = get_parent().get_node("Camera2D")
 onready var hp = 100
 
 func hit(damage):
@@ -17,7 +18,7 @@ func hit(damage):
     emit_signal("health_changed", hp)
     if (hp > 0):
         change_state("hit")
-        $Camera2D.shake(0.2, 15, 8)
+        camera.shake(0.2, 15, 8)
         $AnimationPlayer.play("DamageEffect")
         yield($AnimatedSprite, "animation_finished")
         change_state("run")
