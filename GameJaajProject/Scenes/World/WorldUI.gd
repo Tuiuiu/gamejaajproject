@@ -1,11 +1,14 @@
 extends Control
 
+signal health_updated(health)
+
 onready var world = get_parent()
 var paused = false
 
 func _ready():
-    pass # Replace with function body.
-
+    var player = world.get_node("Player")
+    get_node("HealthBar").initialize(player.hp, player.MAX_HP)
+    
 func _process(delta):
     if (Input.is_action_just_pressed("ui_cancel")):
         if (paused):
@@ -15,6 +18,5 @@ func _process(delta):
             paused = true
             world.pause_game()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#    pass
+func _on_Player_health_changed(health):
+    emit_signal("health_updated", health)

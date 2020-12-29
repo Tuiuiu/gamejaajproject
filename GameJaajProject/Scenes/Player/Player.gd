@@ -1,5 +1,7 @@
 extends KinematicBody2D
 
+signal health_changed(health)
+
 var GRAVITY = 50.0
 var JUMP_FORCE = 650.0
 var velocity = Vector2()
@@ -7,7 +9,23 @@ var jump_count = 0
 var state
 var castSpells
 var availableSpells = []
+var MAX_HP = 100
 onready var hp = 100
+
+func hit(damage):
+    hp -= damage
+    emit_signal("health_changed", hp)
+    print("Player emitiu sinal health_changed")
+    if (hp > 0):
+        change_state("hit")
+        $AnimationPlayer.play("DamageEffect")
+        yield($AnimatedSprite, "animation_finished")
+        change_state("run")
+    elif (hp <= 0):
+        print("Caiu no die")
+        print(hp)
+        print(MAX_HP)
+        die()
 
 func _ready():
     availableSpells.append(load("res://Scenes/Spells/Red_fireball.tscn"))
@@ -72,16 +90,6 @@ func change_state(new_state):
             "idle":
                 $AnimatedSprite.play("idle")
         state = new_state
-
-func hit(damage):
-    hp = hp - damage
-    if (hp > 0):
-        change_state("hit")
-        $AnimationPlayer.play("DamageEffect")
-        yield($AnimatedSprite, "animation_finished")
-        change_state("run")
-    elif (hp <= 0):
-        die()
         
 func die():
     print("morreu")

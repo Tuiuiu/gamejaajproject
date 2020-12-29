@@ -1,6 +1,6 @@
 extends "res://Scenes/Enemies/Enemy.gd"
 
-var damage = 0.0
+var damage = 10.0
 
 func _ready():
     ._ready()
