@@ -44,4 +44,5 @@ func die():
     $AnimatedSprite.play("Death")
     yield($AnimatedSprite, "animation_finished")
 
-
+func is_alive():
+    return !dead

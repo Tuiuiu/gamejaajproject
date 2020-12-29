@@ -88,45 +88,23 @@ func get_target():
 
 func try_to_cast(index):
     match index:
-        1:
-            red_fireball_cast()
-        2:
-            black_fireball_cast()  
-        3:
-            green_fireball_cast()
-    
-func red_fireball_cast():
-    var tgt = get_target() 
-    if (tgt == null):
-        #NENHUM ALVO A VISTA
-        pass
-    else:
-        var clone = availableSpells[0].instance()
-        clone.set_target(tgt)
-        clone.set_position(position)
-        print (tgt)
-        castSpells.add_child(clone)  
+        1: # Red Fireball
+            fireball_cast(0)
+        2: # Black Fireball
+            fireball_cast(1)  
+        3: # Green Fireball
+            fireball_cast(2)
 
-func black_fireball_cast():
-    var tgt = get_target() 
+func fireball_cast(type):
+    var tgt = get_target()
     if (tgt == null):
         #NENHUM ALVO A VISTA
         pass
     else:
-        var clone = availableSpells[1].instance()
-        clone.set_target(tgt)
+        var clone = availableSpells[type].instance()
+        var src = $RayCast2D.position
+        var dst = $RayCast2D.cast_to
+        var dir = (dst - src).normalized()
+        clone.set_direction(dir)
         clone.set_position(position)
-        print (tgt)
-        castSpells.add_child(clone)  
-
-func green_fireball_cast():
-    var tgt = get_target() 
-    if (tgt == null):
-        #NENHUM ALVO A VISTA
-        pass
-    else:
-        var clone = availableSpells[2].instance()
-        clone.set_target(tgt)
-        clone.set_position(position)
-        print (tgt)
-        castSpells.add_child(clone)  
+        castSpells.add_child(clone) 
