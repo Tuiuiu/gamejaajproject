@@ -26,6 +26,7 @@ func reset():
     resume_game()
 
 func start_level():
+    resume_game()
     spawner.start()
     runTimer.paused = false
 
