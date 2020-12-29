@@ -15,16 +15,12 @@ onready var hp = 100
 func hit(damage):
     hp -= damage
     emit_signal("health_changed", hp)
-    print("Player emitiu sinal health_changed")
     if (hp > 0):
         change_state("hit")
         $AnimationPlayer.play("DamageEffect")
         yield($AnimatedSprite, "animation_finished")
         change_state("run")
     elif (hp <= 0):
-        print("Caiu no die")
-        print(hp)
-        print(MAX_HP)
         die()
 
 func _ready():
