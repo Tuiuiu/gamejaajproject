@@ -1,0 +1,44 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Scenes/Menu/Pause/SettingsButton.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/Menu/Pause/ContinueButton.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/Menu/Pause/QuitButton.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Menu/Pause/PauseScreen.gd" type="Script" id=4]
+
+[node name="PauseScreen" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+margin_left = 460.0
+margin_top = 266.0
+margin_right = 820.0
+margin_bottom = 454.0
+alignment = 1
+
+[node name="ContinueButton" parent="CenterContainer/VBoxContainer" instance=ExtResource( 2 )]
+margin_right = 360.0
+margin_bottom = 60.0
+
+[node name="SettingsButton" parent="CenterContainer/VBoxContainer" instance=ExtResource( 1 )]
+margin_top = 64.0
+margin_right = 360.0
+margin_bottom = 124.0
+
+[node name="QuitButton" parent="CenterContainer/VBoxContainer" instance=ExtResource( 3 )]
+margin_top = 128.0
+margin_right = 360.0
+margin_bottom = 188.0
+[connection signal="pressed" from="CenterContainer/VBoxContainer/ContinueButton" to="." method="_on_ContinueButton_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/QuitButton" to="." method="_on_QuitButton_pressed"]
