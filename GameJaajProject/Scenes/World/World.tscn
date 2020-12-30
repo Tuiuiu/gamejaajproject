@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://Scenes/Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
@@ -18,6 +18,7 @@
 [ext_resource path="res://Assets/Light/light texture.png" type="Texture" id=16]
 [ext_resource path="res://Assets/Background/glass texture2.jpg" type="Texture" id=17]
 [ext_resource path="res://Scenes/World/Light2D.gd" type="Script" id=18]
+[ext_resource path="res://Scenes/World/Polygon2D.gd" type="Script" id=19]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Background"
@@ -108,6 +109,23 @@ tracks/3/keys = {
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 148.576, 8 )
 
+[sub_resource type="Animation" id=8]
+resource_name = "Down"
+length = 0.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -60.785, 3 ), Vector2( -194.134, 32.9595 ) ]
+}
+
 [sub_resource type="DynamicFont" id=3]
 size = 22
 font_data = ExtResource( 6 )
@@ -149,7 +167,7 @@ script = ExtResource( 3 )
 [node name="Background" type="Node2D" parent="."]
 
 [node name="Sprite" type="Sprite" parent="Background"]
-position = Vector2( 698, 291 )
+position = Vector2( 782, 231 )
 scale = Vector2( 0.7, 0.5 )
 texture = ExtResource( 12 )
 
@@ -216,6 +234,15 @@ modulate = Color( 1, 0, 0, 1 )
 position = Vector2( 85.953, -2.24487 )
 scale = Vector2( 4.57724, 0.25 )
 texture = ExtResource( 2 )
+
+[node name="Stair" type="Polygon2D" parent="LevelInteractables"]
+position = Vector2( -80.3947, 7.40571 )
+color = Color( 0.0156863, 0.0156863, 0.0156863, 1 )
+polygon = PoolVector2Array( 541.12, 470.797, 354.91, 479.474, 355.549, 515.207, 215.242, 518.574, 214.119, 556.738, 79.4237, 560.105, 79.4237, 605.004, -28.3327, 607.249, -29.4551, 785.72, 1916.83, 780.66, 1901.85, 127.398, 1447.86, 131.893, 1449.36, 181.337, 1301.03, 185.832, 1302.52, 232.28, 1170.67, 235.276, 1170.67, 284.721, 1037.32, 286.219, 1038.82, 338.66, 884.496, 340.158, 885.994, 398.592, 746.652, 398.592, 746.652, 440.545, 631.282, 442.043, 550.373, 440.545 )
+script = ExtResource( 19 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="LevelInteractables/Stair"]
+anims/Down = SubResource( 8 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 460.209, 429.903 )
