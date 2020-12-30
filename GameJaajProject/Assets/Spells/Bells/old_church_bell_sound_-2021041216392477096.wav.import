@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/old_church_bell_sound_-2021041216392477096.wav-323a255767b5cb2bee9cf07e37b160d9.sample"
+
+[deps]
+
+source_file="res://Assets/Spells/Bells/old_church_bell_sound_-2021041216392477096.wav"
+dest_files=[ "res://.import/old_church_bell_sound_-2021041216392477096.wav-323a255767b5cb2bee9cf07e37b160d9.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
