@@ -28,7 +28,7 @@ position = Vector2( 20, 20 )
 scale = Vector2( 3.5, 3.5 )
 frames = SubResource( 1 )
 animation = "Torchlight"
-frame = 2
+frame = 3
 playing = true
 
 [node name="Light2D" type="Light2D" parent="."]

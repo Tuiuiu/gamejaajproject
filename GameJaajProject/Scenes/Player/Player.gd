@@ -16,9 +16,9 @@ onready var camera = get_parent().get_node("Camera2D")
 onready var hp = 10
 
 func _ready():
-    availableSpells.append(load("res://Scenes/Spells/Red_fireball.tscn"))
-    availableSpells.append(load("res://Scenes/Spells/Black_fireball.tscn"))
-    availableSpells.append(load("res://Scenes/Spells/Green_fireball.tscn"))
+    availableSpells.append(load("res://Scenes/Spells/Fireballs/Red_fireball.tscn"))
+    availableSpells.append(load("res://Scenes/Spells/Fireballs/Black_fireball.tscn"))
+    availableSpells.append(load("res://Scenes/Spells/Fireballs/Green_fireball.tscn"))
     castSpells = get_parent().get_node("Spells")
     change_state("run")
         
