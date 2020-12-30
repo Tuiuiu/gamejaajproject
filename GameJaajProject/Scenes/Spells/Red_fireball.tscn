@@ -1,4 +1,4 @@
-[gd_scene load_steps=97 format=2]
+[gd_scene load_steps=98 format=2]
 
 [ext_resource path="res://Assets/Spells/Red/Cast/9.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Spells/Red/Cast/3.png" type="Texture" id=2]
@@ -32,6 +32,7 @@
 [ext_resource path="res://Assets/Spells/Red/Cast/28.png" type="Texture" id=30]
 [ext_resource path="res://Assets/Spells/Red/Explosion/16_sunburn_spritesheet.png" type="Texture" id=31]
 [ext_resource path="res://Scenes/Spells/Red_fireball.gd" type="Script" id=32]
+[ext_resource path="res://Assets/Light/light texture.png" type="Texture" id=33]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 31 )
@@ -317,7 +318,7 @@ position = Vector2( 13.5, 13.5 )
 scale = Vector2( 2.6875, 2.6875 )
 frames = SubResource( 62 )
 animation = "Cast"
-frame = 18
+frame = 23
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -326,3 +327,10 @@ shape = SubResource( 63 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/ExplosionSize = SubResource( 64 )
+
+[node name="Light2D" type="Light2D" parent="."]
+position = Vector2( 19.9908, 21.6726 )
+scale = Vector2( 0.215317, 0.215317 )
+texture = ExtResource( 33 )
+texture_scale = 0.5
+color = Color( 0.960784, 0.639216, 0.223529, 1 )

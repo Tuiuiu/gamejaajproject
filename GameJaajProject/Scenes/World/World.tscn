@@ -188,7 +188,6 @@ mesh = SubResource( 2 )
 texture = ExtResource( 17 )
 
 [node name="Light2D" type="Light2D" parent="Background/MeshInstance2D"]
-visible = false
 position = Vector2( 1.61736, -0.747589 )
 scale = Vector2( 0.304239, 1 )
 texture = ExtResource( 16 )
@@ -243,6 +242,7 @@ scale = Vector2( 4.57724, 0.25 )
 texture = ExtResource( 2 )
 
 [node name="Stair" type="Polygon2D" parent="LevelInteractables"]
+visible = false
 position = Vector2( -60.785, 3 )
 color = Color( 0.0156863, 0.0156863, 0.0156863, 1 )
 polygon = PoolVector2Array( 541.12, 470.797, 354.91, 479.474, 355.549, 515.207, 215.242, 518.574, 214.119, 556.738, 79.4237, 560.105, 79.4237, 605.004, -28.3327, 607.249, -29.4551, 785.72, 1916.83, 780.66, 1901.85, 127.398, 1447.86, 131.893, 1449.36, 181.337, 1301.03, 185.832, 1302.52, 232.28, 1170.67, 235.276, 1170.67, 284.721, 1037.32, 286.219, 1038.82, 338.66, 884.496, 340.158, 885.994, 398.592, 746.652, 398.592, 746.652, 440.545, 631.282, 442.043, 550.373, 440.545 )
@@ -350,6 +350,9 @@ autoplay = "shake"
 anims/shake = SubResource( 9 )
 
 [node name="PauseScreen" parent="UI/CanvasLayer" instance=ExtResource( 15 )]
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color( 0.0784314, 0.0745098, 0.0745098, 1 )
 [connection signal="timeout" from="Foreground/Timer" to="Foreground" method="_on_Timer_timeout"]
 [connection signal="health_changed" from="Player" to="UI" method="_on_Player_health_changed"]
 [connection signal="timeout" from="RunTimer" to="." method="_on_RunTimer_timeout"]

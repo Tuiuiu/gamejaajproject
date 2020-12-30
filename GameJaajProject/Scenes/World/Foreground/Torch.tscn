@@ -35,7 +35,6 @@ playing = true
 position = Vector2( 23.7306, 22.1998 )
 scale = Vector2( 0.297384, 0.297384 )
 texture = ExtResource( 6 )
-texture_scale = 3.0
 color = Color( 0.905882, 0.682353, 0.0196078, 1 )
 shadow_enabled = true
 
