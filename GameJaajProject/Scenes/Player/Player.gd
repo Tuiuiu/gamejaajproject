@@ -103,13 +103,14 @@ func get_target():
         return null
 
 func try_to_cast(index):
-    match index:
-        1: # Red Fireball
-            fireball_cast(0)
-        2: # Black Fireball
-            fireball_cast(1)  
-        3: # Green Fireball
-            fireball_cast(2)
+    if(is_alive()):
+        match index:
+            1: # Red Fireball
+                fireball_cast(0)
+            2: # Black Fireball
+                fireball_cast(1)  
+            3: # Green Fireball
+                fireball_cast(2)
 
 func fireball_cast(type):
     var tgt = get_target()

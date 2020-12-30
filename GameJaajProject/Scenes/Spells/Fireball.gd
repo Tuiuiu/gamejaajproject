@@ -40,6 +40,7 @@ func on_body_entered(body):
             
 func explode():
     exploded = true
+    self.disconnect("body_entered", self, "on_body_entered")
     $AnimatedSprite.play("Explosion")
     $AnimationPlayer.play("ExplosionSize")
     yield($AnimatedSprite, "animation_finished")
