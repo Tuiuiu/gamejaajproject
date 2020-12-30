@@ -125,3 +125,6 @@ func fireball_cast(type):
         clone.set_direction(dir)
         clone.set_position(position)
         castSpells.add_child(clone) 
+
+func sequence_pressed(action):
+    $CastingEffects.sequence_pressed(action)

@@ -26,7 +26,12 @@ func _handleEvent(event):
                 if Input.is_key_pressed(sequence[current_pos]):
                     action = str(sequence[current_pos])
         if not action.empty():
+            # Key pressed is part of a sequence
+            player.sequence_pressed(action)
             _validate_sequences(action)
+        else:
+            # Key pressed is not part of a sequence
+            player.sequence_pressed("KEY_MISSED")
         
 func _validate_sequences(action):
     var new_possible_sequences : Array = []
