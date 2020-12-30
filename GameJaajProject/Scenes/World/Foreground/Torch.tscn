@@ -15,8 +15,9 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[node name="Torch" type="Node2D"]
+[node name="Torch" type="PathFollow2D"]
 position = Vector2( -8, 0 )
+rotate = false
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true

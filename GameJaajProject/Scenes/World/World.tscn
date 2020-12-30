@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://Scenes/Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
@@ -50,10 +50,10 @@ tracks/1/keys = {
 "values": [  ]
 }
 
-[sub_resource type="CubeMesh" id=6]
+[sub_resource type="CubeMesh" id=2]
 size = Vector3( 8, 8, 2 )
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=3]
 resource_name = "Reflect"
 length = 3.5
 loop = true
@@ -106,10 +106,15 @@ tracks/3/keys = {
 "values": [ true, false ]
 }
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="Curve2D" id=4]
+_data = {
+"points": PoolVector2Array( 137.331, -216.706, -137.331, 216.706, -156.321, -347.505, 0, 0, 0, 0, -584.694, -129.539, 297.341, -10.0794, -297.341, 10.0794, -1021.89, -87.9616 )
+}
+
+[sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 148.576, 8 )
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=6]
 resource_name = "Down"
 length = 0.5
 loop = true
@@ -126,16 +131,15 @@ tracks/0/keys = {
 "values": [ Vector2( -60.785, 3 ), Vector2( -194.134, 32.9595 ) ]
 }
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=7]
 size = 22
 font_data = ExtResource( 6 )
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=8]
 size = 22
 font_data = ExtResource( 6 )
 
-[sub_resource type="Animation" id=5]
-resource_name = "shake"
+[sub_resource type="Animation" id=9]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Count/Counter:rect_position")
 tracks/0/interp = 1
@@ -180,7 +184,7 @@ script = ExtResource( 7 )
 modulate = Color( 0.6, 0.635294, 0.690196, 1 )
 position = Vector2( 450.285, 474.822 )
 scale = Vector2( 35, 120 )
-mesh = SubResource( 6 )
+mesh = SubResource( 2 )
 texture = ExtResource( 17 )
 
 [node name="Light2D" type="Light2D" parent="Background/MeshInstance2D"]
@@ -194,7 +198,7 @@ shadow_enabled = true
 script = ExtResource( 18 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Background/MeshInstance2D/Light2D"]
-anims/Reflect = SubResource( 7 )
+anims/Reflect = SubResource( 3 )
 
 [node name="Foreground" type="Node2D" parent="."]
 position = Vector2( 1162.48, 497.803 )
@@ -202,6 +206,9 @@ script = ExtResource( 14 )
 
 [node name="Timer" type="Timer" parent="Foreground"]
 one_shot = true
+
+[node name="PathToFollow" type="Path2D" parent="Foreground"]
+curve = SubResource( 4 )
 
 [node name="LevelInteractables" type="Node2D" parent="."]
 
@@ -212,7 +219,7 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelInteractables/PlayerFloor"]
 position = Vector2( 86.6206, -0.707092 )
-shape = SubResource( 2 )
+shape = SubResource( 5 )
 
 [node name="Sprite" type="Sprite" parent="LevelInteractables/PlayerFloor"]
 modulate = Color( 1, 0, 0, 1 )
@@ -227,7 +234,7 @@ scale = Vector2( 3.97136, 1.01204 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelInteractables/TestFloor"]
 position = Vector2( 86.6206, -0.707092 )
-shape = SubResource( 2 )
+shape = SubResource( 5 )
 
 [node name="Sprite" type="Sprite" parent="LevelInteractables/TestFloor"]
 modulate = Color( 1, 0, 0, 1 )
@@ -236,13 +243,13 @@ scale = Vector2( 4.57724, 0.25 )
 texture = ExtResource( 2 )
 
 [node name="Stair" type="Polygon2D" parent="LevelInteractables"]
-position = Vector2( -80.3947, 7.40571 )
+position = Vector2( -60.785, 3 )
 color = Color( 0.0156863, 0.0156863, 0.0156863, 1 )
 polygon = PoolVector2Array( 541.12, 470.797, 354.91, 479.474, 355.549, 515.207, 215.242, 518.574, 214.119, 556.738, 79.4237, 560.105, 79.4237, 605.004, -28.3327, 607.249, -29.4551, 785.72, 1916.83, 780.66, 1901.85, 127.398, 1447.86, 131.893, 1449.36, 181.337, 1301.03, 185.832, 1302.52, 232.28, 1170.67, 235.276, 1170.67, 284.721, 1037.32, 286.219, 1038.82, 338.66, 884.496, 340.158, 885.994, 398.592, 746.652, 398.592, 746.652, 440.545, 631.282, 442.043, 550.373, 440.545 )
 script = ExtResource( 19 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="LevelInteractables/Stair"]
-anims/Down = SubResource( 8 )
+anims/Down = SubResource( 6 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 460.209, 429.903 )
@@ -302,7 +309,7 @@ margin_left = 12.1298
 margin_top = 7.69058
 margin_right = 84.1298
 margin_bottom = 51.6906
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 7 )
 text = "HP "
 valign = 1
 __meta__ = {
@@ -319,7 +326,7 @@ margin_left = -0.299999
 margin_top = -7.776
 margin_right = 72.0
 margin_bottom = 16.928
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 8 )
 text = "100/100"
 align = 2
 valign = 2
@@ -340,7 +347,7 @@ texture_progress = ExtResource( 8 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="UI/CanvasLayer/HealthBar"]
 autoplay = "shake"
-anims/shake = SubResource( 5 )
+anims/shake = SubResource( 9 )
 
 [node name="PauseScreen" parent="UI/CanvasLayer" instance=ExtResource( 15 )]
 [connection signal="timeout" from="Foreground/Timer" to="Foreground" method="_on_Timer_timeout"]

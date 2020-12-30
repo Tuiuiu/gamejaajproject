@@ -1,16 +1,18 @@
 extends Node2D
 
+var path
 var environment_resources = []
 # Called when the node enters the scene tree for the first time.
 func _ready():
     randomize()
+    path = $PathToFollow
     environment_resources.append(load("res://Scenes/World/Foreground/Torch.tscn"))
     $Timer.wait_time = 2.0
     $Timer.start()
 
 func spawn_object(index):
     var clone = environment_resources[index].instance()
-    add_child(clone)
+    path.add_child(clone)
 
 
 func _on_Timer_timeout():
