@@ -54,7 +54,7 @@ size = Vector3( 8, 8, 2 )
 
 [sub_resource type="Animation" id=7]
 resource_name = "Reflect"
-length = 5.0
+length = 3.5
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:scale")
@@ -63,7 +63,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 2, 4 ),
+"times": PoolRealArray( 0, 1.8, 3 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 0.361, 1 ), Vector2( 0.563404, 1 ), Vector2( 0.16855, 1 ) ]
@@ -75,7 +75,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 2, 4 ),
+"times": PoolRealArray( 0, 1.8, 3 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 3.82203, -0.770972 ), Vector2( 0.475259, -0.751152 ), Vector2( -3.65299, -0.691692 ) ]
@@ -87,7 +87,7 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 2, 4 ),
+"times": PoolRealArray( 0, 1.8, 3 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ 0.39, 1.38, 0.58 ]
@@ -99,7 +99,7 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 4.1 ),
+"times": PoolRealArray( 0, 3 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ true, false ]
@@ -149,7 +149,7 @@ script = ExtResource( 3 )
 [node name="Background" type="Node2D" parent="."]
 
 [node name="Sprite" type="Sprite" parent="Background"]
-position = Vector2( 757.183, 248.727 )
+position = Vector2( 698, 291 )
 scale = Vector2( 0.7, 0.5 )
 texture = ExtResource( 12 )
 
@@ -166,11 +166,12 @@ mesh = SubResource( 6 )
 texture = ExtResource( 17 )
 
 [node name="Light2D" type="Light2D" parent="Background/MeshInstance2D"]
-position = Vector2( 1.95273, -0.759902 )
-scale = Vector2( 0.47405, 1 )
+visible = false
+position = Vector2( 1.61736, -0.747589 )
+scale = Vector2( 0.304239, 1 )
 texture = ExtResource( 16 )
 texture_scale = 0.01
-energy = 0.942953
+energy = 0.446038
 shadow_enabled = true
 script = ExtResource( 18 )
 
