@@ -5,7 +5,10 @@ onready var waitTime = 2.0
 var timer
 var countLeft
 var enemiesList
-var enemies = [preload("res://Scenes/Enemies/Goblin/Goblin.tscn")]
+var enemies = [
+    preload("res://Scenes/Enemies/Goblin/Goblin.tscn"),
+    preload("res://Scenes/Enemies/Skeleton/Skeleton.tscn")
+]
 var levelHandler
 
 signal level_over

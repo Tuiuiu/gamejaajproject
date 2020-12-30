@@ -1,25 +1,23 @@
 extends KinematicBody2D
 
-var MOVESPEED = 30.0
-var active = true
+var MOVESPEED = 40.0
 var velocity = Vector2()
 var state
-var dead = false
+onready var active = true
+onready var dead = false
 
 func _ready():
+    $VisibilityNotifier2D.connect("screen_exited", self, "clear")
+    $AnimatedSprite.flip_h = true
     velocity.x += -MOVESPEED
     velocity.y = 60.0
     active = true
     change_state("run")
-    $AnimatedSprite.flip_h = true
 
 func _physics_process(delta):    
     if (active):
         move_and_slide(velocity, Vector2(0, -1))
 
-func _on_VisibilityNotifier2D_screen_exited():
-    queue_free()
-    
 func _process(delta):
     pass 
 
@@ -43,6 +41,9 @@ func die():
     dead = true
     $AnimatedSprite.play("Death")
     yield($AnimatedSprite, "animation_finished")
+
+func clear():
+    queue_free()
 
 func is_alive():
     return !dead

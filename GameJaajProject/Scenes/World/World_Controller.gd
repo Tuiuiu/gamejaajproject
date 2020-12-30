@@ -16,6 +16,7 @@ func _ready():
     runTimer.paused = true
     runTimer.start()
     spawner.connect("level_over", self, "level_over_handler")
+    player.connect("player_died", self, "player_died_handler")
     start_level()
     
 func reset():
@@ -49,3 +50,6 @@ func pause_game():
     
 func resume_game():
     get_tree().paused = false
+
+func player_died_handler():
+    pause_game()

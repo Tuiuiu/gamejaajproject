@@ -10,15 +10,15 @@ extents = Vector2( 22.5888, 30.3351 )
 script = ExtResource( 2 )
 
 [node name="AnimatedSprite" parent="." index="1"]
-frame = 6
+frame = 4
 
 [node name="HitStart" type="Area2D" parent="." index="2"]
-position = Vector2( -31.748, 0 )
+position = Vector2( -72, 0 )
 collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitStart" index="0"]
-position = Vector2( -42.0662, 0.793694 )
+position = Vector2( 0, 0.794 )
 shape = SubResource( 1 )
 [connection signal="body_entered" from="HitStart" to="." method="_on_HitStart_body_entered"]
 [connection signal="body_exited" from="HitStart" to="." method="_on_HitStart_body_exited"]

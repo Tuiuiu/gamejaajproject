@@ -1,6 +1,7 @@
 extends KinematicBody2D
 
 signal health_changed(health)
+signal player_died
 
 var GRAVITY = 50.0
 var JUMP_FORCE = 650.0
@@ -10,20 +11,9 @@ var state
 var castSpells
 var availableSpells = []
 var MAX_HP = 100
+onready var dead = false
 onready var camera = get_parent().get_node("Camera2D")
-onready var hp = 100
-
-func hit(damage):
-    hp -= damage
-    emit_signal("health_changed", hp)
-    if (hp > 0):
-        change_state("hit")
-        camera.shake(0.2, 15, 8)
-        $AnimationPlayer.play("DamageEffect")
-        yield($AnimatedSprite, "animation_finished")
-        change_state("run")
-    elif (hp <= 0):
-        die()
+onready var hp = 10
 
 func _ready():
     availableSpells.append(load("res://Scenes/Spells/Red_fireball.tscn"))
@@ -40,25 +30,28 @@ func _physics_process(delta):
         if (state == "fall"):
             change_state("run")
     if (Input.is_action_just_pressed("ui_up")):
-        if (is_on_floor()):
-            velocity.y = -JUMP_FORCE
-            jump_count = 1
-            change_state("jump")
-        elif (!is_on_floor()):
-            if jump_count < 2:
-                jump_count += 1
-                velocity.y = -JUMP_FORCE + 70
+        if (!dead):
+            if (is_on_floor()):
+                velocity.y = -JUMP_FORCE
+                jump_count = 1
                 change_state("jump")
+            elif (!is_on_floor()):
+                if jump_count < 2:
+                    jump_count += 1
+                    velocity.y = -JUMP_FORCE + 70
+                    change_state("jump")
         
     move_and_slide(velocity, Vector2(0, -1))
 
 func _process(delta):
     if hp <= 0:
-        hide()
+        pass
     elif (velocity.y > 0 && state == "jump"):
         change_state("fall")
 
-
+func is_alive():
+    return !dead
+    
 func change_state(new_state):
     if (state != new_state):
         match new_state:
@@ -78,13 +71,30 @@ func change_state(new_state):
                 $AnimatedSprite.play("Jump")
             "idle":
                 $AnimatedSprite.play("idle")
-        state = new_state
-        
+        state = new_state       
+
+func hit(damage):
+    if (!dead):
+        hp -= damage
+        emit_signal("health_changed", hp)
+        if (hp > 0):
+            change_state("hit")
+            camera.shake(0.2, 15, 8)
+            $AnimationPlayer.play("DamageEffect")
+            yield($AnimatedSprite, "animation_finished")
+            change_state("run")
+        elif (hp <= 0):
+            die()
+
 func die():
     print("morreu")
+    dead = true
     change_state("death")
     yield($AnimatedSprite, "animation_finished")
-    queue_free()
+    $GenericTimer.wait_time = 3.0
+    $GenericTimer.start()
+    yield($GenericTimer, "timeout")
+    emit_signal("player_died")
 
 func get_target():
     if $RayCast2D.is_colliding():
