@@ -1,0 +1,51 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://Assets/NPCs/Shopkeeper/wolf_gray_tf.png" type="Texture" id=1]
+[ext_resource path="res://Assets/NPCs/Shopkeeper/Warrior_Idle_1.png" type="Texture" id=2]
+[ext_resource path="res://Assets/NPCs/Shopkeeper/Warrior_Idle_2.png" type="Texture" id=3]
+[ext_resource path="res://Assets/NPCs/Shopkeeper/Warrior_Idle_3.png" type="Texture" id=4]
+[ext_resource path="res://Assets/NPCs/Shopkeeper/Warrior_Idle_5.png" type="Texture" id=5]
+[ext_resource path="res://Assets/NPCs/Shopkeeper/Warrior_Idle_4.png" type="Texture" id=6]
+[ext_resource path="res://Assets/NPCs/Shopkeeper/Warrior_Idle_6.png" type="Texture" id=7]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 1 )
+region = Rect2( 228, 0, 38, 32 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 1 )
+region = Rect2( 228, 0, 38, 32 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 1 )
+region = Rect2( 136, 0, 34, 32 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 1 )
+region = Rect2( 102, 0, 34, 32 )
+
+[sub_resource type="SpriteFrames" id=5]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 6 ), ExtResource( 5 ), ExtResource( 7 ) ],
+"loop": true,
+"name": "Idle_Human",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 1 ) ],
+"loop": true,
+"name": "Idle_Wolf",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 2 ), SubResource( 4 ), SubResource( 3 ), SubResource( 3 ), SubResource( 3 ), SubResource( 4 ), SubResource( 2 ) ],
+"loop": true,
+"name": "Stretch_Wolf",
+"speed": 2.0
+} ]
+
+[node name="Shopkeeper" type="Node2D"]
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 38.1055, 17.0192 )
+scale = Vector2( 2.0637, 2.0637 )
+frames = SubResource( 5 )
+animation = "Idle_Human"
