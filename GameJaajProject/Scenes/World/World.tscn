@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://Scenes/Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
@@ -15,6 +15,8 @@
 [ext_resource path="res://Scenes/World/CameraController.gd" type="Script" id=13]
 [ext_resource path="res://Scenes/World/ForegroundSpawner.gd" type="Script" id=14]
 [ext_resource path="res://Scenes/Menu/Pause/PauseScreen.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Assets/Light/light texture.png" type="Texture" id=16]
+[ext_resource path="res://Assets/Background/glass texture2.jpg" type="Texture" id=17]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Background"
@@ -44,6 +46,62 @@ tracks/1/keys = {
 "transitions": PoolRealArray(  ),
 "update": 1,
 "values": [  ]
+}
+
+[sub_resource type="CubeMesh" id=6]
+size = Vector3( 8, 8, 2 )
+
+[sub_resource type="Animation" id=7]
+resource_name = "Reflect"
+length = 5.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2, 4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.361, 1 ), Vector2( 0.563404, 1 ), Vector2( 0.16855, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 2, 4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 3.82203, -0.770972 ), Vector2( 0.475259, -0.751152 ), Vector2( -3.65299, -0.691692 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:energy")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 2, 4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.39, 1.38, 0.58 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath(".:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 4.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
 }
 
 [sub_resource type="RectangleShape2D" id=2]
@@ -99,6 +157,25 @@ autoplay = "Background"
 anims/Background = SubResource( 1 )
 script = ExtResource( 7 )
 
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Background"]
+modulate = Color( 0.6, 0.635294, 0.690196, 1 )
+position = Vector2( 450.285, 474.822 )
+scale = Vector2( 35, 120 )
+mesh = SubResource( 6 )
+texture = ExtResource( 17 )
+
+[node name="Light2D" type="Light2D" parent="Background/MeshInstance2D"]
+visible = false
+position = Vector2( -0.182648, -0.728498 )
+scale = Vector2( 0.257896, 1 )
+texture = ExtResource( 16 )
+texture_scale = 0.01
+energy = 0.491791
+shadow_enabled = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Background/MeshInstance2D/Light2D"]
+anims/Reflect = SubResource( 7 )
+
 [node name="Foreground" type="Node2D" parent="."]
 position = Vector2( 1162.48, 497.803 )
 script = ExtResource( 14 )
@@ -145,7 +222,8 @@ current = true
 script = ExtResource( 13 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 460.209, 429.903 )
+visible = false
+position = Vector2( 460.209, 430.184 )
 
 [node name="Spells" type="Node2D" parent="."]
 
@@ -237,6 +315,7 @@ autoplay = "shake"
 anims/shake = SubResource( 5 )
 
 [node name="PauseScreen" parent="UI/CanvasLayer" instance=ExtResource( 15 )]
+visible = false
 [connection signal="timeout" from="Foreground/Timer" to="Foreground" method="_on_Timer_timeout"]
 [connection signal="health_changed" from="Player" to="UI" method="_on_Player_health_changed"]
 [connection signal="timeout" from="RunTimer" to="." method="_on_RunTimer_timeout"]
