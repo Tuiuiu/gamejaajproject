@@ -3,6 +3,7 @@ extends KinematicBody2D
 var MOVESPEED = 40.0
 var velocity = Vector2()
 var state
+var health = 10.0
 onready var active = true
 onready var dead = false
 
@@ -34,7 +35,7 @@ func change_state(new_state):
                 die()
         state = new_state
 
-func hit(type):
+func hit(type, dmg):
     print("enemy")
 
 func die():
@@ -44,6 +45,11 @@ func die():
 
 func clear():
     queue_free()
+
+func take_damage(dmg):
+    health -= dmg
+    if (health <= 0):
+        change_state("death")
 
 func is_alive():
     return !dead

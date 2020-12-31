@@ -1,10 +1,11 @@
 extends "res://Scenes/Enemies/Enemy.gd"
 
 var damage = 10.0
+onready var timer = $RevivalTime
 
 func _ready():
-    #._ready()
-    pass
+    health = 20.0
+    timer.wait_time = 2.0
     
 func _physics_process(delta):
     ._physics_process(delta)
@@ -22,6 +23,19 @@ func _on_HitStart_body_exited(body):
         if (body.is_in_group("Player") and body.is_alive()):
             body.hit(damage)
 
-func hit(type):
+func hit(type, dmg):
     if (type == "redfireball" or type == "greenfireball"):
-        change_state("death")
+        take_damage(dmg)
+
+
+func _on_RevivalTime_timeout():
+    $AnimatedSprite.play("Revive")
+    yield($AnimatedSprite, "animation_finished")
+    dead = false
+    change_state("run")
+
+func die():
+    dead = true
+    $AnimatedSprite.play("Death")
+    yield($AnimatedSprite, "animation_finished")
+    timer.start()

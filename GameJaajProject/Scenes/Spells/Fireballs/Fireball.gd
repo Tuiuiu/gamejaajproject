@@ -1,11 +1,12 @@
 extends Area2D
 
 var target
-var speed = 150.0
+var speed = 300.0
 var velocity = Vector2()
 var direction = Vector2()
 var exploded = false
 var type = null
+var damage = 10.0
 var start_position = Vector2()
 
 func _ready():
@@ -15,7 +16,7 @@ func _physics_process(delta):
     if (exploded):
         global_position = target.global_position
     else:
-        if (start_position.distance_to(global_position) > 400):
+        if (start_position.distance_to(global_position) > 600):
             queue_free()
         else:
             velocity = direction * speed
@@ -34,7 +35,7 @@ func set_target(tgt):
 func on_body_entered(body):
     if (body.is_in_group("Enemies")):
         if (body.is_alive()):
-            body.hit(type)
+            body.hit(type, damage)
             set_target(body)
             explode()
             

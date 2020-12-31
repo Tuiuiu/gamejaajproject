@@ -22,6 +22,6 @@ func _on_HitStart_body_exited(body):
         if (body.is_in_group("Player") and body.is_alive()):
             body.hit(damage)
 
-func hit(type):
+func hit(type, dmg):
     if (type == "redfireball" or type == "blackfireball" or type == "greenfireball"):
-        change_state("death")
+        take_damage(dmg)

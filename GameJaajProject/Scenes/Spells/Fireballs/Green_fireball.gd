@@ -4,4 +4,5 @@ extends "res://Scenes/Spells/Fireballs/Fireball.gd"
 func _ready():
     #._ready()
     type = "greenfireball"
+    damage = 20.0
 
