@@ -54,3 +54,6 @@ func reset():
     current_pos = 0
     possible_sequences = sequences.keys()
     best_match = null
+
+func add_sequence(id, sequence):
+    sequences[id] = sequence
