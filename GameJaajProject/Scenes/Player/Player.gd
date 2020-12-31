@@ -11,15 +11,18 @@ var state
 var castSpells
 var availableSpells = []
 var MAX_HP = 100
+var world
+var camera
 onready var dead = false
-onready var camera = get_parent().get_node("Camera2D")
 onready var hp = 10
 
 func _ready():
     availableSpells.append(load("res://Scenes/Spells/Fireballs/Red_fireball.tscn"))
     availableSpells.append(load("res://Scenes/Spells/Fireballs/Black_fireball.tscn"))
     availableSpells.append(load("res://Scenes/Spells/Fireballs/Green_fireball.tscn"))
-    castSpells = get_parent().get_node("Spells")
+    world = get_parent()
+    castSpells = world.get_node("Spells")
+    camera = world.get_node("Camera2D")
     change_state("run")
         
 func _physics_process(delta):
@@ -111,6 +114,8 @@ func try_to_cast(index):
                 fireball_cast(1)  
             3: # Green Fireball
                 fireball_cast(2)
+            4: # Flashlight
+                flashlight_cast()
 
 func fireball_cast(type):
     var tgt = get_target()
@@ -126,5 +131,8 @@ func fireball_cast(type):
         clone.set_position(position)
         castSpells.add_child(clone) 
 
+func flashlight_cast():
+    world.flashlight_spell()
+
 func sequence_pressed(action):
-    $CastingEffects.sequence_pressed(action)
+    $CastingAudioEffects.sequence_pressed(action)

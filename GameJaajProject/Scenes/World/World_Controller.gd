@@ -3,6 +3,7 @@ extends Node2D
 var spawner
 var activeSpells
 var player
+var canvasModulator
 var GAME_MAX_TIME = 100.0
 onready var runTimer = get_node("RunTimer")
 onready var levelHandler = get_node("/root/LevelHandler")
@@ -12,6 +13,7 @@ func _ready():
     spawner = $Enemies
     activeSpells = $Spells
     player = $Player
+    canvasModulator = $CanvasEffects
     runTimer.wait_time = GAME_MAX_TIME
     runTimer.paused = true
     runTimer.start()
@@ -53,3 +55,6 @@ func resume_game():
 
 func player_died_handler():
     pause_game()
+
+func flashlight_spell():
+    canvasModulator.flashlight_spell()
