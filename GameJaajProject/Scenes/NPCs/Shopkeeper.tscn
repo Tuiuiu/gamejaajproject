@@ -45,7 +45,7 @@ animations = [ {
 [node name="Shopkeeper" type="Node2D"]
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-position = Vector2( 38.1055, 17.0192 )
-scale = Vector2( 2.0637, 2.0637 )
+position = Vector2( 62.2786, 37.3755 )
+scale = Vector2( 3.33597, 3.33597 )
 frames = SubResource( 5 )
-animation = "Idle_Human"
+animation = "Idle_Wolf"
