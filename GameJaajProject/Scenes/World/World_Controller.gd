@@ -4,6 +4,7 @@ var spawner
 var activeSpells
 var player
 var canvasModulator
+var cooldownsHandler
 var GAME_MAX_TIME = 100.0
 onready var runTimer = get_node("RunTimer")
 onready var levelHandler = get_node("/root/LevelHandler")
@@ -14,11 +15,14 @@ func _ready():
     activeSpells = $Spells
     player = $Player
     canvasModulator = $CanvasEffects
+    cooldownsHandler = $UI/CanvasLayer/CooldownsContainer
     runTimer.wait_time = GAME_MAX_TIME
     runTimer.paused = true
     runTimer.start()
     spawner.connect("level_over", self, "level_over_handler")
     player.connect("player_died", self, "player_died_handler")
+    player.connect("spell_cast", cooldownsHandler, "start_cooldown")
+    cooldownsHandler.connect("cooldown_over", player, "cooldown_over_handler")
     start_level()
     
 func reset():

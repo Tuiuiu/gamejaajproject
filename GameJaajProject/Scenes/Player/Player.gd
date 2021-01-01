@@ -2,6 +2,7 @@ extends KinematicBody2D
 
 signal health_changed(health)
 signal player_died
+signal spell_cast(id, cd)
 
 var GRAVITY = 50.0
 var JUMP_FORCE = 650.0
@@ -10,6 +11,13 @@ var jump_count = 0
 var state
 var castSpells
 var availableSpells = []
+var cooldownHandler
+var cooldowns = {
+    0: false,
+    1: false,
+    2: false,
+    3: false
+}
 var MAX_HP = 100
 var world
 var camera
@@ -106,16 +114,19 @@ func get_target():
         return null
 
 func try_to_cast(index):
+    # If player is alive
     if(is_alive()):
-        match index:
-            1: # Red Fireball
-                fireball_cast(0)
-            2: # Black Fireball
-                fireball_cast(1)  
-            3: # Green Fireball
-                fireball_cast(2)
-            4: # Flashlight
-                flashlight_cast()
+        # If skill is not on cooldown
+        if (!cooldowns[index]):
+            match index:
+                0: # Red Fireball
+                    fireball_cast(0)
+                1: # Black Fireball
+                    fireball_cast(1)  
+                2: # Green Fireball
+                    fireball_cast(2)
+                3: # Flashlight
+                    flashlight_cast()
 
 func fireball_cast(type):
     var tgt = get_target()
@@ -130,9 +141,17 @@ func fireball_cast(type):
         clone.set_direction(dir)
         clone.set_position(position)
         castSpells.add_child(clone) 
+        cooldowns[type] = true
+        emit_signal("spell_cast", type, (type + 0.5))
+            
 
 func flashlight_cast():
     world.flashlight_spell()
+    #cooldowns[3] = true
 
 func sequence_pressed(action):
     $CastingAudioEffects.sequence_pressed(action)
+
+func cooldown_over_handler(id):
+    cooldowns[id] = false
+

@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://Scenes/Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
@@ -20,6 +20,7 @@
 [ext_resource path="res://Scenes/World/Light2D.gd" type="Script" id=18]
 [ext_resource path="res://Scenes/World/Environment/Polygon2D.gd" type="Script" id=19]
 [ext_resource path="res://Scenes/World/CanvasEffects.gd" type="Script" id=20]
+[ext_resource path="res://Scenes/World/UI/CooldownsContainer.tscn" type="PackedScene" id=21]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Background"
@@ -367,6 +368,12 @@ autoplay = "shake"
 anims/shake = SubResource( 9 )
 
 [node name="PauseScreen" parent="UI/CanvasLayer" instance=ExtResource( 15 )]
+
+[node name="CooldownsContainer" parent="UI/CanvasLayer" instance=ExtResource( 21 )]
+margin_left = 1.49841
+margin_top = 58.434
+margin_right = 1.49841
+margin_bottom = 58.434
 
 [node name="CanvasEffects" type="CanvasModulate" parent="."]
 color = Color( 0.0784314, 0.0745098, 0.0745098, 1 )

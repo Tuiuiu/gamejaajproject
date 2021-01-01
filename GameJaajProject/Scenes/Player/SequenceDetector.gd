@@ -1,10 +1,10 @@
 extends Node
 
 var sequences = {
-    1: [KEY_R, KEY_F, KEY_B],
-    2: [KEY_B, KEY_F, KEY_B],
-    3: [KEY_G, KEY_F, KEY_B],
-    4: [KEY_F, KEY_L]
+    0: [KEY_R, KEY_F, KEY_B],
+    1: [KEY_B, KEY_F, KEY_B],
+    2: [KEY_G, KEY_F, KEY_B],
+    3: [KEY_F, KEY_L]
 }
 var possible_sequences = []
 var best_match = null
