@@ -18,7 +18,8 @@
 [ext_resource path="res://Assets/Shop/gem01orange.png" type="Texture" id=16]
 [ext_resource path="res://Assets/Shop/gem02blue.png" type="Texture" id=17]
 [ext_resource path="res://Assets/Shop/armour04chainmail.png" type="Texture" id=18]
-[ext_resource path="res://Scenes/ShopTorch.tscn" type="PackedScene" id=19]
+[ext_resource path="res://Scenes/Shop/ShopTorch.tscn" type="PackedScene" id=19]
+
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 93.4969, 10 )
