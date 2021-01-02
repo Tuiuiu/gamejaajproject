@@ -3,6 +3,8 @@ extends KinematicBody2D
 signal health_changed(health)
 signal player_died
 signal spell_cast(id, cd)
+signal add_buff(id)
+signal remove_buff(id)
 
 var GRAVITY = 50.0
 var JUMP_FORCE = 650.0
@@ -97,6 +99,7 @@ func hit(damage):
             $HexAnimation.play("Block")
             yield($HexAnimation, "animation_finished")
             $HexAnimation.visible = false
+            emit_signal("remove_buff", 4)
             emit_signal("spell_cast", 4, 5)
         else:
             hp -= damage
@@ -178,6 +181,7 @@ func hex_cast(type):
     cooldowns[6] = true
     $HexAnimation.play("Cast")
     yield($HexAnimation, "animation_finished")
+    emit_signal("add_buff", 4)
     $HexAnimation.stop()
     $HexAnimation.visible = false
 
