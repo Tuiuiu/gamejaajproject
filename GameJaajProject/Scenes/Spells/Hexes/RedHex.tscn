@@ -151,7 +151,5 @@ animations = [ {
 [node name="RedHex" type="AnimatedSprite"]
 modulate = Color( 0.996078, 0.0235294, 0.0901961, 1 )
 frames = SubResource( 34 )
-animation = "Cast"
-frame = 20
-playing = true
+animation = "Block"
 flip_h = true

@@ -12,11 +12,15 @@ var state
 var castSpells
 var availableSpells = []
 var cooldownHandler
+var hex = "none"
 var cooldowns = {
-    0: false,
-    1: false,
-    2: false,
-    3: false
+    0: false, # Red Fireball
+    1: false, # Black Fireball
+    2: false, # Green Fireball
+    3: false, # Flash Light
+    4: false, # Hex Shields
+    5: false,
+    6: false
 }
 var MAX_HP = 100
 var world
@@ -86,16 +90,25 @@ func change_state(new_state):
 
 func hit(damage):
     if (!dead):
-        hp -= damage
-        emit_signal("health_changed", hp)
-        if (hp > 0):
-            change_state("hit")
-            camera.shake(0.2, 15, 8)
-            $AnimationPlayer.play("DamageEffect")
-            yield($AnimatedSprite, "animation_finished")
-            change_state("run")
-        elif (hp <= 0):
-            die()
+        if (hex != "none"):
+            hex = "none"
+            $HexAnimation.visible = true
+            $HexAnimation.set_frame(0)
+            $HexAnimation.play("Block")
+            yield($HexAnimation, "animation_finished")
+            $HexAnimation.visible = false
+            emit_signal("spell_cast", 4, 5)
+        else:
+            hp -= damage
+            emit_signal("health_changed", hp)
+            if (hp > 0):
+                change_state("hit")
+                camera.shake(0.2, 15, 8)
+                $AnimationPlayer.play("DamageEffect")
+                yield($AnimatedSprite, "animation_finished")
+                change_state("run")
+            elif (hp <= 0):
+                die()
 
 func die():
     print("morreu")
@@ -119,14 +132,12 @@ func try_to_cast(index):
         # If skill is not on cooldown
         if (!cooldowns[index]):
             match index:
-                0: # Red Fireball
-                    fireball_cast(0)
-                1: # Black Fireball
-                    fireball_cast(1)  
-                2: # Green Fireball
-                    fireball_cast(2)
+                0, 1, 2: # Red Fireball, Black Fireball, Green Fireball
+                    fireball_cast(index)
                 3: # Flashlight
                     flashlight_cast()
+                4, 5, 6: # Red Hex, Black Hex, Green Hex 
+                    hex_cast(index)
 
 func fireball_cast(type):
     var tgt = get_target()
@@ -149,9 +160,33 @@ func flashlight_cast():
     world.flashlight_spell()
     #cooldowns[3] = true
 
+func hex_cast(type):
+    match type:
+        4: # Red Hex
+            $HexAnimation.modulate = Color("#fe0617")
+            hex = "red"
+        5: # Black Hex
+            $HexAnimation.modulate = Color("#3c2659")
+            hex = "black"
+        6: # Green Hex
+            $HexAnimation.modulate = Color("#99d409")
+            hex = "green"
+    $HexAnimation.visible = true
+    $HexAnimation.set_frame(0)
+    cooldowns[4] = true
+    cooldowns[5] = true
+    cooldowns[6] = true
+    $HexAnimation.play("Cast")
+    yield($HexAnimation, "animation_finished")
+    $HexAnimation.stop()
+    $HexAnimation.visible = false
+
 func sequence_pressed(action):
     $CastingAudioEffects.sequence_pressed(action)
 
 func cooldown_over_handler(id):
+    if (id == 4):
+        cooldowns[id+1] = false
+        cooldowns[id+2] = false
     cooldowns[id] = false
 

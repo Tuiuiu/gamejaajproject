@@ -4,7 +4,10 @@ var sequences = {
     0: [KEY_R, KEY_F, KEY_B],
     1: [KEY_B, KEY_F, KEY_B],
     2: [KEY_G, KEY_F, KEY_B],
-    3: [KEY_F, KEY_L]
+    3: [KEY_F, KEY_L],
+    4: [KEY_R, KEY_H],
+    5: [KEY_B, KEY_H],
+    6: [KEY_G, KEY_H]
 }
 var possible_sequences = []
 var best_match = null
