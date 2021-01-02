@@ -6,7 +6,9 @@ onready var spellCooldown = preload("res://Scenes/World/UI/SpellCooldowns.tscn")
 onready var spellIcons = [
     preload("res://Assets/Spells/Red/rfb_icon.png"),
     preload("res://Assets/Spells/Black/bfb_icon.png"),
-    preload("res://Assets/Spells/Green/gfb_icon.png")
+    preload("res://Assets/Spells/Green/gfb_icon.png"),
+    "Flashlight",
+    preload("res://Assets/Spells/Hexes/hex_shield.png")
 ]
 
 # Called when the node enters the scene tree for the first time.
