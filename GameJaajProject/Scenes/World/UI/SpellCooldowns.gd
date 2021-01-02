@@ -26,6 +26,7 @@ func _on_Timer_timeout():
 func spell_cast(id, cd):
     spellID = id
     $Sweep.texture_progress = texture
+    $Sweep.rect_size = texture.get_size()
     cooldown = cd
     $Timer.wait_time = cd
     $Timer.start()

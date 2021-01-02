@@ -370,10 +370,10 @@ anims/shake = SubResource( 9 )
 [node name="PauseScreen" parent="UI/CanvasLayer" instance=ExtResource( 15 )]
 
 [node name="CooldownsContainer" parent="UI/CanvasLayer" instance=ExtResource( 21 )]
-margin_left = 1.49841
-margin_top = 58.434
-margin_right = 1.49841
-margin_bottom = 58.434
+margin_left = 1.498
+margin_top = 58.0
+margin_right = 1.49805
+margin_bottom = -630.0
 
 [node name="CanvasEffects" type="CanvasModulate" parent="."]
 color = Color( 0.0784314, 0.0745098, 0.0745098, 1 )
