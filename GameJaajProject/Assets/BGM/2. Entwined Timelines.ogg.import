@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/2. Entwined Timelines.ogg-a17a21c1d8360cef34a7ee09d6a81607.oggstr"
+
+[deps]
+
+source_file="res://Assets/BGM/2. Entwined Timelines.ogg"
+dest_files=[ "res://.import/2. Entwined Timelines.ogg-a17a21c1d8360cef34a7ee09d6a81607.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

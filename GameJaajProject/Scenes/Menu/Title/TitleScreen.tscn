@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Scenes/Menu/Title/TitleScreen.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Menu/Title/SettingsButton.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/Menu/Title/PlayButton.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/Menu/Title/QuitButton.tscn" type="PackedScene" id=4]
 [ext_resource path="res://icon.png" type="Texture" id=5]
+[ext_resource path="res://Assets/BGM/3. Limited Time (Main Theme).ogg" type="AudioStream" id=6]
 
 [sub_resource type="DynamicFontData" id=1]
 font_path = "res://Assets/Fonts/Montserrat-ExtraBold.ttf"
@@ -12,6 +13,21 @@ font_path = "res://Assets/Fonts/Montserrat-ExtraBold.ttf"
 [sub_resource type="DynamicFont" id=2]
 size = 24
 font_data = SubResource( 1 )
+
+[sub_resource type="Animation" id=3]
+resource_name = "FadeIn"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -20.0, -10.0 ]
+}
 
 [node name="TitleScreen" type="Control"]
 pause_mode = 2
@@ -88,5 +104,13 @@ size_flags_vertical = 3
 custom_fonts/font = SubResource( 2 )
 text = "Version 1.0.0
 IMEnsos Studios"
+
+[node name="BGM" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+volume_db = -10.0
+autoplay = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="BGM"]
+anims/FadeIn = SubResource( 3 )
 [connection signal="pressed" from="Menu/Center/Buttons/PlayButton" to="." method="start_game"]
 [connection signal="pressed" from="Menu/Center/Buttons/QuitButton" to="." method="quit_game"]

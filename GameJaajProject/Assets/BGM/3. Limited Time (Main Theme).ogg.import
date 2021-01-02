@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/3. Limited Time (Main Theme).ogg-467ed0f248f3b6ce12e62c8124347c08.oggstr"
+
+[deps]
+
+source_file="res://Assets/BGM/3. Limited Time (Main Theme).ogg"
+dest_files=[ "res://.import/3. Limited Time (Main Theme).ogg-467ed0f248f3b6ce12e62c8124347c08.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
