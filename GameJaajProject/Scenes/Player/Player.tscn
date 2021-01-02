@@ -33,43 +33,43 @@ atlas = ExtResource( 5 )
 region = Rect2( 924, 0, 231, 190 )
 
 [sub_resource type="AtlasTexture" id=6]
-atlas = ExtResource( 7 )
+atlas = ExtResource( 8 )
 region = Rect2( 0, 0, 231, 190 )
 
 [sub_resource type="AtlasTexture" id=7]
-atlas = ExtResource( 7 )
+atlas = ExtResource( 8 )
 region = Rect2( 231, 0, 231, 190 )
 
 [sub_resource type="AtlasTexture" id=8]
-atlas = ExtResource( 7 )
+atlas = ExtResource( 8 )
 region = Rect2( 462, 0, 231, 190 )
 
 [sub_resource type="AtlasTexture" id=9]
-atlas = ExtResource( 7 )
+atlas = ExtResource( 8 )
 region = Rect2( 693, 0, 231, 190 )
 
 [sub_resource type="AtlasTexture" id=10]
-atlas = ExtResource( 7 )
+atlas = ExtResource( 8 )
 region = Rect2( 924, 0, 231, 190 )
 
 [sub_resource type="AtlasTexture" id=11]
-atlas = ExtResource( 8 )
+atlas = ExtResource( 7 )
 region = Rect2( 0, 0, 231, 190 )
 
 [sub_resource type="AtlasTexture" id=12]
-atlas = ExtResource( 8 )
+atlas = ExtResource( 7 )
 region = Rect2( 231, 0, 231, 190 )
 
 [sub_resource type="AtlasTexture" id=13]
-atlas = ExtResource( 8 )
+atlas = ExtResource( 7 )
 region = Rect2( 462, 0, 231, 190 )
 
 [sub_resource type="AtlasTexture" id=14]
-atlas = ExtResource( 8 )
+atlas = ExtResource( 7 )
 region = Rect2( 693, 0, 231, 190 )
 
 [sub_resource type="AtlasTexture" id=15]
-atlas = ExtResource( 8 )
+atlas = ExtResource( 7 )
 region = Rect2( 924, 0, 231, 190 )
 
 [sub_resource type="AtlasTexture" id=16]
@@ -132,14 +132,14 @@ animations = [ {
 "speed": 5.0
 }, {
 "frames": [ SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ) ],
-"loop": false,
-"name": "Death",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ) ],
 "loop": true,
 "name": "Run",
 "speed": 7.0
+}, {
+"frames": [ SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ) ],
+"loop": false,
+"name": "Death",
+"speed": 5.0
 }, {
 "frames": [ SubResource( 16 ), SubResource( 17 ), SubResource( 18 ) ],
 "loop": true,
@@ -161,7 +161,7 @@ animations = [ {
 "name": "Jump",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 28 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ) ],
+"frames": [ SubResource( 28 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ) ],
 "loop": true,
 "name": "Attack 2",
 "speed": 5.0
@@ -200,7 +200,7 @@ script = ExtResource( 2 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 29 )
 animation = "Run"
-frame = 4
+frame = 3
 playing = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

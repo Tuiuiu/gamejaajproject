@@ -4,11 +4,16 @@
 [ext_resource path="res://Scenes/World/UI/SpellCooldowns.gd" type="Script" id=2]
 
 [sub_resource type="DynamicFont" id=1]
+size = 12
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 1 )
 
 [node name="AbilityButton" type="TextureRect"]
-margin_right = 40.0
-margin_bottom = 40.0
+margin_right = 24.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 48, 48 )
+expand = true
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -18,7 +23,9 @@ __meta__ = {
 modulate = Color( 0.145098, 0.145098, 0.145098, 0.87451 )
 anchor_right = 1.0
 anchor_bottom = 1.0
+rect_min_size = Vector2( 32, 32 )
 fill_mode = 5
+nine_patch_stretch = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -39,8 +46,9 @@ __meta__ = {
 
 [node name="Value" type="Label" parent="Counter"]
 margin_left = 5.0
-margin_right = 35.0
-margin_bottom = 21.0
+margin_top = 2.0
+margin_right = 43.0
+margin_bottom = 18.0
 custom_fonts/font = SubResource( 1 )
 text = "0.0"
 align = 2

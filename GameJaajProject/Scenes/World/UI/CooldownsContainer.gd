@@ -19,6 +19,7 @@ func spell_over(id):
 func start_cooldown(id, cd):
     var clone = spellCooldown.instance()
     clone.texture = spellIcons[id]
+    clone.rect_size = clone.texture.get_size()
     add_child(clone)
     clone.spell_cast(id, cd)
 
