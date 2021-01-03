@@ -10,11 +10,6 @@ func _ready():
 func load_grimoire_pages():
     var dir = Directory.new()
     var path = "res://Scenes/Menu/Pause/Grimoire/Pages/Fireballs"
-    if dir.open(path) == OK:
-        dir.list_dir_begin()
-        var filename = dir.get_next()
-        while filename != "":
-            pass
 
 func _on_ContinueButton_pressed():
     get_tree().paused = false
