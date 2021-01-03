@@ -12,9 +12,11 @@ var velocity = Vector2()
 var jump_count = 0
 var state
 var castSpells
-var availableSpells = []
 var cooldownHandler
+var availableSpells = []
+var bossfight = false
 var hex = "none"
+var casting = false
 var cooldowns = {
     0: false, # Red Fireball
     1: false, # Black Fireball
@@ -73,7 +75,10 @@ func change_state(new_state):
     if (state != new_state):
         match new_state:
             "run":
-                $AnimatedSprite.play("Run")
+                if(!bossfight):
+                    $AnimatedSprite.play("Run")
+                else:
+                    $AnimatedSprite.play("idle")
             "hit":
                 $AnimatedSprite.play("Hit")
             "attack1":
@@ -133,7 +138,7 @@ func try_to_cast(index):
     # If player is alive
     if(is_alive()):
         # If skill is not on cooldown
-        if (!cooldowns[index]):
+        if (!casting and !cooldowns[index]):
             match index:
                 0, 1, 2: # Red Fireball, Black Fireball, Green Fireball
                     fireball_cast(index)
@@ -156,7 +161,12 @@ func fireball_cast(type):
         clone.set_position(position)
         castSpells.add_child(clone) 
         cooldowns[type] = true
+        casting = true
+        change_state("attack2")
         emit_signal("spell_cast", type, (type + 0.5))
+        yield($AnimatedSprite, "animation_finished")
+        casting = false
+        change_state("run")
             
 
 func flashlight_cast():
@@ -164,6 +174,12 @@ func flashlight_cast():
     #cooldowns[3] = true
 
 func hex_cast(type):
+    cooldowns[4] = true
+    cooldowns[5] = true
+    cooldowns[6] = true
+    casting = true
+    change_state("attack1")
+    yield($AnimatedSprite, "animation_finished")
     match type:
         4: # Red Hex
             $HexAnimation.modulate = Color("#fe0617")
@@ -176,10 +192,11 @@ func hex_cast(type):
             hex = "green"
     $HexAnimation.visible = true
     $HexAnimation.set_frame(0)
-    cooldowns[4] = true
-    cooldowns[5] = true
-    cooldowns[6] = true
-    $HexAnimation.play("Cast")
+    $HexAnimation.play("Cast1")
+    yield($HexAnimation, "animation_finished")
+    casting = false
+    change_state("run")
+    $HexAnimation.play("Cast2")
     yield($HexAnimation, "animation_finished")
     emit_signal("add_buff", 4)
     $HexAnimation.stop()

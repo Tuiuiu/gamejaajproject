@@ -382,6 +382,7 @@ margin_top = 116.0
 margin_bottom = -572.0
 
 [node name="CanvasEffects" type="CanvasModulate" parent="."]
+visible = false
 color = Color( 0.0784314, 0.0745098, 0.0745098, 1 )
 script = ExtResource( 20 )
 __meta__ = {
