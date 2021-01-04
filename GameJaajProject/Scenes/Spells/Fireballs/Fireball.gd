@@ -11,6 +11,7 @@ var start_position = Vector2()
 
 func _ready():
     self.connect("body_entered", self, "on_body_entered")
+    self.connect("area_entered", self, "on_area_entered")
 
 func _physics_process(delta):
     if (exploded):
@@ -38,10 +39,17 @@ func on_body_entered(body):
             body.hit(type, damage)
             set_target(body)
             explode()
+
+func on_area_entered(area):
+    if(area.is_in_group("BossSpells")):
+        area.counter(type)
+        set_target(area)
+        explode()
             
 func explode():
     exploded = true
     self.disconnect("body_entered", self, "on_body_entered")
+    self.disconnect("area_entered", self, "on_area_entered")
     $AnimatedSprite.play("Explosion")
     $AnimationPlayer.play("ExplosionSize")
     yield($AnimatedSprite, "animation_finished")
