@@ -1,0 +1,43 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Assets/Fonts/Overlay.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Scenes/Menu/Pause/Grimoire/GrimoirePageController.gd" type="Script" id=2]
+
+[node name="SpellSelection" type="CenterContainer"]
+light_mask = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_left = 530.0
+margin_top = 284.0
+margin_right = 749.0
+margin_bottom = 436.0
+alignment = 1
+
+[node name="Fireballs" type="Button" parent="VBoxContainer"]
+margin_right = 219.0
+margin_bottom = 48.0
+custom_fonts/font = ExtResource( 1 )
+text = "Fireballs"
+
+[node name="Hexes" type="Button" parent="VBoxContainer"]
+margin_top = 52.0
+margin_right = 219.0
+margin_bottom = 100.0
+custom_fonts/font = ExtResource( 1 )
+text = "Hexes"
+
+[node name="Bells" type="Button" parent="VBoxContainer"]
+margin_top = 104.0
+margin_right = 219.0
+margin_bottom = 152.0
+custom_fonts/font = ExtResource( 1 )
+text = "Bells"
+[connection signal="pressed" from="VBoxContainer/Fireballs" to="." method="_on_Fireballs_pressed"]
+[connection signal="pressed" from="VBoxContainer/Hexes" to="." method="_on_Hexes_pressed"]
+[connection signal="pressed" from="VBoxContainer/Bells" to="." method="_on_Bells_pressed"]

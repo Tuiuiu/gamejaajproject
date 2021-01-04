@@ -1,6 +1,7 @@
 extends Node
 
 var current_scene = null
+var active_menu = null
 
 func _ready():
     var root = get_tree().get_root()

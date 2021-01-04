@@ -48,6 +48,7 @@ margin_bottom = 188.0
 margin_top = 192.0
 margin_right = 360.0
 margin_bottom = 252.0
+[connection signal="visibility_changed" from="." to="." method="_on_PauseScreen_visibility_changed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/ContinueButton" to="." method="_on_ContinueButton_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/GrimoireButton" to="." method="_on_GrimoireButton_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/QuitButton" to="." method="_on_QuitButton_pressed"]
