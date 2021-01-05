@@ -7,7 +7,9 @@ var fireball = preload("res://Scenes/Enemies/Spells/EnemyRedFireball.tscn")
 func _ready():
     #._ready()
     $Timer.wait_time = 2.0
+    type = "flying_eye"
     fireball_cast()
+    
     
 func _physics_process(delta):
     ._physics_process(delta)

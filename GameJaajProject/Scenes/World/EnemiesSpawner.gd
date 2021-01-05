@@ -46,3 +46,9 @@ func spawn_level():
         yield($Timer, "timeout")
         spawn_enemy(enemiesList[index+1])
     countLeft = 0
+
+func toll_the_dead():
+    for enemy in get_children():
+        if (enemy != timer):
+            if (enemy.type == "skeleton"):
+                enemy.permadeath()

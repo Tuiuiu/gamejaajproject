@@ -4,7 +4,7 @@ var damage = 10.0
 
 func _ready():
     #._ready()
-    pass
+    type = "goblin"
     
 func _physics_process(delta):
     ._physics_process(delta)

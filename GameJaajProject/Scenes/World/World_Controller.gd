@@ -66,3 +66,6 @@ func player_died_handler():
 
 func flashlight_spell():
     canvasModulator.flashlight_spell()
+
+func toll_the_dead():
+    spawner.toll_the_dead()

@@ -7,7 +7,9 @@ var sequences = {
     3: [KEY_F, KEY_L],
     4: [KEY_R, KEY_H],
     5: [KEY_B, KEY_H],
-    6: [KEY_G, KEY_H]
+    6: [KEY_G, KEY_H],
+    7: [KEY_H, KEY_E, KEY_A, KEY_L],
+    8: [KEY_T, KEY_O, KEY_L, KEY_L]
 }
 var possible_sequences = []
 var best_match = null
