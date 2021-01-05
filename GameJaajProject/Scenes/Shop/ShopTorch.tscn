@@ -18,6 +18,8 @@ animations = [ {
 scale = Vector2( 4, 4 )
 frames = SubResource( 1 )
 animation = "Torchlight"
+frame = 1
+playing = true
 
 [node name="Light2D" type="Light2D" parent="."]
 texture = ExtResource( 4 )
