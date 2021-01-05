@@ -312,12 +312,16 @@ tracks/0/keys = {
 
 [node name="Red_fireball" type="Area2D"]
 script = ExtResource( 32 )
+__meta__ = {
+"_edit_horizontal_guides_": [ -16.2275, 15.7626 ],
+"_edit_vertical_guides_": [  ]
+}
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 scale = Vector2( 2.6875, 2.6875 )
 frames = SubResource( 62 )
 animation = "Cast"
-frame = 7
+frame = 6
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
