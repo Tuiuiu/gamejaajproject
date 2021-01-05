@@ -111,7 +111,7 @@ margin_bottom = 32.0
 [node name="AnimatedSprite2" parent="CenterContainer/VBoxContainer" instance=ExtResource( 1 )]
 position = Vector2( 290, -100 )
 scale = Vector2( 9.5, 9.5 )
-frame = 27
+frame = 15
 
 [node name="Description" type="Label" parent="CenterContainer/VBoxContainer"]
 margin_top = 82.0
@@ -162,9 +162,9 @@ __meta__ = {
 }
 
 [node name="RArrow" type="TextureRect" parent="."]
-margin_left = 926.0
+margin_left = 940.0
 margin_top = 300.0
-margin_right = 1026.0
+margin_right = 1040.0
 margin_bottom = 450.0
 texture = ExtResource( 6 )
 __meta__ = {
@@ -172,9 +172,9 @@ __meta__ = {
 }
 
 [node name="LArrow" type="TextureRect" parent="."]
-margin_left = 250.0
+margin_left = 236.0
 margin_top = 300.0
-margin_right = 356.697
+margin_right = 342.697
 margin_bottom = 450.0
 texture = ExtResource( 6 )
 flip_h = true

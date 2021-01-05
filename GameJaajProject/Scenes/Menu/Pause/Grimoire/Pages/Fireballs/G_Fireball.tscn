@@ -109,6 +109,11 @@ margin_left = 335.0
 margin_right = 367.0
 margin_bottom = 32.0
 
+[node name="AnimatedSprite" parent="CenterContainer/VBoxContainer" instance=ExtResource( 3 )]
+position = Vector2( 290, -100 )
+scale = Vector2( 9.5, 9.5 )
+frame = 9
+
 [node name="Description" type="Label" parent="CenterContainer/VBoxContainer"]
 margin_top = 82.0
 margin_right = 630.0
@@ -126,11 +131,6 @@ align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="AnimatedSprite" parent="CenterContainer/VBoxContainer" instance=ExtResource( 3 )]
-position = Vector2( 285, -100 )
-scale = Vector2( 9.5, 9.5 )
-frame = 0
 
 [node name="FlavorText" type="Label" parent="."]
 margin_left = 272.878
@@ -163,9 +163,9 @@ __meta__ = {
 }
 
 [node name="RArrow" type="TextureRect" parent="."]
-margin_left = 926.0
+margin_left = 940.0
 margin_top = 300.0
-margin_right = 1026.0
+margin_right = 1040.0
 margin_bottom = 450.0
 texture = ExtResource( 6 )
 __meta__ = {
@@ -173,9 +173,9 @@ __meta__ = {
 }
 
 [node name="LArrow" type="TextureRect" parent="."]
-margin_left = 250.0
+margin_left = 236.0
 margin_top = 300.0
-margin_right = 356.697
+margin_right = 342.697
 margin_bottom = 450.0
 texture = ExtResource( 6 )
 flip_h = true
