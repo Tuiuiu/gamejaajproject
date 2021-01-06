@@ -34,9 +34,8 @@ func _process(delta):
         remove_child(get_child(0))
         add_child(page.instance())
         
-func get_scenes(spell: String) -> Array:
+func get_scenes(spell: String) -> void:
     var p = path + spell
-    var scenes: Array = []
     var dir := Directory.new()
     if dir.open(p) == OK:
         dir.list_dir_begin()
@@ -45,9 +44,8 @@ func get_scenes(spell: String) -> Array:
             if !dir.current_is_dir():
                 scenes.append(file_name)
             file_name = dir.get_next()
-    return scenes
 
 func open_grimoire(spell):
     grimoire_is_open = true
-    scenes = get_scenes(spell)
+    get_scenes(spell)
     current_path = path + spell

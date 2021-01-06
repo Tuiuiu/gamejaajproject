@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Scenes/SpellAnimations/a_redfireball.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/Fonts/grimoire_font.tres" type="DynamicFontData" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Scenes/Menu/Pause/Grimoire/KeysAnimations/B.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/Menu/Pause/Grimoire/KeysAnimations/F.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Assets/UI/arrow.png" type="Texture" id=6]
+[ext_resource path="res://Scenes/Menu/Pause/Grimoire/Pages/BG.tscn" type="PackedScene" id=7]
 
 [sub_resource type="DynamicFont" id=1]
 size = 34
@@ -15,14 +16,7 @@ font_data = ExtResource( 2 )
 size = 24
 font_data = ExtResource( 2 )
 
-[sub_resource type="Gradient" id=3]
-offsets = PoolRealArray( 0.0193548, 0.535484, 1 )
-colors = PoolColorArray( 0.0196078, 0.0196078, 0.0196078, 0.392157, 0.984314, 0.984314, 0.984314, 0.392157, 0, 0, 0, 0.392157 )
-
-[sub_resource type="GradientTexture" id=4]
-gradient = SubResource( 3 )
-
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=3]
 resource_name = "shake"
 length = 0.5
 loop = true
@@ -72,13 +66,13 @@ __meta__ = {
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
-margin_left = 325.0
-margin_top = 204.0
-margin_right = 955.0
-margin_bottom = 516.0
+margin_left = 340.0
+margin_top = 188.0
+margin_right = 940.0
+margin_bottom = 531.0
 
 [node name="SpellName" type="Label" parent="CenterContainer/VBoxContainer"]
-margin_right = 630.0
+margin_right = 600.0
 margin_bottom = 42.0
 custom_fonts/font = SubResource( 1 )
 text = "Red Fireball"
@@ -86,7 +80,7 @@ align = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
 margin_top = 46.0
-margin_right = 630.0
+margin_right = 600.0
 margin_bottom = 78.0
 size_flags_horizontal = 3
 alignment = 1
@@ -95,73 +89,57 @@ __meta__ = {
 }
 
 [node name="R" parent="CenterContainer/VBoxContainer/HBoxContainer" instance=ExtResource( 3 )]
-margin_left = 263.0
-margin_right = 295.0
+margin_left = 248.0
+margin_right = 280.0
 margin_bottom = 32.0
 
 [node name="F" parent="CenterContainer/VBoxContainer/HBoxContainer" instance=ExtResource( 5 )]
-margin_left = 299.0
-margin_right = 331.0
+margin_left = 284.0
+margin_right = 316.0
 margin_bottom = 32.0
 
 [node name="B" parent="CenterContainer/VBoxContainer/HBoxContainer" instance=ExtResource( 4 )]
-margin_left = 335.0
-margin_right = 367.0
+margin_left = 320.0
+margin_right = 352.0
 margin_bottom = 32.0
 
 [node name="AnimatedSprite" parent="CenterContainer/VBoxContainer" instance=ExtResource( 1 )]
 position = Vector2( 250, -100 )
 scale = Vector2( 9.5, 9.5 )
-frame = 29
+frame = 28
 offset = Vector2( 5, 0 )
 
 [node name="Description" type="Label" parent="CenterContainer/VBoxContainer"]
 margin_top = 82.0
-margin_right = 630.0
-margin_bottom = 312.0
-rect_min_size = Vector2( 630, 230 )
+margin_right = 600.0
+margin_bottom = 343.0
+rect_min_size = Vector2( 600, 230 )
 custom_fonts/font = SubResource( 2 )
-text = "Lucas gay Lucas gay Lucas gay
-Lucas gay Lucas gay Lucas gay
-Lucas gay Lucas gay Lucas gay 
-Lucas gay Lucas gay Lucas gay
-Como o Lucas é bicha meu deus
-do céu eu nunca vi alguém tão
-bicha quanto o Lucas"
+text = "You can’t call yourself a wizard without casting one of those. Lights the path while it travels, cannot hurt Flying Eyes, but anything else should be reduced to cinder in a couple tries.
+
+Nullifies Red Fireballs"
 align = 1
+autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="FlavorText" type="Label" parent="."]
 margin_left = 272.878
-margin_top = 596.0
+margin_top = 568.0
 margin_right = 1002.88
-margin_bottom = 666.0
+margin_bottom = 697.0
 rect_min_size = Vector2( 730, 70 )
 custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 1, 0, 0, 1 )
-text = "\"Tá pra nascer alguém mais
-bicha que o Lucas\" - O outro Lucas"
+text = "“Some challenges require quick thinking, dexterity and tremendous knowledge to overcome. Some don’t.” -Professor McJean in Fireballs 101"
 align = 1
+autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="BG" type="TextureRect" parent="."]
-modulate = Color( 0.184314, 0.164706, 0.164706, 0.462745 )
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 1.71368
-margin_top = -2.00226
-margin_right = 1.71362
-margin_bottom = -2.00226
-texture = SubResource( 4 )
-expand = true
-__meta__ = {
-"_edit_group_": true,
-"_edit_use_anchors_": false
-}
+[node name="BG" parent="." instance=ExtResource( 7 )]
 
 [node name="RArrow" type="TextureRect" parent="."]
 margin_left = 926.0
@@ -186,4 +164,4 @@ __meta__ = {
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "shake"
-anims/shake = SubResource( 5 )
+anims/shake = SubResource( 3 )

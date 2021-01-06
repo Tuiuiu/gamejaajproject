@@ -76,7 +76,7 @@ modulate = Color( 0.0235294, 0.0470588, 0.552941, 1 )
 self_modulate = Color( 0.00392157, 0.741176, 0.992157, 1 )
 frames = SubResource( 16 )
 animation = "Toll"
-frame = 3
+frame = 12
 playing = true
 flip_h = true
 

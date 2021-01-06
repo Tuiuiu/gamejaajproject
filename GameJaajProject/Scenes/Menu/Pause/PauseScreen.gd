@@ -6,11 +6,6 @@ onready var grimoire_pages: Array
 
 func _ready():
     visible = false
-    load_grimoire_pages()
-    
-func load_grimoire_pages():
-    var dir = Directory.new()
-    var path = "res://Scenes/Menu/Pause/Grimoire/Pages/Fireballs"
 
 func _on_ContinueButton_pressed():
     get_tree().paused = false

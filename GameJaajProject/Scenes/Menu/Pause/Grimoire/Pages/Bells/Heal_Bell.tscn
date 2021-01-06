@@ -1,11 +1,13 @@
 [gd_scene load_steps=12 format=2]
 
-[ext_resource path="res://Scenes/Menu/Pause/Grimoire/KeysAnimations/G.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/Spells/Bells/LightBell.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/Fonts/grimoire_font.tres" type="DynamicFontData" id=2]
-[ext_resource path="res://Scenes/SpellAnimations/a_greenfireball.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Scenes/Menu/Pause/Grimoire/KeysAnimations/B.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Scenes/Menu/Pause/Grimoire/KeysAnimations/F.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/Menu/Pause/Grimoire/KeysAnimations/E.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Menu/Pause/Grimoire/KeysAnimations/A.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Menu/Pause/Grimoire/KeysAnimations/L.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Assets/UI/arrow.png" type="Texture" id=6]
+[ext_resource path="res://Scenes/Menu/Pause/Grimoire/Pages/BG.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scenes/Menu/Pause/Grimoire/KeysAnimations/H.tscn" type="PackedScene" id=8]
 
 [sub_resource type="DynamicFont" id=1]
 size = 34
@@ -15,14 +17,7 @@ font_data = ExtResource( 2 )
 size = 24
 font_data = ExtResource( 2 )
 
-[sub_resource type="Gradient" id=3]
-offsets = PoolRealArray( 0.0193548, 0.535484, 1 )
-colors = PoolColorArray( 0.0196078, 0.0196078, 0.0196078, 0.392157, 0.984314, 0.984314, 0.984314, 0.392157, 0, 0, 0, 0.392157 )
-
-[sub_resource type="GradientTexture" id=4]
-gradient = SubResource( 3 )
-
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=3]
 resource_name = "shake"
 length = 0.5
 loop = true
@@ -51,7 +46,7 @@ tracks/1/keys = {
 "values": [ Vector2( 926, 300 ), Vector2( 940, 300 ), Vector2( 926, 300 ) ]
 }
 
-[node name="GFB_Page" type="Control"]
+[node name="GrimoirePage" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 0.840881
@@ -81,7 +76,7 @@ margin_bottom = 516.0
 margin_right = 600.0
 margin_bottom = 42.0
 custom_fonts/font = SubResource( 1 )
-text = "Green Fireball"
+text = "Healing Chime"
 align = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
@@ -94,74 +89,65 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="G" parent="CenterContainer/VBoxContainer/HBoxContainer" instance=ExtResource( 1 )]
-margin_left = 248.0
-margin_right = 280.0
+[node name="H" parent="CenterContainer/VBoxContainer/HBoxContainer" instance=ExtResource( 8 )]
+margin_left = 230.0
+margin_right = 262.0
 margin_bottom = 32.0
 
-[node name="F" parent="CenterContainer/VBoxContainer/HBoxContainer" instance=ExtResource( 5 )]
-margin_left = 284.0
-margin_right = 316.0
+[node name="E" parent="CenterContainer/VBoxContainer/HBoxContainer" instance=ExtResource( 3 )]
+margin_left = 266.0
+margin_right = 298.0
 margin_bottom = 32.0
 
-[node name="B" parent="CenterContainer/VBoxContainer/HBoxContainer" instance=ExtResource( 4 )]
-margin_left = 320.0
-margin_right = 352.0
+[node name="A" parent="CenterContainer/VBoxContainer/HBoxContainer" instance=ExtResource( 4 )]
+margin_left = 302.0
+margin_right = 334.0
 margin_bottom = 32.0
+
+[node name="L" parent="CenterContainer/VBoxContainer/HBoxContainer" instance=ExtResource( 5 )]
+margin_left = 338.0
+margin_right = 370.0
+margin_bottom = 32.0
+
+[node name="LightBell" parent="CenterContainer/VBoxContainer" instance=ExtResource( 1 )]
+position = Vector2( 319.612, -83.8823 )
+scale = Vector2( 0.563951, 0.563951 )
+frame = 0
 
 [node name="Description" type="Label" parent="CenterContainer/VBoxContainer"]
-margin_top = 82.0
+margin_top = 81.0
 margin_right = 600.0
-margin_bottom = 312.0
+margin_bottom = 311.0
 rect_min_size = Vector2( 600, 230 )
 custom_fonts/font = SubResource( 2 )
-text = "
-The only weapon against Flying Eyes.
-
-Doesn’t hit anyone else, but can nullify another Green Fireball."
+text = "Cure wounds on yourself and close allies."
 align = 1
 autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="AnimatedSprite" parent="CenterContainer/VBoxContainer" instance=ExtResource( 3 )]
-position = Vector2( 285, -100 )
-scale = Vector2( 9.5, 9.5 )
-frame = 9
 
 [node name="FlavorText" type="Label" parent="."]
 margin_left = 272.878
 margin_top = 596.0
+margin_right = 1002.88
 margin_bottom = 666.0
 rect_min_size = Vector2( 730, 70 )
 custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 1, 0, 0, 1 )
-text = "“Looks good in fireworks, but don’t use it for ambient lighting, it gives this sick tone, you know…” - Wizard Socialite"
+text = "“Trust me, you won’t dodge everything” - The Importance of Healing"
 align = 1
 autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="BG" type="TextureRect" parent="."]
-modulate = Color( 0.184314, 0.164706, 0.164706, 0.462745 )
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 1.71368
-margin_top = -2.00226
-margin_right = 1.71362
-margin_bottom = -2.00226
-texture = SubResource( 4 )
-expand = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="BG" parent="." instance=ExtResource( 7 )]
 
 [node name="RArrow" type="TextureRect" parent="."]
-margin_left = 928.226
+margin_left = 926.0
 margin_top = 300.0
-margin_right = 1028.23
+margin_right = 1026.0
 margin_bottom = 450.0
 texture = ExtResource( 6 )
 __meta__ = {
@@ -169,9 +155,9 @@ __meta__ = {
 }
 
 [node name="LArrow" type="TextureRect" parent="."]
-margin_left = 247.774
+margin_left = 250.0
 margin_top = 300.0
-margin_right = 354.477
+margin_right = 356.697
 margin_bottom = 450.0
 texture = ExtResource( 6 )
 flip_h = true
@@ -181,4 +167,4 @@ __meta__ = {
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "shake"
-anims/shake = SubResource( 5 )
+anims/shake = SubResource( 3 )

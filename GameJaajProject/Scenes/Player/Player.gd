@@ -39,7 +39,7 @@ func _ready():
     world = get_parent()
     castSpells = world.get_node("Spells")
     camera = world.get_node("Camera2D")
-    change_state("run")
+    change_state("run")   
         
 func _physics_process(delta):
     if (!is_on_floor()):
