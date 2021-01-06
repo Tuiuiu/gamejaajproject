@@ -109,14 +109,14 @@ margin_right = 370.0
 margin_bottom = 32.0
 
 [node name="DarkBell" parent="CenterContainer/VBoxContainer" instance=ExtResource( 3 )]
-position = Vector2( 319.612, -83.882 )
+position = Vector2( 319.612, 0.117996 )
 scale = Vector2( 0.564, 0.564 )
-frame = 5
+frame = 8
 
 [node name="Description" type="Label" parent="CenterContainer/VBoxContainer"]
-margin_top = 81.0
+margin_top = 82.0
 margin_right = 600.0
-margin_bottom = 311.0
+margin_bottom = 312.0
 rect_min_size = Vector2( 600, 230 )
 custom_fonts/font = SubResource( 2 )
 text = "Calls the dead back to their grave and their souls back to where they belong. Permanently destroys all Skeletons in sight."

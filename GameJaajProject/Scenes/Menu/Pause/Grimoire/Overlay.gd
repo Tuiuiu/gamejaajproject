@@ -35,7 +35,7 @@ func change_page():
     remove_child(get_child(0))
     add_child(page.instance())
                 
-func get_scenes(spell: String) -> Array:
+func get_scenes(spell: String) -> void:
     var p = path + spell
     var dir := Directory.new()
     if dir.open(p) == OK:
