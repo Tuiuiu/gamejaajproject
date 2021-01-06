@@ -9,7 +9,7 @@ var speech = 0
 #func _ready():
  #   load_dialog()
 
-func _process(delta):
+func _process(_delta):
     if (Input.is_action_just_pressed("ui_accept") and interactable):
         $MarginContainer/Label.percent_visible = 0
         load_dialog()
@@ -25,4 +25,7 @@ func load_dialog():
         yield($MarginContainer/Label/AnimationPlayer, "animation_finished")
         $TextureButton/AnimationPlayer.play("Next")
         speech += 1
-    else: queue_free()
+    else: 
+        visible = false
+        speech = 0
+    

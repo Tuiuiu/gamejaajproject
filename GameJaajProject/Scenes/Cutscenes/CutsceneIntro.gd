@@ -4,14 +4,14 @@ var pode = false
 
 func _ready():
     #Arrives and sighs
-    $DialogBox.dialog = [["*sigh*", "protagonist"]]
-    $DialogBox.visible = false
+    $CanvasLayer/DialogBox.dialog = [["*sigh*", "protagonist"]]
+    $CanvasLayer/DialogBox.visible = false
     $Node2D/CutscenePlayer.play("Run")
     $Node2D/AnimationPlayer.play("Arrive")
     yield($Node2D/AnimationPlayer,"animation_finished")
     $Node2D/CutscenePlayer.play("Idle")
-    $DialogBox.load_dialog()
-    $DialogBox.visible = true
+    $CanvasLayer/DialogBox.load_dialog()
+    $CanvasLayer/DialogBox.visible = true
     pode = true
     
     
@@ -31,4 +31,12 @@ func _process(_delta):
         $Node2D/AnimationPlayer.play("Fade")
         #Camera starts moving upwards with narrative following
         $Camera2D/AnimationPlayer.play("Lift")
+        $CanvasLayer/DialogBox.dialog = [["The Far Mountain's Watchtower was created to seal Tharnax, a great evil that once brought despair to our world."," "],
+        ["Every generation, a mage is choosen to be the Tower's Watcher."," "],
+        ["When his brother, the Red Mage choosen as Watcher, was said to be gone mad by the tower's curse, Lumorith was summoned.", " "],
+        ["To investigate, and, if needed, take his place as The Watcher."," "],
+        ["The Circle of Magi wondered if it was too late to stop the return of Tharnax"," "],
+        ["Lumorith rushed in wishing it wasn't too late to save his brother, Zahr", " "],
+        ["Heavens, how wrong were they...", " "]]
+        $CanvasLayer/DialogBox.visible = true
     
