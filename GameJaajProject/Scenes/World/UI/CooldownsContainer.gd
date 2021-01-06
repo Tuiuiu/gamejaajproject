@@ -9,8 +9,10 @@ onready var spellIcons = [
     preload("res://Assets/Spells/Green/gfb_icon.png"),
     "FlashlightIcon",
     preload("res://Assets/Spells/Hexes/hex_shield.png"),
-    "HealChimeIcon",
-    "TollTheDeadIcon"
+    "GreenHex",# NAO ALTERAR
+    "BlackHex",# NAO ALTERAR
+    preload("res://Assets/Spells/Bells/heal_icon.png"),
+    preload("res://Assets/Spells/Bells/toll_icon.png")
 ]
 
 # Called when the node enters the scene tree for the first time.

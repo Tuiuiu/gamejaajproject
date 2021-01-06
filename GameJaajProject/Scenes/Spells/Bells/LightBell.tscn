@@ -75,8 +75,10 @@ animations = [ {
 [node name="LightBell" type="AnimatedSprite"]
 frames = SubResource( 16 )
 animation = "Heal"
-frame = 6
+frame = 8
 playing = true
+offset = Vector2( 0, -150 )
+script = ExtResource( 3 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 2 )

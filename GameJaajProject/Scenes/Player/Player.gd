@@ -225,7 +225,7 @@ func heal_chime_cast():
     clone.cast_spell()
     yield(clone, "heal")
     heal(50)
-    #emit_signal("spell_cast", 7, 10.0)
+    emit_signal("spell_cast", 7, 10.0)
     change_state("run")
     
 func toll_dead_cast():
@@ -238,7 +238,7 @@ func toll_dead_cast():
     clone.cast_spell()
     yield(clone, "toll")
     world.toll_the_dead()
-    #emit_signal("spell_cast", 8, 10.0)
+    emit_signal("spell_cast", 8, 10.0)
     change_state("run")
 
 func sequence_pressed(action):
