@@ -3,25 +3,32 @@ var foi = false
 var pode = false
 
 func _ready():
-    $CanvasLayer/DialogBox.dialog = [["*sigh*", "protagonist"]]
-    $CanvasLayer/DialogBox.visible = false
-    $CanvasLayer/Node2D/CutscenePlayer.play("Run")
-    $CanvasLayer/Node2D/AnimationPlayer.play("Arrive")
-    yield($CanvasLayer/Node2D/AnimationPlayer,"animation_finished")
-    $CanvasLayer/Node2D/CutscenePlayer.play("Idle")
-    $CanvasLayer/DialogBox.load_dialog()
-    $CanvasLayer/DialogBox.visible = true
+    #Arrives and sighs
+    $DialogBox.dialog = [["*sigh*", "protagonist"]]
+    $DialogBox.visible = false
+    $Node2D/CutscenePlayer.play("Run")
+    $Node2D/AnimationPlayer.play("Arrive")
+    yield($Node2D/AnimationPlayer,"animation_finished")
+    $Node2D/CutscenePlayer.play("Idle")
+    $DialogBox.load_dialog()
+    $DialogBox.visible = true
     pode = true
     
     
-func _process(delta):
+func _process(_delta):
     if (Input.is_action_just_pressed("ui_accept") and !foi and pode):
         foi = true
-        $CanvasLayer/Node2D/CutscenePlayer.play("Attack1")
-        yield($CanvasLayer/Node2D/CutscenePlayer, "animation_finished")
-        $CanvasLayer/Node2D/CutscenePlayer.play("Idle")
-        $CanvasLayer/AnimatedSprite.play("Open")
-        yield($CanvasLayer/AnimatedSprite, "animation_finished")
-        $CanvasLayer/Node2D/CutscenePlayer.play("Run")
-        
+        #Opens the door and enters the Tower
+        $Node2D/CutscenePlayer.play("Attack1")
+        yield($Node2D/CutscenePlayer, "animation_finished")
+        $Node2D/CutscenePlayer.play("Idle")
+        $AnimatedSprite.play("Open")
+        yield($AnimatedSprite, "animation_finished")
+        $Node2D/CutscenePlayer.play("Run")
+        $Node2D/AnimationPlayer.play("Enter")
+        yield($Node2D/AnimationPlayer, "animation_finished")
+        $Node2D/CutscenePlayer.play("Idle")
+        $Node2D/AnimationPlayer.play("Fade")
+        #Camera starts moving upwards with narrative following
+        $Camera2D/AnimationPlayer.play("Lift")
     
