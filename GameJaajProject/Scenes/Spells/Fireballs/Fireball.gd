@@ -36,9 +36,16 @@ func set_target(tgt):
 func on_body_entered(body):
     if (body.is_in_group("Enemies")):
         if (body.is_alive()):
-            body.hit(type, damage)
-            set_target(body)
-            explode()
+            if (body.type == "flying_eye"):
+                if (body.close_to_floor):
+                    body.hit(type, damage)
+                    set_target(body)
+                    explode()
+            else:
+                body.hit(type, damage)
+                set_target(body)
+                explode()
+                    
 
 func on_area_entered(area):
     if(area.is_in_group("BossSpells")):

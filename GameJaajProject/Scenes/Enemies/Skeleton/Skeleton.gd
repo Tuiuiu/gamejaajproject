@@ -25,7 +25,7 @@ func _on_HitStart_body_exited(body):
             body.hit(damage)
 
 func hit(type, dmg):
-    if (type == "redfireball" or type == "greenfireball"):
+    if (type == "redfireball"):
         take_damage(dmg)
 
 
