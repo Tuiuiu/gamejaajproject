@@ -4,6 +4,7 @@ var MOVESPEED = 40.0
 var velocity = Vector2()
 var state
 var health = 10.0
+var type = "none"
 onready var active = true
 onready var dead = false
 

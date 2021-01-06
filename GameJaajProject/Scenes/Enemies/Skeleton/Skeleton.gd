@@ -6,6 +6,7 @@ onready var timer = $RevivalTime
 func _ready():
     health = 20.0
     timer.wait_time = 2.0
+    type = "skeleton"
     
 func _physics_process(delta):
     ._physics_process(delta)
@@ -39,3 +40,7 @@ func die():
     $AnimatedSprite.play("Death")
     yield($AnimatedSprite, "animation_finished")
     timer.start()
+
+func permadeath():
+    dead = true
+    $AnimatedSprite.play("Death")

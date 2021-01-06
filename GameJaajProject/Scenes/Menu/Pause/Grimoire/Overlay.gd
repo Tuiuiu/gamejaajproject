@@ -20,21 +20,22 @@ func _input(event):
             add_child(selection.instance())
         if event.is_action_pressed("ui_right"):
             page_number += 1
+            change_page()
         if event.is_action_pressed("ui_left"):
-            page_number -= 1          
+            page_number -= 1
+            change_page()          
     elif !grimoire_is_open and Global.active_menu == 'grimoire':
         if event.is_action_pressed("ui_cancel"):
             remove_child(get_child(0))
             queue_free()
             pause.remove_grimoire() 
 
-func _process(delta):
-    if grimoire_is_open:
-        var page = load(current_path + scenes[page_number % len(scenes)])
-        remove_child(get_child(0))
-        add_child(page.instance())
-        
-func get_scenes(spell: String) -> void:
+func change_page():
+    var page = load(current_path + scenes[page_number % len(scenes)])
+    remove_child(get_child(0))
+    add_child(page.instance())
+                
+func get_scenes(spell: String) -> Array:
     var p = path + spell
     var dir := Directory.new()
     if dir.open(p) == OK:
@@ -49,3 +50,4 @@ func open_grimoire(spell):
     grimoire_is_open = true
     get_scenes(spell)
     current_path = path + spell
+    change_page()

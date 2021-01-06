@@ -109,6 +109,11 @@ margin_left = 320.0
 margin_right = 352.0
 margin_bottom = 32.0
 
+[node name="AnimatedSprite" parent="CenterContainer/VBoxContainer" instance=ExtResource( 3 )]
+position = Vector2( 290, -100 )
+scale = Vector2( 9.5, 9.5 )
+frame = 9
+
 [node name="Description" type="Label" parent="CenterContainer/VBoxContainer"]
 margin_top = 82.0
 margin_right = 600.0

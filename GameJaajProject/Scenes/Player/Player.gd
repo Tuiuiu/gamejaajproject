@@ -22,9 +22,11 @@ var cooldowns = {
     1: false, # Black Fireball
     2: false, # Green Fireball
     3: false, # Flash Light
-    4: false, # Hex Shields
-    5: false,
-    6: false
+    4: false, # Red Hex Shield
+    5: false, # Black Hex Shield
+    6: false, # Green Hex Shield
+    7: false, # Heal Chime
+    8: false  # Toll the Dead
 }
 var MAX_HP = 100
 var world
@@ -36,6 +38,8 @@ func _ready():
     availableSpells.append(load("res://Scenes/Spells/Fireballs/Red_fireball.tscn"))
     availableSpells.append(load("res://Scenes/Spells/Fireballs/Black_fireball.tscn"))
     availableSpells.append(load("res://Scenes/Spells/Fireballs/Green_fireball.tscn"))
+    availableSpells.append(load("res://Scenes/Spells/Bells/LightBell.tscn"))
+    availableSpells.append(load("res://Scenes/Spells/Bells/DarkBell.tscn"))
     world = get_parent()
     castSpells = world.get_node("Spells")
     camera = world.get_node("Camera2D")
@@ -118,6 +122,12 @@ func hit(damage):
             elif (hp <= 0):
                 die()
 
+func heal(healing):
+    hp += healing
+    if (hp > MAX_HP):
+        hp = MAX_HP
+    emit_signal("health_changed", hp)
+
 func die():
     print("morreu")
     dead = true
@@ -146,6 +156,10 @@ func try_to_cast(index):
                     flashlight_cast()
                 4, 5, 6: # Red Hex, Black Hex, Green Hex 
                     hex_cast(index)
+                7: # Heal Chime
+                    heal_chime_cast()
+                8: # Toll the Dead
+                    toll_dead_cast()
 
 func fireball_cast(type):
     var tgt = get_target()
@@ -166,8 +180,7 @@ func fireball_cast(type):
         emit_signal("spell_cast", type, (type + 0.5))
         yield($AnimatedSprite, "animation_finished")
         casting = false
-        change_state("run")
-            
+        change_state("run")   
 
 func flashlight_cast():
     world.flashlight_spell()
@@ -201,6 +214,32 @@ func hex_cast(type):
     emit_signal("add_buff", 4)
     $HexAnimation.stop()
     $HexAnimation.visible = false
+
+func heal_chime_cast():
+    cooldowns[7] = true
+    change_state("attack1")
+    yield($AnimatedSprite, "animation_finished")
+    var clone = availableSpells[3].instance()
+    clone.position = position 
+    castSpells.add_child(clone)
+    clone.cast_spell()
+    yield(clone, "heal")
+    heal(50)
+    #emit_signal("spell_cast", 7, 10.0)
+    change_state("run")
+    
+func toll_dead_cast():
+    cooldowns[8] = true
+    change_state("attack1")
+    yield($AnimatedSprite, "animation_finished")
+    var clone = availableSpells[4].instance()
+    clone.position = position
+    castSpells.add_child(clone)
+    clone.cast_spell()
+    yield(clone, "toll")
+    world.toll_the_dead()
+    #emit_signal("spell_cast", 8, 10.0)
+    change_state("run")
 
 func sequence_pressed(action):
     $CastingAudioEffects.sequence_pressed(action)

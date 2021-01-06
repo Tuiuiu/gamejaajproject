@@ -3,10 +3,10 @@
 [ext_resource path="res://Assets/Fonts/PixeloidMono.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Assets/UI/Boxes/panel_Example1.png" type="Texture" id=2]
 [ext_resource path="res://Assets/UI/Boxes/arrow_example.png" type="Texture" id=3]
-[ext_resource path="res://Scenes/Cutscenes/DialogBox.gd" type="Script" id=4]
+[ext_resource path="res://Scenes/Cutscenes/NinePatchRect.gd" type="Script" id=5]
 
 [sub_resource type="DynamicFont" id=1]
-size = 35
+size = 30
 font_data = ExtResource( 1 )
 
 [sub_resource type="Animation" id=2]
@@ -45,52 +45,49 @@ tracks/0/keys = {
 "values": [ Vector2( 0.3, 0.3 ), Vector2( 0.35, 0.35 ) ]
 }
 
-[node name="DialogBox" type="Control"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-script = ExtResource( 4 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="NinePatchRect" type="NinePatchRect" parent="."]
-margin_left = 219.061
-margin_top = 390.501
-margin_right = 1009.06
-margin_bottom = 714.501
-size_flags_horizontal = 0
-size_flags_vertical = 0
+[node name="DialogBox" type="NinePatchRect"]
+margin_left = 219.0
+margin_top = 521.0
+margin_right = 1009.0
+margin_bottom = 715.0
 texture = ExtResource( 2 )
 region_rect = Rect2( 31.282, 28.711, 392, 93 )
+script = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MarginContainer" type="MarginContainer" parent="NinePatchRect"]
-margin_left = 22.0
-margin_top = 23.0
-margin_right = 762.0
-margin_bottom = 248.0
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchor_left = 0.016
+anchor_top = 0.077
+anchor_right = 0.975
+anchor_bottom = 0.883
+margin_left = 0.36
+margin_top = 0.0619984
+margin_right = -0.25
+margin_bottom = 14.698
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="NinePatchRect/MarginContainer"]
-margin_top = 91.0
-margin_right = 740.0
-margin_bottom = 134.0
+[node name="Label" type="Label" parent="MarginContainer"]
+margin_right = 757.0
+margin_bottom = 171.0
+size_flags_vertical = 1
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
 autowrap = true
 percent_visible = 0.0
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="NinePatchRect/MarginContainer/Label"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MarginContainer/Label"]
 anims/Write = SubResource( 2 )
 
-[node name="NinePatchRect" type="NinePatchRect" parent="NinePatchRect"]
-margin_top = -45.0
-margin_right = 200.0
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+anchor_top = -0.232
+anchor_right = 0.253
+margin_top = 0.00800323
+margin_right = 0.12999
 margin_bottom = 8.0
 texture = ExtResource( 2 )
 region_rect = Rect2( 23, 26, 401.014, 97.3694 )
@@ -99,12 +96,13 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="SpeakerName" type="Label" parent="NinePatchRect/NinePatchRect"]
+[node name="SpeakerName" type="Label" parent="NinePatchRect"]
 anchor_right = 0.817
 margin_left = 7.0
 margin_top = 5.0
 margin_right = 32.0
 margin_bottom = 49.0
+size_flags_vertical = 1
 custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
@@ -113,24 +111,20 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="NinePatchRect2" type="NinePatchRect" parent="NinePatchRect"]
-margin_left = 732.0
-margin_top = 266.0
-margin_right = 772.0
-margin_bottom = 306.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="TextureButton" type="TextureButton" parent="NinePatchRect/NinePatchRect2"]
-margin_top = -3.0
-margin_right = 100.0
-margin_bottom = 147.0
+[node name="TextureButton" type="TextureButton" parent="."]
+anchor_left = 0.915
+anchor_top = 0.708
+anchor_right = 0.953
+anchor_bottom = 1.0
+margin_left = 0.344238
+margin_top = -0.0207062
+margin_right = 70.3242
+margin_bottom = 93.3313
 rect_scale = Vector2( 0.3, 0.3 )
 texture_normal = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="NinePatchRect/NinePatchRect2/TextureButton"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="TextureButton"]
 anims/Next = SubResource( 4 )

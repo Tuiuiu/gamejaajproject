@@ -410,7 +410,7 @@ animations = [ {
 } ]
 
 [sub_resource type="RectangleShape2D" id=93]
-extents = Vector2( 20, 20 )
+extents = Vector2( 16, 16 )
 
 [sub_resource type="Animation" id=94]
 resource_name = "ExplosionSize"
@@ -425,22 +425,23 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.3, 1.7, 2 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 0.2, 0.2 ), Vector2( 3.52839, 3.52839 ), Vector2( 3.52839, 3.52839 ), Vector2( 0.2, 0.2 ) ]
+"values": [ Vector2( 0.2, 0.2 ), Vector2( 2.687, 2.687 ), Vector2( 2.687, 2.687 ), Vector2( 0.2, 0.2 ) ]
 }
 
 [node name="Green_fireball" type="Area2D"]
 script = ExtResource( 31 )
+__meta__ = {
+"_edit_horizontal_guides_": [ -16.4553, 16.0716 ]
+}
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-position = Vector2( 20.2271, 20.2271 )
-scale = Vector2( 3.52839, 3.52839 )
+scale = Vector2( 2.687, 2.687 )
 frames = SubResource( 92 )
 animation = "Cast"
-frame = 6
+frame = 14
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 25.0328, 21.676 )
 shape = SubResource( 93 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
