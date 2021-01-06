@@ -112,7 +112,7 @@ margin_bottom = 32.0
 pause_mode = 2
 position = Vector2( 290, -100 )
 scale = Vector2( 9.5, 9.5 )
-frame = 15
+frame = 19
 
 [node name="Description" type="Label" parent="CenterContainer/VBoxContainer"]
 margin_top = 82.0

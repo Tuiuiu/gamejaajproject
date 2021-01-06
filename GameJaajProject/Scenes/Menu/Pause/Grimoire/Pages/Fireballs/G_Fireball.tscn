@@ -112,7 +112,7 @@ margin_bottom = 32.0
 [node name="AnimatedSprite" parent="CenterContainer/VBoxContainer" instance=ExtResource( 3 )]
 position = Vector2( 290, -100 )
 scale = Vector2( 9.5, 9.5 )
-frame = 9
+frame = 18
 
 [node name="Description" type="Label" parent="CenterContainer/VBoxContainer"]
 margin_top = 82.0
@@ -129,11 +129,6 @@ autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="AnimatedSprite" parent="CenterContainer/VBoxContainer" instance=ExtResource( 3 )]
-position = Vector2( 285, -100 )
-scale = Vector2( 9.5, 9.5 )
-frame = 9
 
 [node name="FlavorText" type="Label" parent="."]
 margin_left = 272.878
