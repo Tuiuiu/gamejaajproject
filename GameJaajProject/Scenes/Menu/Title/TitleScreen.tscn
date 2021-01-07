@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Scenes/Menu/Title/TitleScreen.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Menu/Title/SettingsButton.tscn" type="PackedScene" id=2]
@@ -8,6 +8,10 @@
 [ext_resource path="res://Assets/BGM/3. Limited Time (Main Theme).ogg" type="AudioStream" id=6]
 [ext_resource path="res://Assets/UI/titlescreen/sound_on.png" type="Texture" id=7]
 [ext_resource path="res://Assets/UI/titlescreen/sound_off.png" type="Texture" id=8]
+[ext_resource path="res://Scenes/Menu/Title/Background.gd" type="Script" id=9]
+[ext_resource path="res://Assets/Background/Nebula Aqua-Pink.png" type="Texture" id=10]
+[ext_resource path="res://Assets/Background/Nebula Blue.png" type="Texture" id=11]
+[ext_resource path="res://Assets/Background/Nebula Red.png" type="Texture" id=12]
 
 [sub_resource type="DynamicFontData" id=1]
 font_path = "res://Assets/Fonts/Montserrat-ExtraBold.ttf"
@@ -29,6 +33,70 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ -20.0, -10.0 ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "FadeIn"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "FadeOut"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "FadeIn"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "FadeOut"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
 [node name="TitleScreen" type="Control"]
@@ -127,6 +195,31 @@ expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Background" type="Node2D" parent="."]
+z_index = -1
+script = ExtResource( 9 )
+
+[node name="AquaPinkBG" type="Sprite" parent="Background"]
+modulate = Color( 1, 1, 1, 0 )
+texture = ExtResource( 10 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Background/AquaPinkBG"]
+anims/FadeIn = SubResource( 4 )
+anims/FadeOut = SubResource( 5 )
+
+[node name="BlueBG" type="Sprite" parent="Background"]
+modulate = Color( 1, 1, 1, 0 )
+z_index = -1
+texture = ExtResource( 11 )
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="Background/BlueBG"]
+anims/FadeIn = SubResource( 6 )
+anims/FadeOut = SubResource( 7 )
+
+[node name="RedBG" type="Sprite" parent="Background"]
+z_index = -2
+texture = ExtResource( 12 )
 [connection signal="pressed" from="Menu/Center/Buttons/PlayButton" to="." method="start_game"]
 [connection signal="pressed" from="Menu/Center/Buttons/QuitButton" to="." method="quit_game"]
 [connection signal="toggled" from="SoundIcon" to="." method="_on_SoundIcon_toggled"]

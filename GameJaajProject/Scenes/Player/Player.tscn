@@ -229,7 +229,7 @@ script = ExtResource( 2 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 36 )
 animation = "Run"
-frame = 1
+frame = 3
 playing = true
 
 [node name="HexAnimation" parent="." instance=ExtResource( 11 )]
