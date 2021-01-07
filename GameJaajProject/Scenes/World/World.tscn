@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://Scenes/Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
@@ -18,10 +18,10 @@
 [ext_resource path="res://Assets/Light/light texture.png" type="Texture" id=16]
 [ext_resource path="res://Assets/Background/glass texture2.jpg" type="Texture" id=17]
 [ext_resource path="res://Scenes/World/Light2D.gd" type="Script" id=18]
-[ext_resource path="res://Scenes/World/Environment/Polygon2D.gd" type="Script" id=19]
 [ext_resource path="res://Scenes/World/CanvasEffects.gd" type="Script" id=20]
 [ext_resource path="res://Scenes/World/UI/CooldownsContainer.tscn" type="PackedScene" id=21]
 [ext_resource path="res://Scenes/World/UI/BuffsContainer.tscn" type="PackedScene" id=22]
+[ext_resource path="res://Assets/Stairs/ground.png" type="Texture" id=23]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Background"
@@ -117,23 +117,6 @@ _data = {
 [sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 148.576, 8 )
 
-[sub_resource type="Animation" id=6]
-resource_name = "Down"
-length = 0.5
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( -60.785, 3 ), Vector2( -194.134, 32.9595 ) ]
-}
-
 [sub_resource type="DynamicFont" id=7]
 size = 22
 font_data = ExtResource( 6 )
@@ -182,6 +165,53 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 0.707106, 1.86607, 1 ),
 "update": 0,
 "values": [ Color( 0.0784314, 0.0745098, 0.0745098, 1 ), Color( 0.835938, 0.834534, 0.800018, 1 ), Color( 0.0784314, 0.0745098, 0.0745098, 1 ) ]
+}
+
+[sub_resource type="TileSet" id=11]
+0/name = "ground.png 0"
+0/texture = ExtResource( 23 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 160, 50, 64, 63 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
+0/z_index = 0
+1/name = "ground.png 1"
+1/texture = ExtResource( 23 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 1, 1, 1, 1 )
+1/region = Rect2( 192, -13, 64, 64 )
+1/tile_mode = 0
+1/occluder_offset = Vector2( 0, 0 )
+1/navigation_offset = Vector2( 0, 0 )
+1/shape_offset = Vector2( 0, 0 )
+1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+1/shape_one_way = false
+1/shape_one_way_margin = 0.0
+1/shapes = [  ]
+1/z_index = 0
+
+[sub_resource type="Animation" id=12]
+resource_name = "Down"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( -64, 32 ) ]
 }
 
 [node name="World" type="Node2D"]
@@ -246,6 +276,7 @@ scale = Vector2( 4.57724, 0.25 )
 texture = ExtResource( 2 )
 
 [node name="TestFloor" type="StaticBody2D" parent="LevelInteractables"]
+visible = false
 position = Vector2( 207.699, 505.772 )
 rotation = -0.108134
 scale = Vector2( 3.97136, 1.01204 )
@@ -260,16 +291,6 @@ position = Vector2( 85.953, -2.24487 )
 scale = Vector2( 4.57724, 0.25 )
 texture = ExtResource( 2 )
 
-[node name="Stair" type="Polygon2D" parent="LevelInteractables"]
-visible = false
-position = Vector2( -60.785, 3 )
-color = Color( 0.0156863, 0.0156863, 0.0156863, 1 )
-polygon = PoolVector2Array( 541.12, 470.797, 354.91, 479.474, 355.549, 515.207, 215.242, 518.574, 214.119, 556.738, 79.4237, 560.105, 79.4237, 605.004, -28.3327, 607.249, -29.4551, 785.72, 1916.83, 780.66, 1901.85, 127.398, 1447.86, 131.893, 1449.36, 181.337, 1301.03, 185.832, 1302.52, 232.28, 1170.67, 235.276, 1170.67, 284.721, 1037.32, 286.219, 1038.82, 338.66, 884.496, 340.158, 885.994, 398.592, 746.652, 398.592, 746.652, 440.545, 631.282, 442.043, 550.373, 440.545 )
-script = ExtResource( 19 )
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="LevelInteractables/Stair"]
-anims/Down = SubResource( 6 )
-
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 460.209, 429.903 )
 offset = Vector2( 200, -30 )
@@ -278,6 +299,7 @@ script = ExtResource( 13 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 460.209, 430.184 )
+rotation = -0.349066
 
 [node name="Spells" type="Node2D" parent="."]
 
@@ -392,6 +414,16 @@ __meta__ = {
 anims/Flash = SubResource( 10 )
 
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource( 11 )
+cell_size = Vector2( 32, 32 )
+cell_tile_origin = 2
+format = 1
+tile_data = PoolIntArray( 42, 0, 0, 65576, 0, 0, 131110, 0, 0, 196644, 0, 0, 262178, 0, 0, 327712, 0, 0, 393246, 0, 0, 458780, 0, 0, 524314, 0, 0, 589848, 0, 0, 655382, 0, 0, 720916, 0, 0, 786450, 0, 0, 851984, 0, 0, 917518, 0, 0, 983052, 0, 0, 1048586, 0, 0, 1114120, 0, 0, 1179654, 0, 0, 1245188, 0, 0, 1310722, 0, 0, 1376256, 0, 0 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="TileMap"]
+anims/Down = SubResource( 12 )
 [connection signal="timeout" from="Foreground/Timer" to="Foreground" method="_on_Timer_timeout"]
 [connection signal="health_changed" from="Player" to="UI" method="_on_Player_health_changed"]
 [connection signal="timeout" from="RunTimer" to="." method="_on_RunTimer_timeout"]
