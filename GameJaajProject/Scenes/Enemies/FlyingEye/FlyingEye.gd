@@ -32,6 +32,7 @@ func fireball_cast():
         #print(clone.position)
         #print(clone.global_position)
         clone.position = position
+        clone.set_rotation($AnimatedSprite.rotation_degrees)
         get_parent().add_child(clone)
         close_to_floor = false
         $AnimatedSprite.play("Dive")

@@ -118,15 +118,15 @@ _data = {
 [sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 148.576, 8 )
 
+[sub_resource type="DynamicFont" id=6]
+size = 22
+font_data = ExtResource( 6 )
+
 [sub_resource type="DynamicFont" id=7]
 size = 22
 font_data = ExtResource( 6 )
 
-[sub_resource type="DynamicFont" id=8]
-size = 22
-font_data = ExtResource( 6 )
-
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=8]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Count/Counter:rect_position")
 tracks/0/interp = 1
@@ -152,7 +152,7 @@ tracks/1/keys = {
 "values": [ Color( 0.960784, 0.227451, 0.0352941, 1 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=9]
 resource_name = "Flash"
 length = 2.0
 tracks/0/type = "value"
@@ -168,7 +168,7 @@ tracks/0/keys = {
 "values": [ Color( 0.0784314, 0.0745098, 0.0745098, 1 ), Color( 0.835938, 0.834534, 0.800018, 1 ), Color( 0.0784314, 0.0745098, 0.0745098, 1 ) ]
 }
 
-[sub_resource type="TileSet" id=11]
+[sub_resource type="TileSet" id=10]
 0/name = "ground.png 0"
 0/texture = ExtResource( 23 )
 0/tex_offset = Vector2( 0, 0 )
@@ -198,7 +198,7 @@ tracks/0/keys = {
 1/shapes = [  ]
 1/z_index = 0
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=11]
 resource_name = "Down"
 length = 2.0
 loop = true
@@ -264,7 +264,7 @@ curve = SubResource( 4 )
 
 [node name="PlayerFloor" type="StaticBody2D" parent="LevelInteractables"]
 visible = false
-position = Vector2( 358.728, 473.475 )
+position = Vector2( 357.728, 486.475 )
 collision_layer = 2
 collision_mask = 2
 
@@ -301,8 +301,8 @@ current = true
 script = ExtResource( 13 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 460.209, 430.184 )
-rotation = -0.349066
+position = Vector2( 461.209, 440.184 )
+z_index = 1
 
 [node name="Spells" type="Node2D" parent="."]
 
@@ -353,7 +353,7 @@ margin_left = 12.1298
 margin_top = 7.69058
 margin_right = 84.1298
 margin_bottom = 51.6906
-custom_fonts/font = SubResource( 7 )
+custom_fonts/font = SubResource( 6 )
 text = "HP "
 valign = 1
 __meta__ = {
@@ -369,7 +369,7 @@ margin_left = -0.299999
 margin_top = -7.776
 margin_right = 72.0
 margin_bottom = 16.928
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = SubResource( 7 )
 text = "100/100"
 align = 2
 valign = 2
@@ -390,7 +390,7 @@ texture_progress = ExtResource( 8 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="UI/CanvasLayer/HealthBar"]
 autoplay = "shake"
-anims/shake = SubResource( 9 )
+anims/shake = SubResource( 8 )
 
 [node name="PauseScreen" parent="UI/CanvasLayer" instance=ExtResource( 15 )]
 visible = false
@@ -408,6 +408,7 @@ margin_top = 116.0
 margin_bottom = -572.0
 
 [node name="CanvasEffects" type="CanvasModulate" parent="."]
+visible = false
 color = Color( 0.0784314, 0.0745098, 0.0745098, 1 )
 script = ExtResource( 20 )
 __meta__ = {
@@ -415,19 +416,19 @@ __meta__ = {
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasEffects"]
-anims/Flash = SubResource( 10 )
+anims/Flash = SubResource( 9 )
 
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
 
 [node name="TileMap" type="TileMap" parent="."]
-tile_set = SubResource( 11 )
+tile_set = SubResource( 10 )
 cell_size = Vector2( 32, 32 )
 cell_tile_origin = 2
 format = 1
 tile_data = PoolIntArray( 42, 0, 0, 65576, 0, 0, 131110, 0, 0, 196644, 0, 0, 262178, 0, 0, 327712, 0, 0, 393246, 0, 0, 458780, 0, 0, 524314, 0, 0, 589848, 0, 0, 655382, 0, 0, 720916, 0, 0, 786450, 0, 0, 851984, 0, 0, 917518, 0, 0, 983052, 0, 0, 1048586, 0, 0, 1114120, 0, 0, 1179654, 0, 0, 1245188, 0, 0, 1310722, 0, 0, 1376256, 0, 0 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="TileMap"]
-anims/Down = SubResource( 12 )
+anims/Down = SubResource( 11 )
 
 [node name="TileMap2" parent="." instance=ExtResource( 19 )]
 position = Vector2( 0, -2 )

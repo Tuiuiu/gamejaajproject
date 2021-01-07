@@ -30,6 +30,9 @@ func set_position(pos):
 func set_direction(dir):
     direction = dir
     
+func set_rotation(deg):
+    $AnimatedSprite.rotation_degrees = deg
+    
 func set_target(tgt):
     target = tgt
 
@@ -48,7 +51,7 @@ func on_body_entered(body):
                     
 
 func on_area_entered(area):
-    if(area.is_in_group("BossSpells")):
+    if(area.is_in_group("BossSpells") and !area.countered):
         area.counter(type)
         set_target(area)
         explode()

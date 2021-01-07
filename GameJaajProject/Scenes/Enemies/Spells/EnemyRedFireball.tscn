@@ -307,7 +307,7 @@ script = ExtResource( 32 )
 scale = Vector2( 2.687, 2.687 )
 frames = SubResource( 62 )
 animation = "Cast"
-frame = 25
+frame = 27
 playing = true
 flip_h = true
 

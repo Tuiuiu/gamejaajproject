@@ -1,7 +1,8 @@
 extends Area2D
 
 var damage = 10.0
-var direction = Vector2(-775, 88).normalized()
+var countered = false
+var direction = Vector2(-775, 382).normalized()
 var speed = 300.0
 
 # Called when the node enters the scene tree for the first time.
@@ -13,8 +14,12 @@ func _physics_process(delta):
 
 func counter(type):
     if (type == "redfireball"):
+        countered = true
         explode()
         
+func set_rotation(deg):
+    $AnimatedSprite.rotation_degrees = deg
+
 func explode():
     self.disconnect("body_entered", self, "on_body_entered")
     $AnimatedSprite.play("Explosion")

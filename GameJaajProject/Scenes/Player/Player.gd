@@ -113,9 +113,9 @@ func hit(damage):
         else:
             hp -= damage
             emit_signal("health_changed", hp)
+            camera.shake(0.2, 15, 8)
             if (hp > 0):
                 change_state("hit")
-                camera.shake(0.2, 15, 8)
                 $AnimationPlayer.play("DamageEffect")
                 yield($AnimatedSprite, "animation_finished")
                 change_state("run")
@@ -173,6 +173,7 @@ func fireball_cast(type):
         var dir = (dst - src).normalized()
         clone.set_direction(dir)
         clone.set_position(position)
+        clone.set_rotation($AnimatedSprite.rotation_degrees)
         castSpells.add_child(clone) 
         cooldowns[type] = true
         casting = true
