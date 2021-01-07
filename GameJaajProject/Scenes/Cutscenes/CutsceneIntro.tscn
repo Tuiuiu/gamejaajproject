@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://Assets/Background/CastleWallsOuter_300%.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Background/background.png" type="Texture" id=2]
@@ -209,6 +209,22 @@ tracks/1/keys = {
 "values": [ Vector2( 680, 0 ), Vector2( 680, -20 ) ]
 }
 
+[sub_resource type="Animation" id=19]
+resource_name = "Fade"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 1 ) ]
+}
+
 [node name="CutsceneIntro" type="Node2D"]
 script = ExtResource( 9 )
 
@@ -257,7 +273,7 @@ __meta__ = {
 position = Vector2( -80, 628.084 )
 scale = Vector2( 1.22105, 1.22105 )
 animation = "Run"
-frame = 2
+frame = 4
 playing = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Node2D"]
@@ -270,7 +286,7 @@ self_modulate = Color( 0.0196078, 0.0196078, 0.0196078, 1 )
 position = Vector2( 499.697, -1383.94 )
 scale = Vector2( 1.87334, 1.87334 )
 z_index = 1
-frame = 2
+frame = 0
 playing = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -280,3 +296,18 @@ margin_left = 8.0
 margin_top = 329.0
 margin_right = 801.0
 margin_bottom = 523.0
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -957.055
+margin_top = -2176.62
+margin_right = 2242.95
+margin_bottom = 1308.38
+color = Color( 0, 0, 0, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ColorRect"]
+anims/Fade = SubResource( 19 )

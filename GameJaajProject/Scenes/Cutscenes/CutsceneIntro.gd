@@ -38,5 +38,12 @@ func _process(_delta):
         ["The Circle of Magi wondered if it was too late to stop the return of Tharnax"," "],
         ["Lumorith rushed in wishing it wasn't too late to save his brother, Zahr", " "],
         ["Heavens, how wrong were they...", " "]]
+        $CanvasLayer/DialogBox.load_dialog()
         $CanvasLayer/DialogBox.visible = true
+        yield($Camera2D/AnimationPlayer, "animation_finished")
+        final_fade()
     
+func final_fade():
+    $ColorRect/AnimationPlayer.play("Fade")
+    yield($ColorRect/AnimationPlayer, "animation_finished")
+    Global.goto_scene("res://Scenes/World/World.tscn")

@@ -7,7 +7,7 @@ func _ready():
     animation.play("FadeIn")
 
 func start_game():
-    Global.goto_scene("res://Scenes/World/World.tscn")
+    Global.goto_scene("res://Scenes/Cutscenes/CutsceneIntro.tscn")
 
 func quit_game():
     get_tree().quit()
