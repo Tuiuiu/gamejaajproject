@@ -4,7 +4,7 @@ var pode = false
 
 func _ready():
     #Arrives and sighs
-    $CanvasLayer/DialogBox.dialog = [["*sigh*", "protagonist"]]
+    $CanvasLayer/DialogBox.dialog = [["*sigh*", "Lumorith"]]
     $CanvasLayer/DialogBox.visible = false
     $Node2D/CutscenePlayer.play("Run")
     $Node2D/AnimationPlayer.play("Arrive")
