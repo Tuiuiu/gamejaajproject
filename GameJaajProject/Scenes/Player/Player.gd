@@ -118,7 +118,8 @@ func hit(damage):
                 change_state("hit")
                 $AnimationPlayer.play("DamageEffect")
                 yield($AnimatedSprite, "animation_finished")
-                change_state("run")
+                if (!dead):
+                    change_state("run")
             elif (hp <= 0):
                 die()
 
@@ -181,7 +182,8 @@ func fireball_cast(type):
         emit_signal("spell_cast", type, (type + 0.5))
         yield($AnimatedSprite, "animation_finished")
         casting = false
-        change_state("run")   
+        if (!dead):
+            change_state("run")   
 
 func flashlight_cast():
     world.flashlight_spell()
@@ -225,9 +227,10 @@ func heal_chime_cast():
     castSpells.add_child(clone)
     clone.cast_spell()
     yield(clone, "heal")
-    heal(50)
-    emit_signal("spell_cast", 7, 10.0)
-    change_state("run")
+    if (!dead):
+        heal(50)
+        emit_signal("spell_cast", 7, 10.0)
+        change_state("run")
     
 func toll_dead_cast():
     cooldowns[8] = true
@@ -238,9 +241,10 @@ func toll_dead_cast():
     castSpells.add_child(clone)
     clone.cast_spell()
     yield(clone, "toll")
-    world.toll_the_dead()
-    emit_signal("spell_cast", 8, 10.0)
-    change_state("run")
+    if (!dead):
+        world.toll_the_dead()
+        emit_signal("spell_cast", 8, 10.0)
+        change_state("run")
 
 func sequence_pressed(action):
     $CastingAudioEffects.sequence_pressed(action)

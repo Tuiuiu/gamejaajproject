@@ -6,6 +6,7 @@ var player
 var canvasModulator
 var cooldownsHandler
 var buffsHandler
+var floorAnimator
 var GAME_MAX_TIME = 100.0
 onready var runTimer = get_node("RunTimer")
 onready var levelHandler = get_node("/root/LevelHandler")
@@ -18,6 +19,7 @@ func _ready():
     canvasModulator = $CanvasEffects
     cooldownsHandler = $UI/CanvasLayer/CooldownsContainer
     buffsHandler = $UI/CanvasLayer/BuffsContainer
+    floorAnimator = $TileMap/AnimationPlayer
     runTimer.wait_time = GAME_MAX_TIME
     runTimer.paused = true
     runTimer.start()
@@ -27,6 +29,7 @@ func _ready():
     player.connect("add_buff", buffsHandler, "add_buff_effect")
     player.connect("remove_buff", buffsHandler, "remove_buff_effect")
     cooldownsHandler.connect("cooldown_over", player, "cooldown_over_handler")
+    floorAnimator.play("Down")
     start_level()
     
 func reset():
@@ -34,6 +37,7 @@ func reset():
     spawner.reset()
     for spell in activeSpells.get_children():
         spell.queue_free()
+    floorAnimator.play("Down")
     resume_game()
 
 func start_level():
@@ -43,6 +47,10 @@ func start_level():
 
 func level_over_handler():
     print("Level is Over! Reset and restart")
+    #floorAnimator.play("Down")
+    #yield(floorAnimator, "animation_finished")
+    floorAnimator.play("Ending")
+    yield(floorAnimator, "animation_finished")
     runTimer.paused = true
     reset()
     levelHandler.next_level()
