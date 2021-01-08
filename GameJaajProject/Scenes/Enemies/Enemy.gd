@@ -28,10 +28,14 @@ func change_state(new_state):
         match new_state:
             "run":
                 $AnimatedSprite.play("Run")
+            "move":
+                $AnimatedSprite.play("Move")
             "hit":
                 $AnimatedSprite.play("Hit")
             "attack":
                 $AnimatedSprite.play("Attack")
+            "attack2":
+                $AnimatedSprite.play("Attack2")
             "death":
                 die()
         state = new_state
@@ -51,6 +55,13 @@ func take_damage(dmg):
     health -= dmg
     if (health <= 0):
         change_state("death")
+    else:
+        change_state("hit")
+        yield($AnimatedSprite, "animation_finished")
+        if(type == "cultist"):
+            change_state("move")
+        else:
+            change_state("run")
 
 func is_alive():
     return !dead

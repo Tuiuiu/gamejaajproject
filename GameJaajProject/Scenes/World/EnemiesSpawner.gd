@@ -8,7 +8,8 @@ var enemiesList
 var enemies = [
     preload("res://Scenes/Enemies/Goblin/Goblin.tscn"),
     preload("res://Scenes/Enemies/Skeleton/Skeleton.tscn"),
-    preload("res://Scenes/Enemies/FlyingEye/FlyingEye.tscn")
+    preload("res://Scenes/Enemies/FlyingEye/FlyingEye.tscn"),
+    preload("res://Scenes/Enemies/Cultist/Cultist.tscn")
 ]
 var levelHandler
 
