@@ -22,6 +22,7 @@ func set_rotation(deg):
 
 func explode():
     self.disconnect("body_entered", self, "on_body_entered")
+    $AnimatedSprite.material = null
     $AnimatedSprite.play("Explosion")
     $AnimationPlayer.play("ExplosionSize")
     yield($AnimatedSprite, "animation_finished")
