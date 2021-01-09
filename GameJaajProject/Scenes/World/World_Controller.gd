@@ -44,6 +44,8 @@ func reset():
 func start_level():
     $Fader/AnimationPlayer.play("FadeIn")
     yield($Fader/AnimationPlayer, "animation_finished")
+    player.change_state("run")
+    floorAnimator.play("Down")
     resume_game()
     spawner.start()
     runTimer.paused = false

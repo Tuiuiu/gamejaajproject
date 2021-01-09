@@ -56,11 +56,11 @@ tracks/1/keys = {
 }
 
 [sub_resource type="CubeMesh" id=2]
-size = Vector3( 8, 8, 2 )
+size = Vector3( 12, 8, 2 )
 
 [sub_resource type="Animation" id=3]
 resource_name = "Reflect"
-length = 3.5
+length = 4.5
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:scale")
@@ -69,10 +69,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1.8, 3 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.2, 1.8, 3.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 0.361, 1 ), Vector2( 0.563404, 1 ), Vector2( 0.16855, 1 ) ]
+"values": [ Vector2( 0, 0.75 ), Vector2( 0.361, 0.75 ), Vector2( 0.563, 0.75 ), Vector2( 0.169, 0.75 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath(".:position")
@@ -81,10 +81,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 1.8, 3 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.2, 1.8, 3.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 3.82203, -0.770972 ), Vector2( 0.475259, -0.751152 ), Vector2( -3.65299, -0.691692 ) ]
+"values": [ Vector2( 4.5, -0.759 ), Vector2( 4.5, -0.771 ), Vector2( 0.475259, -0.751152 ), Vector2( -5.85, -0.692 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath(".:energy")
@@ -93,10 +93,10 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 1.8, 3 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.2, 1.8, 3.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ 0.39, 1.38, 0.58 ]
+"values": [ 0.0, 0.39, 1.38, 0.58 ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath(".:visible")
@@ -105,7 +105,7 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 3 ),
+"times": PoolRealArray( 0, 3.2 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ true, false ]
@@ -113,7 +113,7 @@ tracks/3/keys = {
 
 [sub_resource type="Curve2D" id=4]
 _data = {
-"points": PoolVector2Array( 137.331, -216.706, -137.331, 216.706, -156.321, -347.505, 0, 0, 0, 0, -584.694, -129.539, 297.341, -10.0794, -297.341, 10.0794, -1161.59, 125.805 )
+"points": PoolVector2Array( 82.364, -67.0786, -82.364, 67.0786, -310.365, -251.399, 72.832, -43.8406, -72.832, 43.8406, -437.644, -148.162, 26.8701, -15.5563, -26.8701, 15.5563, -629.27, -35.0248, 120.396, -14.0586, -120.396, 14.0586, -846.352, 24.3722 )
 }
 
 [sub_resource type="RectangleShape2D" id=5]
@@ -226,6 +226,18 @@ tracks/1/keys = {
 "update": 0,
 "values": [ Vector2( 0, -2 ), Vector2( -128, 62 ) ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("../Player:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
 
 [sub_resource type="Animation" id=12]
 resource_name = "Ending"
@@ -320,21 +332,22 @@ script = ExtResource( 7 )
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="Background"]
 modulate = Color( 0.6, 0.635294, 0.690196, 1 )
-position = Vector2( 450.285, 474.822 )
+position = Vector2( 574.738, 303.279 )
 scale = Vector2( 35, 120 )
 mesh = SubResource( 2 )
 texture = ExtResource( 17 )
 
 [node name="Light2D" type="Light2D" parent="Background/MeshInstance2D"]
-position = Vector2( 3.82203, -0.770972 )
-scale = Vector2( 0.361, 1 )
+position = Vector2( 2.19889, -0.759652 )
+scale = Vector2( 0.476492, 0.75 )
 texture = ExtResource( 16 )
 texture_scale = 0.01
-energy = 0.39
+energy = 0.956023
 shadow_enabled = true
 script = ExtResource( 18 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Background/MeshInstance2D/Light2D"]
+autoplay = "Reflect"
 anims/Reflect = SubResource( 3 )
 
 [node name="Foreground" type="Node2D" parent="."]
@@ -345,7 +358,7 @@ script = ExtResource( 14 )
 one_shot = true
 
 [node name="PathToFollow" type="Path2D" parent="Foreground"]
-position = Vector2( 0, -200 )
+position = Vector2( 2.12134, -179.494 )
 curve = SubResource( 4 )
 
 [node name="LevelInteractables" type="Node2D" parent="."]
@@ -390,7 +403,6 @@ script = ExtResource( 13 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 461.209, 440.184 )
-rotation = 0.349066
 z_index = 1
 
 [node name="Spells" type="Node2D" parent="."]
