@@ -30,6 +30,7 @@ func _ready():
     player.connect("remove_buff", buffsHandler, "remove_buff_effect")
     cooldownsHandler.connect("cooldown_over", player, "cooldown_over_handler")
     floorAnimator.play("Down")
+    pause_game()
     start_level()
     
 func reset():
@@ -41,18 +42,28 @@ func reset():
     resume_game()
 
 func start_level():
+    $Fader/AnimationPlayer.play("FadeIn")
+    yield($Fader/AnimationPlayer, "animation_finished")
     resume_game()
     spawner.start()
     runTimer.paused = false
 
 func level_over_handler():
     print("Level is Over! Reset and restart")
-    #floorAnimator.play("Down")
-    #yield(floorAnimator, "animation_finished")
-    floorAnimator.play("Ending")
-    yield(floorAnimator, "animation_finished")
+    player.deactivate()
     runTimer.paused = true
+    var door = $TileMap/Door
+    floorAnimator.play("Ending")
+    door.play("Idle")
+    yield(floorAnimator, "animation_finished")
+    player.change_state("idle")
+    door.play("Open")
+    yield(door, "animation_finished")
+    door.stop()
+    $Fader/AnimationPlayer.play("FadeOut")
+    yield($Fader/AnimationPlayer, "animation_finished")
     reset()
+    # Chamar o proximo level
     levelHandler.next_level()
     start_level()
 

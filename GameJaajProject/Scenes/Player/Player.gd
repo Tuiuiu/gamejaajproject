@@ -14,6 +14,7 @@ var state
 var castSpells
 var cooldownHandler
 var availableSpells = []
+var active = true
 var bossfight = false
 var hex = "none"
 var casting = false
@@ -46,28 +47,28 @@ func _ready():
     change_state("run")   
         
 func _physics_process(delta):
-    if (!is_on_floor()):
-        velocity.y += GRAVITY
-    if (is_on_floor()):
-        velocity.y = 0
-        if (state == "fall"):
-            change_state("run")
-    if (Input.is_action_just_pressed("ui_up")):
-        if (!dead):
-            if (is_on_floor()):
-                velocity.y = -JUMP_FORCE
-                jump_count = 1
-                change_state("jump")
-            elif (!is_on_floor()):
-                if jump_count < 2:
-                    jump_count += 1
-                    velocity.y = -JUMP_FORCE + 70
+    if (active):
+        if (!is_on_floor()):
+            velocity.y += GRAVITY
+        if (is_on_floor()):
+            velocity.y = 0
+            if (state == "fall"):
+                change_state("run")
+        if (Input.is_action_just_pressed("ui_up")):
+            if (!dead):
+                if (is_on_floor()):
+                    velocity.y = -JUMP_FORCE
+                    jump_count = 1
                     change_state("jump")
-        
-    move_and_slide(velocity, Vector2(0, -1))
+                elif (!is_on_floor()):
+                    if jump_count < 2:
+                        jump_count += 1
+                        velocity.y = -JUMP_FORCE + 70
+                        change_state("jump")   
+        move_and_slide(velocity, Vector2(0, -1))
 
 func _process(delta):
-    if hp <= 0:
+    if hp <= 0 or !active:
         pass
     elif (velocity.y > 0 && state == "jump"):
         change_state("fall")
@@ -147,7 +148,7 @@ func get_target():
 
 func try_to_cast(index):
     # If player is alive
-    if(is_alive()):
+    if(is_alive() and active):
         # If skill is not on cooldown
         if (!casting and !cooldowns[index]):
             match index:
@@ -247,7 +248,8 @@ func toll_dead_cast():
         change_state("run")
 
 func sequence_pressed(action):
-    $CastingAudioEffects.sequence_pressed(action)
+    if (active):
+        $CastingAudioEffects.sequence_pressed(action)
 
 func cooldown_over_handler(id):
     if (id == 4):
@@ -255,3 +257,8 @@ func cooldown_over_handler(id):
         cooldowns[id+2] = false
     cooldowns[id] = false
 
+func activate():
+    active = true
+
+func deactivate():
+    active = false

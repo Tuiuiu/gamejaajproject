@@ -17,7 +17,7 @@ func _physics_process(delta):
     if (exploded):
         global_position = target.global_position
     else:
-        if (start_position.distance_to(global_position) > 600):
+        if (start_position.distance_to(global_position) > 800):
             queue_free()
         else:
             velocity = direction * speed
