@@ -196,7 +196,6 @@ __meta__ = {
 position = Vector2( -80, 628.084 )
 scale = Vector2( 1.22105, 1.22105 )
 animation = "Run"
-frame = 0
 playing = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Node2D"]
@@ -209,7 +208,7 @@ self_modulate = Color( 0.0196078, 0.0196078, 0.0196078, 1 )
 position = Vector2( 499.697, -1383.94 )
 scale = Vector2( 1.87334, 1.87334 )
 z_index = 1
-frame = 0
+frame = 1
 playing = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
