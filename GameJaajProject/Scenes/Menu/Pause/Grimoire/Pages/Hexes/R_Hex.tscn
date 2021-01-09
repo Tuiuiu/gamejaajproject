@@ -1,0 +1,176 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Scenes/Menu/Pause/Grimoire/KeysAnimations/R.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Assets/Fonts/grimoire_font.tres" type="DynamicFontData" id=2]
+[ext_resource path="res://Scenes/Menu/Pause/Grimoire/KeysAnimations/H.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/SpellAnimations/a_RedHex.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Assets/UI/arrow.png" type="Texture" id=6]
+
+[sub_resource type="DynamicFont" id=1]
+size = 34
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 24
+font_data = ExtResource( 2 )
+
+[sub_resource type="Gradient" id=3]
+offsets = PoolRealArray( 0.0193548, 0.535484, 1 )
+colors = PoolColorArray( 0.0196078, 0.0196078, 0.0196078, 0.392157, 0.984314, 0.984314, 0.984314, 0.392157, 0, 0, 0, 0.392157 )
+
+[sub_resource type="GradientTexture" id=4]
+gradient = SubResource( 3 )
+
+[sub_resource type="Animation" id=5]
+resource_name = "shake"
+length = 0.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("LArrow:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 250, 300 ), Vector2( 236, 300 ), Vector2( 250, 300 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("RArrow:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 926, 300 ), Vector2( 940, 300 ), Vector2( 926, 300 ) ]
+}
+
+[node name="RHex_Page" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 0.840881
+margin_top = -0.493958
+margin_right = 0.84082
+margin_bottom = -0.493958
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -1.12244
+margin_right = -1.12244
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+margin_left = 340.0
+margin_top = 204.0
+margin_right = 940.0
+margin_bottom = 516.0
+
+[node name="SpellName" type="Label" parent="CenterContainer/VBoxContainer"]
+margin_right = 600.0
+margin_bottom = 42.0
+custom_fonts/font = SubResource( 1 )
+text = "Red Hex"
+align = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
+margin_top = 46.0
+margin_right = 600.0
+margin_bottom = 78.0
+size_flags_horizontal = 3
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="R" parent="CenterContainer/VBoxContainer/HBoxContainer" instance=ExtResource( 1 )]
+margin_left = 266.0
+margin_right = 298.0
+margin_bottom = 32.0
+
+[node name="H" parent="CenterContainer/VBoxContainer/HBoxContainer" instance=ExtResource( 3 )]
+margin_left = 302.0
+margin_right = 334.0
+margin_bottom = 32.0
+
+[node name="RedHex" parent="CenterContainer/VBoxContainer" instance=ExtResource( 4 )]
+position = Vector2( 290, -100 )
+scale = Vector2( 0.388, 0.388 )
+frame = 11
+
+[node name="Description" type="Label" parent="CenterContainer/VBoxContainer"]
+margin_top = 82.0
+margin_right = 600.0
+margin_bottom = 312.0
+rect_min_size = Vector2( 600, 230 )
+custom_fonts/font = SubResource( 2 )
+text = "Casts a shield against a red fireball or a regular attack from monsters. It stays active until spent."
+align = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FlavorText" type="Label" parent="."]
+margin_left = 272.878
+margin_top = 596.0
+margin_right = 1002.88
+margin_bottom = 666.0
+rect_min_size = Vector2( 730, 70 )
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+text = "“Red fire, red fire, don’t burn my attire” - Child Lullaby"
+align = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BG" type="TextureRect" parent="."]
+modulate = Color( 0.184314, 0.164706, 0.164706, 0.462745 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 1.71368
+margin_top = -2.00226
+margin_right = 1.71362
+margin_bottom = -2.00226
+texture = SubResource( 4 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RArrow" type="TextureRect" parent="."]
+margin_left = 940.0
+margin_top = 300.0
+margin_right = 1040.0
+margin_bottom = 450.0
+texture = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LArrow" type="TextureRect" parent="."]
+margin_left = 236.0
+margin_top = 300.0
+margin_right = 356.706
+margin_bottom = 450.0
+texture = ExtResource( 6 )
+flip_h = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "shake"
+anims/shake = SubResource( 5 )

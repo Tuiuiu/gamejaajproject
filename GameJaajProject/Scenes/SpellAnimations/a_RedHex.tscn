@@ -218,7 +218,7 @@ region = Rect2( 0, 960, 480, 480 )
 [sub_resource type="SpriteFrames" id=54]
 animations = [ {
 "frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), null ],
-"loop": false,
+"loop": true,
 "name": "Cast",
 "speed": 15.0
 }, {
@@ -228,12 +228,12 @@ animations = [ {
 "speed": 15.0
 }, {
 "frames": [ SubResource( 34 ), SubResource( 35 ), SubResource( 36 ), SubResource( 37 ), SubResource( 38 ), SubResource( 39 ), SubResource( 40 ), SubResource( 41 ), SubResource( 42 ), null ],
-"loop": false,
+"loop": true,
 "name": "Cast2",
 "speed": 15.0
 }, {
 "frames": [ SubResource( 43 ), SubResource( 44 ), SubResource( 45 ), SubResource( 46 ), SubResource( 47 ), SubResource( 48 ), SubResource( 49 ), SubResource( 50 ), SubResource( 51 ), SubResource( 52 ), SubResource( 53 ) ],
-"loop": false,
+"loop": true,
 "name": "Cast1",
 "speed": 15.0
 } ]
@@ -242,4 +242,6 @@ animations = [ {
 modulate = Color( 0.996078, 0.0235294, 0.0901961, 1 )
 frames = SubResource( 54 )
 animation = "Cast"
+frame = 9
+playing = true
 flip_h = true
