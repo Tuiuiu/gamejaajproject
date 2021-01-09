@@ -7,7 +7,7 @@ onready var spellIcons = [
     preload("res://Assets/Spells/Red/rfb_icon.png"),
     preload("res://Assets/Spells/Black/bfb_icon.png"),
     preload("res://Assets/Spells/Green/gfb_icon.png"),
-    "FlashlightIcon",
+    preload("res://Assets/Spells/Flashlight/flashlight_icon.png"),
     preload("res://Assets/Spells/Hexes/hex_shield.png"),
     "GreenHex",# NAO ALTERAR
     "BlackHex",# NAO ALTERAR

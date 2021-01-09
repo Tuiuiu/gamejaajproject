@@ -188,7 +188,8 @@ func fireball_cast(type):
 
 func flashlight_cast():
     world.flashlight_spell()
-    #cooldowns[3] = true
+    cooldowns[3] = true
+    emit_signal("spell_cast", 3, 10.0)
 
 func hex_cast(type):
     cooldowns[4] = true
