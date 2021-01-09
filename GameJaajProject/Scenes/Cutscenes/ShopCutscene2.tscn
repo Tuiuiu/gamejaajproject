@@ -23,7 +23,7 @@
 0/shapes = [  ]
 0/z_index = 0
 
-[node name="ShopCutscene1" type="Node2D"]
+[node name="ShopCutscene2" type="Node2D"]
 script = ExtResource( 5 )
 
 [node name="Shop" parent="." instance=ExtResource( 1 )]
@@ -31,7 +31,7 @@ script = ExtResource( 5 )
 [node name="CutscenePlayer" parent="." instance=ExtResource( 2 )]
 position = Vector2( 103.253, 615.747 )
 z_index = 1
-frame = 2
+frame = 3
 playing = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]

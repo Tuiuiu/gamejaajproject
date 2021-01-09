@@ -2,7 +2,7 @@ extends Node2D
 func _ready():
     $CanvasLayer/DialogBox.dialog = [["Oh, a costumer! Welcome to my shop, feel free to browse.","???"],
     ["What!? Who goes there!? (I can't see him).","Lumorith"],
-    ["*sight* Above the crates, the furry little thing...Woof","???"],
+    ["*sigh* Above the crates, the furry little thing...Woof","???"],
     ["Heavens, a talking wolf! I've never seen that kind of sorcery before!", "Lumorith"],
     ["It is a remarkable spell, indeed. However, I'm not the one responsible for it, as you may presume.","Wolf"],
     ["This...curse was cast upon me a long time ago, when I came here to stop the summoning of a great evil.","Wolf"],
