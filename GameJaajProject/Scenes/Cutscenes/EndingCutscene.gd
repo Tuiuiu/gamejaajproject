@@ -17,23 +17,30 @@ func _ready():
 
 func _process(_delta):
     if ($DialogBox.speech == 3 and (Input.is_action_just_pressed("ui_accept")) and !foi and pode):
-        foi = true
-        $BlackMage.play("Attack1")
-        yield($BlackMage, "animation_finished")
-        $BlackMage.play("Idle")
-        $PlayerPosition/CutscenePlayer.play("Hit")
-        $PlayerPosition/AnimationPlayer.play("Fly")
-        yield($PlayerPosition/AnimationPlayer, "animation_finished")
-        $PlayerPosition/CutscenePlayer.play("Idle")
-        $DialogBox.dialog = [["Zahr!?", "Lumorith"],
-        ["*sigh* Oh, my brother, were they right all along?", "Lumorith"],
-        ["I am... so sorry.", "Lumorith"]]
-        $DialogBox.visible = true
-        #final_fade()
+        fight_scene()
 
-#func final_fade():
-    #$ColorRect/AnimationPlayer.play("Fade")
-    #yield($ColorRect/AnimationPlayer, "animation_finished")
+
+func fight_scene():
+    foi = true
+    $BlackMage.play("Attack1")
+    yield($BlackMage, "animation_finished")
+    $BlackMage.play("Idle")
+    $PlayerPosition/CutscenePlayer.play("Hit")
+    $PlayerPosition/AnimationPlayer.play("Fly")
+    yield($PlayerPosition/AnimationPlayer, "animation_finished")
+    $PlayerPosition/CutscenePlayer.play("Idle")
+    $DialogBox.dialog = [["Zahr!?", "Lumorith"],
+    ["*sigh* Oh, my brother, were they right all along?", "Lumorith"],
+    ["I am... so sorry.", "Lumorith"]]
+    $DialogBox.load_dialog()
+    $DialogBox.visible = true
+    final_fade()
+    
+func final_fade():
+    yield($DialogBox, "end_of_dialog")
+    $ColorRect/AnimationPlayer.play("Fade")
+    yield($ColorRect/AnimationPlayer, "animation_finished")
+    
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

@@ -3,9 +3,10 @@ extends NinePatchRect
 var interactable = false
 var dialog = [[]]
 
-
 var active_actor = "A"
 var speech = 0
+
+signal end_of_dialog
 #func _ready():
  #   load_dialog()
 
@@ -28,4 +29,5 @@ func load_dialog():
     else: 
         visible = false
         speech = 0
+        emit_signal("end_of_dialog")
     
