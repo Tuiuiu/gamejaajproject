@@ -30,6 +30,7 @@ var cooldowns = {
     8: false  # Toll the Dead
 }
 var MAX_HP = 100
+var STARTING_HP = 10
 var world
 var camera
 onready var dead = false
@@ -55,6 +56,7 @@ func _physics_process(delta):
             if (state == "fall"):
                 change_state("run")
         if (Input.is_action_just_pressed("ui_up")):
+            print("TESTE")
             if (!dead):
                 if (is_on_floor()):
                     velocity.y = -JUMP_FORCE
@@ -124,6 +126,19 @@ func hit(damage):
             elif (hp <= 0):
                 die()
 
+func reset(health):
+    change_state("run")
+    dead = false
+    if (health == -1):
+        hp = STARTING_HP
+    else:
+        hp = health
+    activate()
+    emit_signal("health_changed", hp)
+    hex = "none"
+    casting = false
+    $SequenceDetector.reset()
+
 func heal(healing):
     hp += healing
     if (hp > MAX_HP):
@@ -134,11 +149,8 @@ func die():
     print("morreu")
     dead = true
     change_state("death")
-    yield($AnimatedSprite, "animation_finished")
-    $GenericTimer.wait_time = 3.0
-    $GenericTimer.start()
-    yield($GenericTimer, "timeout")
     emit_signal("player_died")
+    yield($AnimatedSprite, "animation_finished")
 
 func get_target():
     if $RayCast2D.is_colliding():

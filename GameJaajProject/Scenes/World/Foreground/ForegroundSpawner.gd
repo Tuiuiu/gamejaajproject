@@ -14,8 +14,17 @@ func spawn_object(index):
     var clone = environment_resources[index].instance()
     path.add_child(clone)
 
-
 func _on_Timer_timeout():
     spawn_object(0)
     $Timer.wait_time = (randi()%4 + 10)
     $Timer.start()
+
+func stop_motion():
+    $Timer.paused = true
+    for torch in $PathToFollow.get_children():
+        torch.stop_motion()
+    
+func resume_motion():
+    $Timer.paused = false
+    for torch in $PathToFollow.get_children():
+        torch.resume_motion()

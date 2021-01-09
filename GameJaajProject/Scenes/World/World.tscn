@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=2]
+[gd_scene load_steps=40 format=2]
 
 [ext_resource path="res://Scenes/Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
@@ -24,6 +24,7 @@
 [ext_resource path="res://Scenes/World/UI/BuffsContainer.tscn" type="PackedScene" id=22]
 [ext_resource path="res://Assets/Stairs/ground.png" type="Texture" id=23]
 [ext_resource path="res://Scenes/Door/Door.tscn" type="PackedScene" id=24]
+[ext_resource path="res://Scenes/World/BackgroundController.gd" type="Script" id=25]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Background"
@@ -319,6 +320,7 @@ __meta__ = {
 }
 
 [node name="Background" type="Node2D" parent="."]
+script = ExtResource( 25 )
 
 [node name="Sprite" type="Sprite" parent="Background"]
 position = Vector2( 782, 231 )
@@ -338,11 +340,11 @@ mesh = SubResource( 2 )
 texture = ExtResource( 17 )
 
 [node name="Light2D" type="Light2D" parent="Background/MeshInstance2D"]
-position = Vector2( 2.19889, -0.759652 )
-scale = Vector2( 0.476492, 0.75 )
+position = Vector2( 4.5, -0.759 )
+scale = Vector2( 1e-05, 0.75 )
 texture = ExtResource( 16 )
 texture_scale = 0.01
-energy = 0.956023
+energy = 0.0
 shadow_enabled = true
 script = ExtResource( 18 )
 
@@ -546,7 +548,7 @@ margin_left = -730.537
 margin_top = -922.971
 margin_right = 2269.46
 margin_bottom = 2077.03
-color = Color( 0, 0, 0, 0 )
+color = Color( 0, 0, 0, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -554,6 +556,10 @@ __meta__ = {
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Fader"]
 anims/FadeIn = SubResource( 13 )
 anims/FadeOut = SubResource( 14 )
+
+[node name="GenericTimer" type="Timer" parent="."]
+pause_mode = 2
+one_shot = true
 [connection signal="timeout" from="Foreground/Timer" to="Foreground" method="_on_Timer_timeout"]
 [connection signal="health_changed" from="Player" to="UI" method="_on_Player_health_changed"]
 [connection signal="timeout" from="RunTimer" to="." method="_on_RunTimer_timeout"]

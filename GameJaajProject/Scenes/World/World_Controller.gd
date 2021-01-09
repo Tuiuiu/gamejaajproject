@@ -1,5 +1,7 @@
 extends Node2D
 
+var backgroundController
+var foregroundController
 var spawner
 var activeSpells
 var player
@@ -7,6 +9,7 @@ var canvasModulator
 var cooldownsHandler
 var buffsHandler
 var floorAnimator
+var startingLevelHp
 var GAME_MAX_TIME = 100.0
 onready var runTimer = get_node("RunTimer")
 onready var levelHandler = get_node("/root/LevelHandler")
@@ -20,6 +23,8 @@ func _ready():
     cooldownsHandler = $UI/CanvasLayer/CooldownsContainer
     buffsHandler = $UI/CanvasLayer/BuffsContainer
     floorAnimator = $TileMap/AnimationPlayer
+    backgroundController = $Background
+    foregroundController = $Foreground
     runTimer.wait_time = GAME_MAX_TIME
     runTimer.paused = true
     runTimer.start()
@@ -33,22 +38,26 @@ func _ready():
     pause_game()
     start_level()
     
-func reset():
+func reset(hp):
     pause_game()
     spawner.reset()
     for spell in activeSpells.get_children():
         spell.queue_free()
     floorAnimator.play("Down")
+    player.reset(hp)
     resume_game()
+
 
 func start_level():
     $Fader/AnimationPlayer.play("FadeIn")
     yield($Fader/AnimationPlayer, "animation_finished")
     player.change_state("run")
     floorAnimator.play("Down")
+    resume_motions()
     resume_game()
     spawner.start()
     runTimer.paused = false
+    startingLevelHp = player.hp
 
 func level_over_handler():
     print("Level is Over! Reset and restart")
@@ -59,12 +68,13 @@ func level_over_handler():
     door.play("Idle")
     yield(floorAnimator, "animation_finished")
     player.change_state("idle")
+    stop_motions()
     door.play("Open")
     yield(door, "animation_finished")
     door.stop()
     $Fader/AnimationPlayer.play("FadeOut")
     yield($Fader/AnimationPlayer, "animation_finished")
-    reset()
+    reset(player.hp)
     # Chamar o proximo level
     levelHandler.next_level()
     start_level()
@@ -74,7 +84,7 @@ func _on_RunTimer_timeout():
     
 func defeat():
     print ("SEM TEMPO, IRMÃO")
-    pause_game()
+    #pause_game()
 
 func pause_game():
     get_tree().paused = true
@@ -83,10 +93,28 @@ func resume_game():
     get_tree().paused = false
 
 func player_died_handler():
-    pause_game()
+    stop_motions()
+    #pause_game()
+    $GenericTimer.wait_time = 5.0
+    $GenericTimer.start()
+    yield($GenericTimer, "timeout")
+    $Fader/AnimationPlayer.play("FadeOut")
+    yield($Fader/AnimationPlayer, "animation_finished")
+    reset(startingLevelHp)
+    start_level()
 
 func flashlight_spell():
     canvasModulator.flashlight_spell()
 
 func toll_the_dead():
     spawner.toll_the_dead()
+
+func stop_motions():
+    backgroundController.stop_motion()
+    foregroundController.stop_motion()
+    floorAnimator.stop(false)
+    
+func resume_motions():
+    backgroundController.resume_motion()
+    foregroundController.resume_motion()
+    floorAnimator.play()

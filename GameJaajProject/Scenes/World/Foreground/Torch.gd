@@ -3,7 +3,6 @@ extends PathFollow2D
 var originalScale = Vector2()
 var originalLightScale
 var speed = 40.0
-var velocity = Vector2(-60, 10)
 # Called when the node enters the scene tree for the first time.
 func _ready():
     $AnimatedSprite.play("Torchlight")
@@ -12,7 +11,6 @@ func _ready():
     self.loop = false
 
 func _physics_process(delta):
-    #position += velocity * delta
     offset += speed * delta
     if (unit_offset == 1):
         queue_free()
@@ -24,3 +22,9 @@ func _physics_process(delta):
 
 func _on_VisibilityNotifier2D_screen_exited():
     queue_free()
+
+func stop_motion():
+    speed = 0.0
+    
+func resume_motion():
+    speed = 40.0
