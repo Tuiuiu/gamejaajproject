@@ -7,6 +7,7 @@ var direction = Vector2()
 var exploded = false
 var type = null
 var damage = 10.0
+var stop = false
 var start_position = Vector2()
 
 func _ready():
@@ -15,9 +16,13 @@ func _ready():
 
 func _physics_process(delta):
     if (exploded):
-        global_position = target.global_position
+        if (!stop):
+            if (target == null):
+                queue_free()
+            else:
+                global_position = target.global_position
     else:
-        if (start_position.distance_to(global_position) > 800):
+        if (start_position.distance_to(global_position) > 2200):
             queue_free()
         else:
             velocity = direction * speed
@@ -54,6 +59,8 @@ func on_area_entered(area):
     if(area.is_in_group("BossSpells") and !area.countered):
         area.counter(type)
         set_target(area)
+        if (area.boss):
+            stop = true
         explode()
             
 func explode():

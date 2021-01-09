@@ -1,0 +1,162 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://Scenes/World/UI/CooldownsContainer.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/Menu/Pause/PauseScreen.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/World/UI/BuffsContainer.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Assets/UI/HPBAR/label_bg.png" type="Texture" id=4]
+[ext_resource path="res://Assets/UI/HPBAR/fill.png" type="Texture" id=5]
+[ext_resource path="res://Assets/UI/HPBAR/border.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Fonts/PixeloidMono.ttf" type="DynamicFontData" id=7]
+[ext_resource path="res://Scenes/World/UI/CooldownsContainer.gd" type="Script" id=8]
+[ext_resource path="res://Scenes/World/UI/HealthBar.gd" type="Script" id=9]
+[ext_resource path="res://Scenes/World/UI/WorldUI.gd" type="Script" id=10]
+[ext_resource path="res://Scenes/Menu/Pause/PauseScreen.gd" type="Script" id=11]
+[ext_resource path="res://Scenes/World/UI/BuffsContainer.gd" type="Script" id=12]
+
+[sub_resource type="DynamicFont" id=6]
+size = 22
+font_data = ExtResource( 7 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 22
+font_data = ExtResource( 7 )
+
+[sub_resource type="Animation" id=8]
+tracks/0/type = "value"
+tracks/0/path = NodePath("Count/Counter:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 42, 13.616 ), Vector2( 59, 13.616 ), Vector2( 35, 13.616 ), Vector2( 47, 13.616 ), Vector2( 42, 13.616 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Count/Counter:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0.960784, 0.227451, 0.0352941, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[node name="UI" type="Control"]
+pause_mode = 2
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HealthBar" type="HBoxContainer" parent="CanvasLayer"]
+margin_right = 488.0
+margin_bottom = 56.0
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Count" type="NinePatchRect" parent="CanvasLayer/HealthBar"]
+margin_right = 150.0
+margin_bottom = 56.0
+rect_min_size = Vector2( 150, 0 )
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="CanvasLayer/HealthBar/Count"]
+anchor_left = -0.02
+anchor_top = -0.036
+anchor_bottom = -0.036
+margin_left = 12.1298
+margin_top = 7.69058
+margin_right = 84.1298
+margin_bottom = 51.6906
+custom_fonts/font = SubResource( 6 )
+text = "HP "
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Counter" type="Label" parent="CanvasLayer/HealthBar/Count"]
+anchor_left = 0.282
+anchor_top = 0.382
+anchor_right = 0.5
+anchor_bottom = 0.423
+margin_left = -0.299999
+margin_top = -7.776
+margin_right = 72.0
+margin_bottom = 16.928
+custom_fonts/font = SubResource( 7 )
+text = "100/100"
+align = 2
+valign = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureProgress" type="TextureProgress" parent="CanvasLayer/HealthBar"]
+margin_left = 154.0
+margin_right = 488.0
+margin_bottom = 56.0
+max_value = 35.0
+value = 1.0
+texture_over = ExtResource( 6 )
+texture_progress = ExtResource( 5 )
+
+[node name="Tween" type="Tween" parent="CanvasLayer/HealthBar"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/HealthBar"]
+autoplay = "shake"
+anims/shake = SubResource( 8 )
+
+[node name="PauseScreen" type="Control" parent="CanvasLayer" instance=ExtResource( 2 )]
+pause_mode = 2
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CooldownsContainer" type="HBoxContainer" parent="CanvasLayer" instance=ExtResource( 1 )]
+pause_mode = 1
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 1.498
+margin_top = 58.0
+margin_right = 1.49805
+margin_bottom = -630.0
+rect_min_size = Vector2( 16, 16 )
+mouse_filter = 2
+script = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BuffsContainer" type="HBoxContainer" parent="CanvasLayer" instance=ExtResource( 3 )]
+pause_mode = 1
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 116.0
+margin_bottom = -572.0
+rect_min_size = Vector2( 16, 16 )
+mouse_filter = 2
+script = ExtResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="health_updated" from="." to="CanvasLayer/HealthBar" method="_on_UI_health_updated"]

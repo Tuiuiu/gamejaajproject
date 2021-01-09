@@ -56,7 +56,6 @@ func _physics_process(delta):
             if (state == "fall"):
                 change_state("run")
         if (Input.is_action_just_pressed("ui_up")):
-            print("TESTE")
             if (!dead):
                 if (is_on_floor()):
                     velocity.y = -JUMP_FORCE
@@ -139,6 +138,16 @@ func reset(health):
     casting = false
     $SequenceDetector.reset()
 
+func start_boss_fight(health):
+    bossfight = true
+    activate()
+    dead = false
+    hp = health
+    change_state("idle")
+    $AnimatedSprite.rotation_degrees = 0
+    $Area2D/CollisionShape2D.rotation_degrees = 0
+    $RayCast2D.cast_to = $RayCast2D.position + Vector2(1, 0)
+
 func heal(healing):
     hp += healing
     if (hp > MAX_HP):
@@ -179,18 +188,12 @@ func try_to_cast(index):
             $CastingAudioEffects.failed_cast()
 
 func fireball_cast(type):
-    var tgt = get_target()
-    if (tgt == null):
-        #NENHUM ALVO A VISTA
-        pass
-    else:
+    if (bossfight):
         var clone = availableSpells[type].instance()
-        var src = $RayCast2D.position
-        var dst = $RayCast2D.cast_to
-        var dir = (dst - src).normalized()
+        var dir = Vector2(100,0).normalized()
         clone.set_direction(dir)
         clone.set_position(position)
-        clone.set_rotation($AnimatedSprite.rotation_degrees)
+        clone.set_rotation(0)
         castSpells.add_child(clone) 
         cooldowns[type] = true
         casting = true
@@ -200,6 +203,28 @@ func fireball_cast(type):
         casting = false
         if (!dead):
             change_state("run")   
+    else:
+        var tgt = get_target()
+        if (tgt == null):
+            #NENHUM ALVO A VISTA
+            pass
+        else:
+            var clone = availableSpells[type].instance()
+            var src = $RayCast2D.position
+            var dst = $RayCast2D.cast_to
+            var dir = (dst - src).normalized()
+            clone.set_direction(dir)
+            clone.set_position(position)
+            clone.set_rotation($AnimatedSprite.rotation_degrees)
+            castSpells.add_child(clone) 
+            cooldowns[type] = true
+            casting = true
+            change_state("attack2")
+            emit_signal("spell_cast", type, (type + 0.5))
+            yield($AnimatedSprite, "animation_finished")
+            casting = false
+            if (!dead):
+                change_state("run")   
 
 func flashlight_cast():
     world.flashlight_spell()
