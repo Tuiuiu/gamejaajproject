@@ -22,7 +22,7 @@ var lines := []
 
 var credits = [
     [
-        "Timeless Brother"
+        "Timeless Brother by Drunkenstein Studios"
     ],[
         "Programming",
         "Lucas Dário (Tuiuiu)",
