@@ -4,7 +4,7 @@
 [ext_resource path="res://Scenes/Cutscenes/CutscenePlayer.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/Cutscenes/DialogBox.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Assets/BGM/1. Viridescent Winds.ogg" type="AudioStream" id=4]
-[ext_resource path="res://Scenes/Cutscenes/ShopCutscene1.gd" type="Script" id=5]
+[ext_resource path="res://Scenes/Cutscenes/ShopCutscene2.gd" type="Script" id=5]
 [ext_resource path="res://Assets/Stairs/ground.png" type="Texture" id=6]
 
 [sub_resource type="TileSet" id=1]
@@ -31,7 +31,7 @@ script = ExtResource( 5 )
 [node name="CutscenePlayer" parent="." instance=ExtResource( 2 )]
 position = Vector2( 103.253, 615.747 )
 z_index = 1
-frame = 4
+frame = 2
 playing = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]

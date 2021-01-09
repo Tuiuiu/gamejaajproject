@@ -1,10 +1,10 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Scenes/Menu/Title/TitleScreen.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Menu/Title/SettingsButton.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/Menu/Title/PlayButton.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/Menu/Title/QuitButton.tscn" type="PackedScene" id=4]
-[ext_resource path="res://icon.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Fonts/grimoire_font.tres" type="DynamicFontData" id=5]
 [ext_resource path="res://Assets/BGM/3. Limited Time (Main Theme).ogg" type="AudioStream" id=6]
 [ext_resource path="res://Assets/UI/titlescreen/sound_on.png" type="Texture" id=7]
 [ext_resource path="res://Assets/UI/titlescreen/sound_off.png" type="Texture" id=8]
@@ -13,15 +13,19 @@
 [ext_resource path="res://Assets/Background/Nebula Blue.png" type="Texture" id=11]
 [ext_resource path="res://Assets/Background/Nebula Red.png" type="Texture" id=12]
 
-[sub_resource type="DynamicFontData" id=1]
+[sub_resource type="DynamicFont" id=1]
+size = 70
+outline_size = 9
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFontData" id=2]
 font_path = "res://Assets/Fonts/Montserrat-ExtraBold.ttf"
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=3]
 size = 24
-font_data = SubResource( 1 )
+font_data = SubResource( 2 )
 
-[sub_resource type="Animation" id=3]
-resource_name = "FadeIn"
+[sub_resource type="Animation" id=4]
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:volume_db")
 tracks/0/interp = 1
@@ -35,8 +39,7 @@ tracks/0/keys = {
 "values": [ -20.0, -10.0 ]
 }
 
-[sub_resource type="Animation" id=4]
-resource_name = "FadeIn"
+[sub_resource type="Animation" id=5]
 length = 3.0
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:modulate")
@@ -51,8 +54,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=5]
-resource_name = "FadeOut"
+[sub_resource type="Animation" id=6]
 length = 3.0
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:modulate")
@@ -67,8 +69,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="Animation" id=6]
-resource_name = "FadeIn"
+[sub_resource type="Animation" id=7]
 length = 3.0
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:modulate")
@@ -83,8 +84,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=7]
-resource_name = "FadeOut"
+[sub_resource type="Animation" id=8]
 length = 3.0
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:modulate")
@@ -117,63 +117,60 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TextureRect" type="TextureRect" parent="Menu"]
+[node name="TextureRect" type="Label" parent="Menu"]
 margin_right = 1040.0
-margin_bottom = 64.0
-texture = ExtResource( 5 )
-stretch_mode = 4
+margin_bottom = 86.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.945098, 0.941176, 0.929412, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+text = "timeless brother"
+align = 1
+uppercase = true
 
 [node name="Center" type="HBoxContainer" parent="Menu"]
-margin_top = 68.0
+margin_top = 90.0
 margin_right = 1040.0
-margin_bottom = 312.0
+margin_bottom = 323.0
 size_flags_vertical = 3
 
 [node name="Buttons" type="VBoxContainer" parent="Menu/Center"]
 margin_right = 518.0
-margin_bottom = 244.0
+margin_bottom = 233.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/separation = 20
 alignment = 1
 
 [node name="PlayButton" parent="Menu/Center/Buttons" instance=ExtResource( 3 )]
-margin_top = 12.0
+margin_top = 6.0
 margin_right = 518.0
-margin_bottom = 72.0
+margin_bottom = 66.0
 
 [node name="SettingsButton" parent="Menu/Center/Buttons" instance=ExtResource( 2 )]
-margin_top = 92.0
+margin_top = 86.0
 margin_right = 518.0
-margin_bottom = 152.0
+margin_bottom = 146.0
 
 [node name="QuitButton" parent="Menu/Center/Buttons" instance=ExtResource( 4 )]
-margin_top = 172.0
+margin_top = 166.0
 margin_right = 518.0
-margin_bottom = 232.0
+margin_bottom = 226.0
 
 [node name="CenterContainer" type="CenterContainer" parent="Menu/Center"]
 margin_left = 522.0
 margin_right = 1040.0
-margin_bottom = 244.0
+margin_bottom = 233.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="TextureRect" type="TextureRect" parent="Menu/Center/CenterContainer"]
-margin_left = 227.0
-margin_top = 90.0
-margin_right = 291.0
-margin_bottom = 154.0
-texture = ExtResource( 5 )
-
 [node name="Footer" type="Label" parent="Menu"]
-margin_top = 316.0
+margin_top = 327.0
 margin_right = 1040.0
 margin_bottom = 560.0
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 3 )
 text = "Version 1.0.0
-IMEnsos Studios"
+Drunkenstein Studios"
 
 [node name="BGM" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
@@ -181,7 +178,7 @@ volume_db = -20.0
 autoplay = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="BGM"]
-anims/FadeIn = SubResource( 3 )
+anims/FadeIn = SubResource( 4 )
 
 [node name="SoundIcon" type="TextureButton" parent="."]
 margin_left = 29.2521
@@ -205,8 +202,8 @@ modulate = Color( 1, 1, 1, 0 )
 texture = ExtResource( 10 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Background/AquaPinkBG"]
-anims/FadeIn = SubResource( 4 )
-anims/FadeOut = SubResource( 5 )
+anims/FadeIn = SubResource( 5 )
+anims/FadeOut = SubResource( 6 )
 
 [node name="BlueBG" type="Sprite" parent="Background"]
 modulate = Color( 1, 1, 1, 0 )
@@ -214,8 +211,8 @@ z_index = -1
 texture = ExtResource( 11 )
 
 [node name="AnimationPlayer2" type="AnimationPlayer" parent="Background/BlueBG"]
-anims/FadeIn = SubResource( 6 )
-anims/FadeOut = SubResource( 7 )
+anims/FadeIn = SubResource( 7 )
+anims/FadeOut = SubResource( 8 )
 
 [node name="RedBG" type="Sprite" parent="Background"]
 z_index = -2

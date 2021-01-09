@@ -3,7 +3,7 @@
 [ext_resource path="res://Scenes/TileMap.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/Background/background.png" type="Texture" id=2]
 [ext_resource path="res://Assets/Background/$Gate_300%.png" type="Texture" id=3]
-[ext_resource path="res://Scenes/Cutscenes/RedMageCutscene.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Enemies/BlackMage/BlackMage.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/Cutscenes/CutscenePlayer.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Assets/BGM/3. Limited Time (Main Theme).ogg" type="AudioStream" id=6]
 [ext_resource path="res://Scenes/Cutscenes/DialogBox.tscn" type="PackedScene" id=8]
@@ -196,20 +196,13 @@ __meta__ = {
 position = Vector2( -80, 628.084 )
 scale = Vector2( 1.22105, 1.22105 )
 animation = "Run"
+frame = 0
 playing = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Node2D"]
 anims/Arrive = SubResource( 15 )
 anims/Enter = SubResource( 16 )
 anims/Fade = SubResource( 17 )
-
-[node name="RedMageCutscene" parent="." instance=ExtResource( 4 )]
-self_modulate = Color( 0.0196078, 0.0196078, 0.0196078, 1 )
-position = Vector2( 499.697, -1383.94 )
-scale = Vector2( 1.87334, 1.87334 )
-z_index = 1
-frame = 1
-playing = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -233,3 +226,11 @@ __meta__ = {
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="ColorRect"]
 anims/Fade = SubResource( 18 )
+
+[node name="Node2D2" parent="." instance=ExtResource( 4 )]
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 611.298, -1411.48 )
+scale = Vector2( 1.69792, 1.94024 )
+z_index = -2
+frame = 4
+playing = true

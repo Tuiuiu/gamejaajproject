@@ -64,8 +64,7 @@ tile_data = PoolIntArray( 0, 4, 0, 2, 4, 0, 4, 4, 0, 6, 4, 0, 8, 4, 0, 10, 4, 0,
 [node name="BlackMage" parent="." instance=ExtResource( 3 )]
 position = Vector2( 1160.98, 556.375 )
 scale = Vector2( 3.5, 3.5 )
-animation = "Idle"
-frame = 7
+frame = 5
 playing = true
 flip_h = true
 
