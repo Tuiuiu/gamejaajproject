@@ -163,6 +163,7 @@ func try_to_cast(index):
     if(is_alive() and active):
         # If skill is not on cooldown
         if (!casting and !cooldowns[index]):
+            $CastingAudioEffects.success_cast()
             match index:
                 0, 1, 2: # Red Fireball, Black Fireball, Green Fireball
                     fireball_cast(index)
@@ -174,6 +175,8 @@ func try_to_cast(index):
                     heal_chime_cast()
                 8: # Toll the Dead
                     toll_dead_cast()
+        else:
+            $CastingAudioEffects.failed_cast()
 
 func fireball_cast(type):
     var tgt = get_target()
@@ -261,7 +264,7 @@ func toll_dead_cast():
         change_state("run")
 
 func sequence_pressed(action):
-    if (active):
+    if (active and !dead):
         $CastingAudioEffects.sequence_pressed(action)
 
 func cooldown_over_handler(id):
