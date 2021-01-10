@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/5. Reminiscence of Time.ogg-8b6c45ff2fced51a6ac245112b47a8db.oggstr"
+
+[deps]
+
+source_file="res://Assets/BGM/5. Reminiscence of Time.ogg"
+dest_files=[ "res://.import/5. Reminiscence of Time.ogg-8b6c45ff2fced51a6ac245112b47a8db.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
