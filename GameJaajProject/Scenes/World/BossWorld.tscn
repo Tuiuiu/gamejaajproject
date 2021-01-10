@@ -71,6 +71,7 @@ volume_db = -38.369
 autoplay = true
 
 [node name="CanvasEffects" type="CanvasModulate" parent="."]
+visible = false
 color = Color( 0.0784314, 0.0745098, 0.0745098, 1 )
 script = ExtResource( 5 )
 
