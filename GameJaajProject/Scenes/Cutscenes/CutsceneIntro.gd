@@ -33,7 +33,7 @@ func _process(_delta):
         $Camera2D/AnimationPlayer.play("Lift")
         $CanvasLayer/DialogBox.dialog = [["The Far Mountain's Watchtower was created to seal Tharnax, a great evil that once brought despair to our world."," "],
         ["Every generation, a mage is choosen to be the Tower's Watcher."," "],
-        ["When his brother, the Black Mage choosen as Watcher, was said to be gone mad by the tower's curse, Lumorith was summoned.", " "],
+        ["When his brother, the Black Mage chosen as Watcher, was said to be gone mad by the tower's curse, Lumorith was summoned.", " "],
         ["To investigate, and, if needed, take his place as The Watcher."," "],
         ["The Circle of Magi wondered if it was too late to stop the return of Tharnax"," "],
         ["Lumorith rushed in wishing it wasn't too late to save his brother, Zahr", " "],

@@ -7,9 +7,7 @@ signal add_buff(id)
 signal remove_buff(id)
 
 var GRAVITY = 50.0
-var JUMP_FORCE = 650.0
 var velocity = Vector2()
-var jump_count = 0
 var state
 var castSpells
 var cooldownHandler
@@ -55,17 +53,6 @@ func _physics_process(delta):
             velocity.y = 0
             if (state == "fall"):
                 change_state("run")
-        if (Input.is_action_just_pressed("ui_up")):
-            if (!dead):
-                if (is_on_floor()):
-                    velocity.y = -JUMP_FORCE
-                    jump_count = 1
-                    change_state("jump")
-                elif (!is_on_floor()):
-                    if jump_count < 2:
-                        jump_count += 1
-                        velocity.y = -JUMP_FORCE + 70
-                        change_state("jump")   
         move_and_slide(velocity, Vector2(0, -1))
 
 func _process(delta):
@@ -95,8 +82,6 @@ func change_state(new_state):
                 $AnimatedSprite.play("Death")
             "fall":
                 $AnimatedSprite.play("Fall") 
-            "jump":
-                $AnimatedSprite.play("Jump")
             "idle":
                 $AnimatedSprite.play("idle")
         state = new_state       

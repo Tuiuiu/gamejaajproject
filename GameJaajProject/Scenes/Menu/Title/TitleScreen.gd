@@ -9,6 +9,9 @@ func _ready():
 func start_game():
     Global.goto_scene("res://Scenes/Cutscenes/CutsceneIntro.tscn")
 
+func _on_CreditsButton_pressed():
+    Global.goto_scene("res://Scenes/Credits/Credits.tscn")
+
 func quit_game():
     get_tree().quit()
 
