@@ -16,6 +16,9 @@ func _ready():
     ["Yeah, now that I came to think of it... Anyway, get going!", "Vael"],
     ["Farewell, and thank you!", "Lumorith"],
     ["Lumorith has learned two new spells!", ""],
-    ["Press H-E-A-L or T-O-O-L to active them in battle!", ""],
-    ["*Woof* (Remember to check your grimoire for more info on those spells) *woof*"]]
+    ["Press H-E-A-L or T-O-L-L to active them in battle!", ""],
+    ["*Woof* (Remember to check your grimoire for more info on those spells) *woof*", "Vael"]]
     $CanvasLayer/DialogBox.load_dialog()
+    yield($CanvasLayer/DialogBox, "end_of_dialog")
+    Global.goto_scene("res://Scenes/World/World.tscn")
+

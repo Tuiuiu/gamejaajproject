@@ -5,9 +5,9 @@ var sequences = {
     1: [KEY_B, KEY_F, KEY_B],
     2: [KEY_G, KEY_F, KEY_B],
     3: [KEY_F, KEY_L],
-    4: [KEY_R, KEY_H],
-    5: [KEY_B, KEY_H],
-    6: [KEY_G, KEY_H],
+    4: [KEY_R, KEY_H, KEY_E, KEY_X],
+    5: [KEY_B, KEY_H, KEY_E, KEY_X],
+    6: [KEY_G, KEY_H, KEY_E, KEY_X],
     7: [KEY_H, KEY_E, KEY_A, KEY_L],
     8: [KEY_T, KEY_O, KEY_L, KEY_L]
 }

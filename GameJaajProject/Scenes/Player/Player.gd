@@ -30,11 +30,11 @@ var cooldowns = {
     8: false  # Toll the Dead
 }
 var MAX_HP = 100
-var STARTING_HP = 10
+var STARTING_HP = 100
 var world
 var camera
 onready var dead = false
-onready var hp = 10
+onready var hp = 100
 
 func _ready():
     availableSpells.append(load("res://Scenes/Spells/Fireballs/Red_fireball.tscn"))
@@ -152,6 +152,10 @@ func heal(healing):
     hp += healing
     if (hp > MAX_HP):
         hp = MAX_HP
+    emit_signal("health_changed", hp)
+    
+func change_health(health):
+    hp = health
     emit_signal("health_changed", hp)
 
 func die():

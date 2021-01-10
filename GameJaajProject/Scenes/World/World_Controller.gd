@@ -5,6 +5,7 @@ var foregroundController
 var spawner
 var activeSpells
 var player
+var player_sequence
 var canvasModulator
 var cooldownsHandler
 var buffsHandler
@@ -19,6 +20,7 @@ func _ready():
     spawner = $Enemies
     activeSpells = $Spells
     player = $Player
+    player_sequence = $Player/SequenceDetector
     canvasModulator = $CanvasEffects
     cooldownsHandler = $UI/CanvasLayer/CooldownsContainer
     buffsHandler = $UI/CanvasLayer/BuffsContainer
@@ -35,6 +37,8 @@ func _ready():
     player.connect("remove_buff", buffsHandler, "remove_buff_effect")
     cooldownsHandler.connect("cooldown_over", player, "cooldown_over_handler")
     floorAnimator.play("Down")
+    startingLevelHp = levelHandler.last_HP
+    reset(startingLevelHp)
     pause_game()
     start_level()
     
@@ -52,6 +56,10 @@ func start_level():
     $Fader/AnimationPlayer.play("FadeIn")
     yield($Fader/AnimationPlayer, "animation_finished")
     player.change_state("run")
+    player_sequence.sequences = {}
+    player_sequence.sequences = levelHandler.get_spells()
+    player_sequence.reset()
+    player.change_health(levelHandler.last_HP)
     floorAnimator.play("Down")
     resume_motions()
     resume_game()
@@ -60,7 +68,7 @@ func start_level():
     startingLevelHp = player.hp
 
 func level_over_handler():
-    print("Level is Over! Reset and restart")
+    #print("Level is Over! Reset and restart")
     player.deactivate()
     runTimer.paused = true
     var door = $TileMap/Door
@@ -74,9 +82,20 @@ func level_over_handler():
     door.stop()
     $Fader/AnimationPlayer.play("FadeOut")
     yield($Fader/AnimationPlayer, "animation_finished")
-    reset(player.hp)
+    levelHandler.last_HP = player.hp
+    levelHandler.last_max_hp = player.MAX_HP
     # Chamar o proximo level
-    levelHandler.next_level()
+    Global.goto_scene(levelHandler.get_next_scene())
+
+func player_died_handler():
+    stop_motions()
+    #pause_game()
+    $GenericTimer.wait_time = 5.0
+    $GenericTimer.start()
+    yield($GenericTimer, "timeout")
+    $Fader/AnimationPlayer.play("FadeOut")
+    yield($Fader/AnimationPlayer, "animation_finished")
+    reset(startingLevelHp)
     start_level()
 
 func _on_RunTimer_timeout():
@@ -91,18 +110,7 @@ func pause_game():
     
 func resume_game():
     get_tree().paused = false
-
-func player_died_handler():
-    stop_motions()
-    #pause_game()
-    $GenericTimer.wait_time = 5.0
-    $GenericTimer.start()
-    yield($GenericTimer, "timeout")
-    $Fader/AnimationPlayer.play("FadeOut")
-    yield($Fader/AnimationPlayer, "animation_finished")
-    reset(startingLevelHp)
-    start_level()
-
+    
 func flashlight_spell():
     canvasModulator.flashlight_spell()
 

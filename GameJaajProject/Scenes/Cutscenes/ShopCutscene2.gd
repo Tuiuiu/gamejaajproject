@@ -18,5 +18,8 @@ func _ready():
     ["Press R-H-E-X, G-H-E-X or B-H-E-X to cast a shield of the corresponding collor", ""],
     ["*Woof* (Remember to check your grimoire to learn about your new spells) *woof*", "Horace"]] 
     $CanvasLayer/DialogBox.load_dialog()
+    yield($CanvasLayer/DialogBox, "end_of_dialog")
+    Global.goto_scene("res://Scenes/World/World.tscn")
+
 
 

@@ -23,10 +23,6 @@ func _on_DialogBox_end_of_dialog():
     yield($FadeBlackMage/AnimationPlayer, "animation_finished")
     $AnimationPlayer.play("FinalFade")
     yield($AnimationPlayer, "animation_finished")
+    Global.goto_scene("res://Scenes/Credits/Credits.tscn")
     #Ir pra cena dos créditos/ Thank You for Playing
     
-    
-
-    
-
-

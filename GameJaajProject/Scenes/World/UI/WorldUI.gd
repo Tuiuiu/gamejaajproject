@@ -7,6 +7,7 @@ onready var pause_overlay = get_node("CanvasLayer/PauseScreen")
 
 func _ready():
     var player = world.get_node("Player")
+    player.connect("health_changed", self, "_on_Player_health_changed")
     get_node("CanvasLayer/HealthBar").initialize(player.hp, player.MAX_HP)
 
 func _unhandled_input(event: InputEvent) -> void:

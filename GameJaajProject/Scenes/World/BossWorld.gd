@@ -50,7 +50,7 @@ func boss_dead_handler():
     stop_motions()
     $Fader/AnimationPlayer.play("FadeOut")
     yield($Fader/AnimationPlayer, "animation_finished")
-    #Change Scene ENDING CUTSCENE
+    Global.goto_scene("res://Scenes/Cutscenes/EndCutscene.tscn")
 
 func defeat():
     print ("SEM TEMPO, IRMÃO")

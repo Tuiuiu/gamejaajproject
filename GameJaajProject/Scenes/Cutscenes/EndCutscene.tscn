@@ -65,6 +65,7 @@ flip_h = true
 anims/Fade = SubResource( 1 )
 
 [node name="DarkBell" parent="." instance=ExtResource( 6 )]
+frame = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/FinalFade = SubResource( 2 )

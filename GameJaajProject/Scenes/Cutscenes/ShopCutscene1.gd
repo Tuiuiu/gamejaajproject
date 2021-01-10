@@ -20,3 +20,5 @@ func _ready():
     ["Press BFB for Black Fireball and GFB for Green Fireball when facing monsters", ""],
     ["*Woof* (Remember to check your grimoire later to learn about your new spells) *woof*", "Wolf"]]
     $CanvasLayer/DialogBox.load_dialog()
+    yield($CanvasLayer/DialogBox, "end_of_dialog")
+    Global.goto_scene("res://Scenes/World/World.tscn")

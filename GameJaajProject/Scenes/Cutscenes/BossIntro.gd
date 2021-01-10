@@ -40,6 +40,7 @@ func final_fade():
     yield($DialogBox, "end_of_dialog")
     $ColorRect/AnimationPlayer.play("Fade")
     yield($ColorRect/AnimationPlayer, "animation_finished")
+    Global.goto_scene("res://Scenes/World/BossWorld.tscn")
     
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

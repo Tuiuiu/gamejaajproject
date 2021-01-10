@@ -71,7 +71,7 @@ volume_db = -38.369
 autoplay = true
 
 [node name="CanvasEffects" type="CanvasModulate" parent="."]
-color = Color( 0.835294, 0.835294, 0.8, 1 )
+color = Color( 0.0784314, 0.0745098, 0.0745098, 1 )
 script = ExtResource( 5 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasEffects"]
@@ -80,7 +80,6 @@ anims/Flash = SubResource( 2 )
 [node name="UI" parent="." instance=ExtResource( 3 )]
 
 [node name="Fader" parent="." instance=ExtResource( 2 )]
-visible = false
 
 [node name="TileMap" parent="." instance=ExtResource( 10 )]
 z_index = -10
