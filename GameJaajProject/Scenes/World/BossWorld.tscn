@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Scenes/Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/World/Fader.tscn" type="PackedScene" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://Scenes/Enemies/BlackMage/BlackBoss.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Scenes/World/BossWorld.gd" type="Script" id=9]
 [ext_resource path="res://Scenes/TileMap.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Assets/BGM/PerituneMaterial_Havoc_loop.ogg" type="AudioStream" id=11]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 800, 32 )
@@ -65,6 +66,9 @@ script = ExtResource( 4 )
 position = Vector2( 1153.63, 374.664 )
 
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 11 )
+volume_db = -38.369
+autoplay = true
 
 [node name="CanvasEffects" type="CanvasModulate" parent="."]
 color = Color( 0.835294, 0.835294, 0.8, 1 )
