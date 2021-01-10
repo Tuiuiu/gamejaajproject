@@ -14,7 +14,10 @@ func _ready():
     velocity.x += -MOVESPEED
     velocity.y = 60.0
     active = true
-    change_state("run")
+    if (type == "cultist"):
+        change_state("move")
+    else:
+        change_state("run")
 
 func _physics_process(delta):    
     if (active):
