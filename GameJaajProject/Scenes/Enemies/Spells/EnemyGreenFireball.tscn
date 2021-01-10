@@ -434,7 +434,7 @@ material = SubResource( 1 )
 scale = Vector2( 2.687, 2.687 )
 frames = SubResource( 93 )
 animation = "Cast"
-frame = 15
+frame = 20
 playing = true
 flip_h = true
 

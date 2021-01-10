@@ -1,5 +1,7 @@
 extends Node2D
 func _ready():
+    $Fader/AnimationPlayer.play("FadeIn")
+    yield($Fader/AnimationPlayer, "animation_finished")
     $CanvasLayer/DialogBox.dialog = [["Oh, a customer! Welcome to my shop, feel free to browse.","???"],
     ["What!? Who goes there!? (I can't see him).","Lumorith"],
     ["*sigh* Above the crates, the furry little thing...Woof","???"],
@@ -21,4 +23,6 @@ func _ready():
     ["*Woof* (Remember to check your grimoire later to learn about your new spells). *woof*", "Wolf"]]
     $CanvasLayer/DialogBox.load_dialog()
     yield($CanvasLayer/DialogBox, "end_of_dialog")
+    $Fader/AnimationPlayer.play("FadeOut")
+    yield($Fader/AnimationPlayer, "animation_finished")
     Global.goto_scene("res://Scenes/World/World.tscn")
