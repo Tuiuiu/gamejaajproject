@@ -86,6 +86,30 @@ func change_state(new_state):
                 $AnimatedSprite.play("idle")
         state = new_state       
 
+func firehit(dmg, ftype):
+    if (!dead):
+        if (hex == ftype):
+            hex = "none"
+            $HexAnimation.visible = true
+            $HexAnimation.set_frame(0)
+            $HexAnimation.play("Block")
+            yield($HexAnimation, "animation_finished")
+            $HexAnimation.visible = false
+            emit_signal("remove_buff", 4)
+            emit_signal("spell_cast", 4, 5)
+        else:
+            hp -= dmg
+            emit_signal("health_changed", hp)
+            camera.shake(0.2, 15, 8)
+            if (hp > 0):
+                change_state("hit")
+                $AnimationPlayer.play("DamageEffect")
+                yield($AnimatedSprite, "animation_finished")
+                if (!dead):
+                    change_state("run")
+            elif (hp <= 0):
+                die()
+                
 func hit(damage):
     if (!dead):
         if (hex != "none"):

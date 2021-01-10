@@ -4,6 +4,7 @@ var damage = 10.0
 var countered = false
 var direction = Vector2(-775, 382).normalized()
 var speed = 300.0
+var ftype = "red"
 var boss = false
 
 # Called when the node enters the scene tree for the first time.
@@ -36,7 +37,7 @@ func explode():
 
 func on_body_entered(body):
     if (body.is_in_group("Player") and body.is_alive()):
-            body.hit(damage)
+            body.firehit(damage, ftype)
             if (!body.is_alive()):
                 speed = 0.0
             explode()   
