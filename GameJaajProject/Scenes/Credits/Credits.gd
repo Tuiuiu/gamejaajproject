@@ -59,7 +59,7 @@ func _process(delta):
     var scroll_speed = base_speed * delta
     
     if section_next:
-        section_timer += delta * speed_up_multiplier if speed_up else delta
+        section_timer += delta
         if section_timer >= section_time:
             section_timer -= section_time
             
@@ -70,13 +70,10 @@ func _process(delta):
                 add_line()
     
     else:
-        line_timer += delta * speed_up_multiplier if speed_up else delta
+        line_timer += delta
         if line_timer >= line_time:
             line_timer -= line_time
             add_line()
-    
-    if speed_up:
-        scroll_speed *= speed_up_multiplier
     
     if lines.size() > 0:
         for l in lines:
@@ -91,7 +88,7 @@ func _process(delta):
 func finish():
     if not finished:
         finished = true
-        get_tree().change_scene("res://Scenes/Menu/Title/TitleScreen.tscn")
+        Global.goto_scene("res://Scenes/Menu/Title/TitleScreen.tscn")
 
 
 func add_line():
@@ -112,7 +109,3 @@ func add_line():
 func _unhandled_input(event):
     if event.is_action_pressed("ui_cancel"):
         finish()
-    if event.is_action_pressed("ui_down") and !event.is_echo():
-        speed_up = true
-    if event.is_action_released("ui_down") and !event.is_echo():
-        speed_up = false
